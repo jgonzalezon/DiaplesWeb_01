@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Curso .NET MVC</title>
+
+    <meta name="description" content="Curso profesional de desarrollo web con .NET MVC y C#. Aprende ASP.NET Core, Entity Framework y despliegue en la nube.">
+    <link rel="icon" type="image/png" href="~/favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    
+</head>
+
+<body>
+    <header class="nav">
+        <div class="container nav-wrap">
+            <!-- LOGO -->
+            <a class="brand" asp-area="" asp-controller="Home" asp-action="Index">
+                <span class="logo">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M4 12a8 8 0 1 1 16 0" stroke="#081018" stroke-width="3" />
+                        <path d="M8 12a4 4 0 1 1 8 0" stroke="#081018" stroke-width="3" />
+                    </svg>
+                </span>
+                <span>.NET Pro</span>
+            </a>
+
+            <!-- ENLACES -->
+            <nav class="nav-links">
+                <a asp-controller="Home" asp-action="Index">Inicio</a>
+                <a asp-controller="Home" asp-action="About">Sobre el curso</a>
+                <a asp-controller="Home" asp-action="Contact">Contacto</a>
+                @if (User.IsInRole("Admin")) {
+                    <a asp-controller="Admin" asp-action="Registrations">Admin</a>
+                }            
+            </nav>
+
+            <!-- BOTÓN / LOGIN -->
+            <div style="display:flex; align-items:center; gap:12px;">
+                <a class="btn" asp-controller="Home" asp-action="Register">Inscribirme</a>
+                <!-- 🔽 Aquí va el parcial de login/logout -->
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </header>
+
+    <main role="main" class="content">
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="container foot">
+            <div>
+                <div class="brand">
+                    <span class="logo"></span>
+                    <span>.NET Pro</span>
+                </div>
+                <p>&copy; @DateTime.Now.Year · Curso .NET MVC · Todos los derechos reservados.</p>
+            </div>
+
+            <div>
+                <h4>Contenido</h4>
+                <a asp-controller="Home" asp-action="Index">Inicio</a><br />
+                <a asp-controller="Home" asp-action="About">Sobre el curso</a><br />
+                <a asp-controller="Home" asp-action="Contact">Contacto</a>
+            </div>
+
+            <div>
+                <h4>Legal</h4>
+                <a href="#">Términos</a><br />
+                <a href="#">Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
