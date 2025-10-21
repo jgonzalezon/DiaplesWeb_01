@@ -17,19 +17,16 @@
     <header class="nav">
         <div class="container nav-wrap">
             <!-- LOGO -->
-            <a class="brand" asp-area="" asp-controller="Home" asp-action="Index">
-                <span class="logo">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M4 12a8 8 0 1 1 16 0" stroke="#081018" stroke-width="3" />
-                        <path d="M12 3l2 5h5l-4 3 1.5 5L12 13l-4.5 3 1.5-5-4-3h5l2-5Z" fill="#081018" />
-                    </svg>
-                </span>
-                <span>Os Diaples</span>
-            </a>
+        <a class="brand" asp-controller="Home" asp-action="Index" style="display:flex; align-items:center; gap:8px;">
+            <img src="~/img/Inicio/logo_horizontal-diaples.jpg"
+                alt="Logo Os Diaples d'a Uerba"
+                style="height:40px; width:auto; border-radius:8px;">
+            <span>Os Diaples</span>
+        </a>
+
 
             <!-- ENLACES -->
             <nav class="nav-links">
-                <a asp-controller="Home" asp-action="Index">Inicio</a>
                 <a asp-controller="Home" asp-action="About">Os Diaples</a>
                 <a asp-controller="Home" asp-action="Espectaculos">Espectáculos</a>
                 <a asp-controller="Home" asp-action="Galeria">Galería</a>
@@ -64,7 +61,6 @@
 
             <div>
                 <h4>Contenido</h4>
-                <a asp-controller="Home" asp-action="Index">Inicio</a><br />
                 <a asp-controller="Home" asp-action="About">Os Diaples</a><br />
                 <a asp-controller="Home" asp-action="Espectaculos">Espectáculos</a><br />
                 <a asp-controller="Home" asp-action="Galeria">Galería</a><br />

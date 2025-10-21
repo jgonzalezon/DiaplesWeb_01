@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DiaplesWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf687e3c1bda29cae144d7a3497cbbe2f93fcfa3")]
 [assembly: System.Reflection.AssemblyProductAttribute("DiaplesWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DiaplesWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

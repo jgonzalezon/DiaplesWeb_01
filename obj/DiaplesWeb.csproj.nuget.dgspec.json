@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Oceano\\Desktop\\Curso NET\\Práctica día 1\\DiaplesWeb\\DiaplesWeb.csproj": {}
+    "C:\\Users\\Oceano\\Desktop\\Curso NET\\Práctica día 1\\DiaplesWeb_01\\DiaplesWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Oceano\\Desktop\\Curso NET\\Práctica día 1\\DiaplesWeb\\DiaplesWeb.csproj": {
+    "C:\\Users\\Oceano\\Desktop\\Curso NET\\Práctica día 1\\DiaplesWeb_01\\DiaplesWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Oceano\\Desktop\\Curso NET\\Práctica día 1\\DiaplesWeb\\DiaplesWeb.csproj",
+        "projectUniqueName": "C:\\Users\\Oceano\\Desktop\\Curso NET\\Práctica día 1\\DiaplesWeb_01\\DiaplesWeb.csproj",
         "projectName": "DiaplesWeb",
-        "projectPath": "C:\\Users\\Oceano\\Desktop\\Curso NET\\Práctica día 1\\DiaplesWeb\\DiaplesWeb.csproj",
+        "projectPath": "C:\\Users\\Oceano\\Desktop\\Curso NET\\Práctica día 1\\DiaplesWeb_01\\DiaplesWeb.csproj",
         "packagesPath": "C:\\Users\\Oceano\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Oceano\\Desktop\\Curso NET\\Práctica día 1\\DiaplesWeb\\obj\\",
+        "outputPath": "C:\\Users\\Oceano\\Desktop\\Curso NET\\Práctica día 1\\DiaplesWeb_01\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
