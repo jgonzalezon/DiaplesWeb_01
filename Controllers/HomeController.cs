@@ -16,6 +16,8 @@ namespace DiaplesWeb.Controllers
         public IActionResult Index() => View();
         public IActionResult About() => View();
         public IActionResult Contact() => View();
+        public IActionResult Espectaculos() => View();
+        public IActionResult Galeria() => View();
 
         [HttpGet]
         public IActionResult Register() => View(new RegistrationViewModel());
