@@ -515,7 +515,6 @@ C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\nezrqnk58p-muycvpuwrr.gz
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\v0zgfp0y55-87fc7y1x7t.gz
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
-C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-ihfnb3tvnw.gz
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\js993n93b3-xtxxf3hu2r.gz
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\85dany85an-bqjiyaj88i.gz
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\fchh3h2qr9-c2jlpeoesf.gz
@@ -886,3 +885,4 @@ C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.pdb
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.genruntimeconfig.cache
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\ref\DiaplesWeb.dll
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-0tbojodyqu.gz
+C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-42l8orjst9.gz
