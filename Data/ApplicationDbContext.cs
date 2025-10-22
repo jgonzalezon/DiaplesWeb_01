@@ -10,5 +10,6 @@ namespace DiaplesWeb.Data
             : base(options) { }
 
         public DbSet<Registration> Registrations => Set<Registration>();
+        public DbSet<ContactMessage> ContactMessages => Set<ContactMessage>();
     }
 }

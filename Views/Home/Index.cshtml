@@ -15,14 +15,20 @@
     <div class="container" style="text-align:center">
         <h1>Os Diaples d'a Uerba</h1>
         <p class="lead">Grupo de diablos, brujas y otras bestias que llenan las calles con música, fuego y pirotecnia.</p>
+
         <figure style="margin:32px auto 16px; max-width:420px">
-            <div class="card" style="padding:24px; border-radius:var(--radius); border:1px solid var(--border); background:var(--bg-2); font-size:1.5rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase">
-                Logotipo «Os Diaples D'a Uerba»
-            </div>
-            <figcaption style="margin-top:8px; font-size:0.9rem; color:var(--muted)">Desde 1992 promoviendo la cultura aragonesa por toda la geografía peninsular.</figcaption>
+            <img src="~/img/Inicio/logo_diaples.jpg"
+                 alt="Logotipo de Os Diaples d'a Uerba"
+                 style="width:100%; border-radius:var(--radius); border:1px solid var(--border);" />
+            <figcaption style="margin-top:8px; font-size:0.9rem; color:var(--muted)">
+                Desde 1992 promoviendo la cultura aragonesa por toda la geografía peninsular.
+            </figcaption>
         </figure>
-        <p>Animamos las fiestas populares con ritmos y chispas, color y diversión, llevando nuestra pasión por las tradiciones a cada rincón.</p>
-        <a class="btn" asp-controller="Home" asp-action="About">Conoce a los Diaples</a>
+
+        <p>Animamos las fiestas populares con ritmos, chispas y diversión, llevando nuestra pasión por las tradiciones a cada rincón.</p>
+        <a class="btn" asp-controller="Home" asp-action="About" style="margin-top:24px; display:inline-block;">
+            Conoce a los Diaples
+        </a>
     </div>
 </section>
 
@@ -50,13 +56,17 @@
         <article class="card" style="padding:32px; border-radius:var(--radius); border:1px solid var(--border); background:var(--bg-2)">
             <h2>Actuación destacada</h2>
             <figure style="margin:0">
-                <div style="background:var(--bg-1); border-radius:var(--radius); height:220px; display:flex; align-items:center; justify-content:center; color:var(--muted); border:1px dashed var(--border)">
-                    Foto actuación Plaza del Pilar de Zaragoza
-                </div>
-                <figcaption style="margin-top:12px">Actuación en la Plaza del Pilar de Zaragoza durante las fiestas de 2016.</figcaption>
+                <img src="~/img/Inicio/Diables-lonyar_Diaples_pilares2016-5066.jpg"
+                    alt="Actuación de los Diaples en la Plaza del Pilar de Zaragoza en 2016"
+                    style="width:100%; max-height:340px; object-fit:cover; border-radius:var(--radius); border:1px solid var(--border);" />
+                
+                <figcaption style="margin-top:12px; font-size:0.9rem; color:var(--muted)">
+                    Actuación en la Plaza del Pilar de Zaragoza durante las fiestas de 2016.
+                </figcaption>
             </figure>
             <p>Una de las noches más memorables en las que llenamos la plaza de fuego, percusión y sonrisas. Cada representación es única y la adaptamos al espacio y al público para lograr experiencias inolvidables.</p>
         </article>
+
 
         <article class="card" style="padding:32px; border-radius:var(--radius); border:1px solid var(--border); background:var(--bg-2)">
             <h2>Lugares donde hemos dejado huella</h2>
