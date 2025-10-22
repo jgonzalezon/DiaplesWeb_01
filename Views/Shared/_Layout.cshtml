@@ -6,23 +6,40 @@
     <title>@ViewData["Title"] - Os Diaples d'a Uerba</title>
 
     <meta name="description" content="Os Diaples d'a Uerba · Espectáculos de fuego, animación y tradición aragonesa. Conoce a la tribu diablera y cómo contactar con nosotros.">
-    <link rel="icon" type="image/png" href="~/favicon.png" />
+    <link rel="icon" type="image/ico" href="~/favicon.ico" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     
 </head>
 
+
 <body>
+
+
+    <!-- Fondo fijo para toda la web (quedará después del intro) -->
+    <div id="site-bg" class="site-bg" aria-hidden="true"></div>
+
+    <!-- Overlay de introducción (solo 1ª vez por sesión) -->
+    <div id="intro" class="intro" role="dialog" aria-label="Introducción Diaples" aria-modal="true">
+      <div class="intro__scrim"></div>
+      <div class="intro__media" aria-hidden="true"></div>
+
+      <div class="intro__content">
+        <h1>Os Diaples d'a Uerba</h1>
+        <p class="lead">Fuego, percusión y cultura aragonesa desde 1992.</p>
+        <button id="intro-enter" class="btn">Entrar</button>
+      </div>
+    </div>
+
     <header class="nav">
         <div class="container nav-wrap">
-            <!-- LOGO -->
-        <a class="brand" asp-controller="Home" asp-action="Index" style="display:flex; align-items:center; gap:8px;">
-            <img src="~/img/Inicio/logo_horizontal-diaples.jpg"
-                alt="Logo Os Diaples d'a Uerba"
-                style="height:40px; width:auto; border-radius:8px;">
-            <span>Os Diaples</span>
-        </a>
+            <a class="brand" asp-controller="Home" asp-action="Index" style="display:flex; align-items:center; gap:1px;">
+                <img src="~/img/Inicio/logo_horizontal-diaples.gif"
+                    alt="Logo Os Diaples d'a Uerba"
+                    style="height:60px; width:auto; border-radius:8px;" />
+                
+            </a>
 
 
             <!-- ENLACES -->
@@ -37,7 +54,7 @@
             </nav>
 
             <!-- BOTÓN / LOGIN -->
-            <div style="display:flex; align-items:center; gap:12px;">
+            <div style="display:flex; align-items:center; gap:6px;">
                 <a class="btn" asp-controller="Home" asp-action="Register">Unirme al aquelarre</a>
                 <!-- 🔽 Aquí va el parcial de login/logout -->
                 <partial name="_LoginPartial" />
@@ -45,37 +62,99 @@
         </div>
     </header>
 
-    <main role="main" class="content">
+    <main role="main" class="content page-content">
         @RenderBody()
     </main>
 
-    <footer class="footer">
-        <div class="container foot">
-            <div>
-                <div class="brand">
-                    <span class="logo"></span>
-                    <span>Os Diaples</span>
-                </div>
-                <p>&copy; @DateTime.Now.Year · Os Diaples d'a Uerba · Cultura, fuego y tradición.</p>
+<footer class="footer">
+    <div class="container foot">
+        <!-- Columna 1: Identidad -->
+        <div>
+            <div class="brand" style="display:flex; align-items:center; gap:12px;">
+                <img src="~/img/Inicio/wwwdiapleses.png" 
+                     alt="Logo Diaples.es" 
+                     style="height:48px; width:auto; border-radius:8px;" />
+                <span style="font-weight:700; font-size:1.1rem;">Os Diaples d'a Uerba</span>
             </div>
+            <p style="margin-top:12px; color:var(--muted); line-height:1.6;">
+                Asociación Cultural dedicada a la difusión de la mitología aragonesa a través 
+                del fuego, la música y el espectáculo en la calle desde 1992.
+            </p>
 
-            <div>
-                <h4>Contenido</h4>
-                <a asp-controller="Home" asp-action="About">Os Diaples</a><br />
-                <a asp-controller="Home" asp-action="Espectaculos">Espectáculos</a><br />
-                <a asp-controller="Home" asp-action="Galeria">Galería</a><br />
-                <a asp-controller="Home" asp-action="Contact">Contacto</a>
-            </div>
-
-            <div>
-                <h4>Legal</h4>
-                <a href="#">Términos</a><br />
-                <a href="#">Privacidad</a>
-            </div>
+            <p style="margin-top:16px;">
+                📍 Calle Pedro Liñán 8, Zaragoza, Aragón<br />
+                📞 <a href="tel:+34656813706" style="color:var(--txt);">+34 656 813 706</a><br />
+                ✉️ <a href="mailto:diaples@diaples.es" style="color:var(--txt);">diaples@diaples.es</a>
+            </p>
         </div>
-    </footer>
+
+        <!-- Columna 2: Navegación -->
+        <div>
+            <h4>Contenido</h4>
+            <a asp-controller="Home" asp-action="About">Os Diaples</a><br />
+            <a asp-controller="Home" asp-action="Espectaculos">Espectáculos</a><br />
+            <a asp-controller="Home" asp-action="Galeria">Galería</a><br />
+            <a asp-controller="Home" asp-action="Contact">Contacto</a>
+            
+        <div style="margin-top:18px; display:flex; gap:12px;">
+                <a href="https://es-es.facebook.com/osdiaples/" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com/diaplesdauerba" target="_blank" class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+    <div style="margin-top:32px; text-align:center; font-size:0.9rem; color:var(--muted);">
+        © 2018 · Os Diaples d'a Uerba · Todos los derechos reservados · <a href="https://diaples.es" style="color:var(--brand);">www.diaples.es</a>
+    </div>
+</footer>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
     @RenderSection("Scripts", required: false)
+
+<script>
+(function () {
+  const SHOW_ONCE_PER_SESSION = true;
+  const INTRO_KEY = "diaplesIntroSeen";
+  const intro = document.getElementById('intro');
+  const enterBtn = document.getElementById('intro-enter');
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function closeIntro() {
+    if (!intro) return;
+    intro.classList.add('is-hiding');
+    setTimeout(() => {
+      intro.remove();
+      document.body.classList.remove('is-intro-lock');
+    }, 400);
+    if (SHOW_ONCE_PER_SESSION) sessionStorage.setItem(INTRO_KEY, '1');
+  }
+
+  if (prefersReduced) {
+    intro?.remove();
+    return;
+  }
+
+  if (SHOW_ONCE_PER_SESSION && sessionStorage.getItem(INTRO_KEY) === '1') {
+    intro?.remove();
+    return;
+  }
+
+  document.body.classList.add('is-intro-lock');
+
+  enterBtn?.addEventListener('click', closeIntro);
+  setTimeout(closeIntro, 5000);
+})();
+</script>
+
+    
 </body>
 </html>
