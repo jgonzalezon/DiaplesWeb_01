@@ -48,14 +48,10 @@
                 <a asp-controller="Home" asp-action="Espectaculos">Espectáculos</a>
                 <a asp-controller="Home" asp-action="Galeria">Galería</a>
                 <a asp-controller="Home" asp-action="Contact">Contacto</a>
-                @if (User.IsInRole("Admin")) {
-                    <a asp-controller="Admin" asp-action="Registrations">Admin</a>
-                }            
             </nav>
 
             <!-- BOTÓN / LOGIN -->
             <div style="display:flex; align-items:center; gap:6px;">
-                <a class="btn" asp-controller="Home" asp-action="Register">Unirme al aquelarre</a>
                 <!-- 🔽 Aquí va el parcial de login/logout -->
                 <partial name="_LoginPartial" />
             </div>
