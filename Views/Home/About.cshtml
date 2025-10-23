@@ -1,206 +1,181 @@
 @{
-    ViewData["Title"] = "Sobre el curso";
+    ViewData["Title"] = "Os Diaples d'a Uerba";
 }
 
-<!-- HERO -->
 <section class="hero-compact">
     <div class="container">
-        <h1 class="title-xl">Sobre el curso</h1>
+        <h1 class="title-xl">¿Quiénes somos los diaples?</h1>
         <p class="lead">
-            Formación profesional en tecnologías .NET y metodologías ágiles: C#/.NET, ASP.NET Core, EF Core, APIs,
-            seguridad e integración continua + módulo Scrum completo para trabajar con equipos reales.
-            <!-- Fuente .NET 220h y enfoque profesional: :contentReference[oaicite:0]{index=0} -->
-            <!-- Módulo Scrum 100h: :contentReference[oaicite:1]{index=1} -->
+            Os Diaples d'a Uerba somos una asociación cultural de Zaragoza. Sobre la base del voluntariado
+            creamos espectáculos teatralizados llenos de música, fuego y pirotecnia, rescatando tradiciones y
+            mitologías aragonesas y personajes como los diaples, diaplerons, bruxas, bruxos, gigantes, lacuercos
+            y otras bichas.
         </p>
-
-        <div class="badges">
-            <span class="chip">220&nbsp;h .NET</span>
-            <span class="chip">100&nbsp;h Scrum</span>
-            <span class="chip">Modalidad presencial / teleformación</span>
-            <span class="chip">Evaluación continua</span>
-            <!-- Duraciones y modalidades: :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3} -->
-        </div>
+        <blockquote class="highlight">“Jugamos con el mal para hacer un bien que sea más divertido”.</blockquote>
     </div>
 </section>
 
-<!-- OBJETIVO Y PÚBLICO -->
 <section>
     <div class="container">
-        <h2 class="section-title">Objetivo y a quién va dirigido</h2>
-        <p class="section-sub">
-            Desarrollar software profesional con .NET y aplicar Scrum en proyectos reales. Dirigido a estudiantes y perfiles junior que quieran posicionarse en el mercado laboral con tecnologías .NET y prácticas ágiles.
-            <!-- Objetivo general y orientación a inserción: :contentReference[oaicite:4]{index=4} :contentReference[oaicite:5]{index=5} -->
+        <div class="media-grid">
+
+            <article class="media-card" style="text-align:center;">
+                <h2 class="section-title">Foto del grupo Os Diaples d'a Uerba de Zaragoza</h2>
+                <p class="section-sub">Foto de familia después del bolo en Pilares 2016.</p>
+
+                <figure style="margin:16px auto; max-width:800px;">
+                    <img src="~/img/osDiaples/Diables-lonyar_Diaples_pilares2016-5318.jpg"
+                         alt="Foto del grupo Os Diaples d'a Uerba en Pilares 2016"
+                         style="width:100%; height:auto; border-radius:var(--radius); border:1px solid var(--border); object-fit:cover;" />
+                    <figcaption style="margin-top:8px; font-size:0.9rem; color:var(--muted);">
+                        Os Diaples d'a Uerba · Plaza del Pilar · Pilares 2016
+                    </figcaption>
+                </figure>
+            </article>
+
+        </div>
+
+        <p>
+            Somos voluntarios de todas las edades; nuestra motivación es pasarlo bien y colaborar para llevar el
+            grupo, sus espectáculos y actuaciones donde se reclame o sea menester. Nos mueve disfrutar y hacer
+            disfrutar amenizando fiestas y celebraciones.
         </p>
-        <div class="tools" style="margin-top:6px">
-            <span class="tool">Inserción laboral &middot; portfolio</span>
-            <span class="tool">Trabajo en equipo</span>
-            <span class="tool">Buenas prácticas</span>
-        </div>
-    </div>
-</section>
-
-<!-- QUÉ APRENDERÁS -->
-<section>
-    <div class="container">
-        <h2 class="section-title">Qué aprenderás</h2>
-        <p class="section-sub">Competencias clave para construir APIs y aplicaciones web mantenibles y trabajar en equipos ágiles.</p>
-
-        <div class="feature-grid">
-            <article class="feature">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-                </div>
-                <h3>Fundamentos modernos</h3>
-                <p>POO, SOLID, refactorización, Git, LINQ, testing básico y diseño con UML. <!-- :contentReference[oaicite:6]{index=6} --></p>
-            </article>
-
-            <article class="feature">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24"><path d="M3 7h18v10H3zM7 7V5h10v2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-                </div>
-                <h3>ASP.NET Core & APIs</h3>
-                <p>REST, controladores/Minimal APIs, validación, documentación OpenAPI/Swagger y seguridad (OAuth/JWT). <!-- :contentReference[oaicite:7]{index=7} --></p>
-            </article>
-
-            <article class="feature">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-                </div>
-                <h3>Datos con EF Core</h3>
-                <p>Modelado relacional, migraciones, consultas eficientes, repositorios y rendimiento. <!-- :contentReference[oaicite:8]{index=8} --></p>
-            </article>
-
-            <article class="feature">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2" fill="none"/><path d="M6 20v-2a6 6 0 0112 0v2" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-                </div>
-                <h3>Auth & Seguridad</h3>
-                <p>Identity, roles y políticas, JWT y protección de endpoints. <!-- :contentReference[oaicite:9]{index=9} --></p>
-            </article>
-
-            <article class="feature">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24"><path d="M4 14l4 4 12-12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-                </div>
-                <h3>Testing</h3>
-                <p>Unitarias e integración con xUnit y Postman para APIs. <!-- :contentReference[oaicite:10]{index=10} --></p>
-            </article>
-
-            <article class="feature">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24"><path d="M3 10h18v10H3zM7 6h10v4H7z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-                </div>
-                <h3>DevOps & Deploy</h3>
-                <p>Docker multi-stage, CI/CD con GitHub Actions y despliegue en Azure. <!-- :contentReference[oaicite:11]{index=11} --></p>
-            </article>
-        </div>
-    </div>
-</section>
-
-<!-- TEMARIO (RESUMEN MÓDULOS .NET 220h) -->
-<section>
-    <div class="container">
-        <h2 class="section-title">Temario .NET (220&nbsp;h)</h2>
-        <div class="modules">
-            <div class="mod">
-                <span class="mod-num">01</span>
-                <div>
-                    <h3>Principios y fundamentos (15&nbsp;h)</h3>
-                    <p>POO, SOLID, buenas prácticas, refactorización. <!-- :contentReference[oaicite:12]{index=12} --></p>
-                </div>
-            </div>
-            <div class="mod">
-                <span class="mod-num">02</span>
-                <div>
-                    <h3>Backend .NET I (55&nbsp;h)</h3>
-                    <p>C#, LINQ, JSON/XML, testing con NUnit/xUnit y primeros proyectos. <!-- :contentReference[oaicite:13]{index=13} --></p>
-                </div>
-            </div>
-            <div class="mod">
-                <span class="mod-num">03</span>
-                <div>
-                    <h3>Frameworks ágiles (20&nbsp;h)</h3>
-                    <p>Scrum/Kanban en Azure DevOps: roles, flujos y planificación. <!-- :contentReference[oaicite:14]{index=14} --></p>
-                </div>
-            </div>
-            <div class="mod">
-                <span class="mod-num">04</span>
-                <div>
-                    <h3>Backend .NET II (60&nbsp;h)</h3>
-                    <p>SQL Server, T-SQL, EF Core, diseño de API segura con JWT. <!-- :contentReference[oaicite:15]{index=15} --></p>
-                </div>
-            </div>
-            <div class="mod">
-                <span class="mod-num">05</span>
-                <div>
-                    <h3>Frontend (70&nbsp;h)</h3>
-                    <p>HTML5/CSS3/JS, TypeScript, Angular/Bootstrap y pruebas UI. <!-- :contentReference[oaicite:16]{index=16} --></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- SCRUM 100h -->
-<section>
-    <div class="container">
-        <h2 class="section-title">Módulo Scrum (100&nbsp;h)</h2>
-        <p class="section-sub">
-            Metodologías ágiles, principios y valores, roles (Scrum Master, Product Owner, Development Team), eventos y artefactos; herramientas (Scrumboard, backlog, Jira/Vivify, diagramas y UML). 
-            <!-- Contenido y duración: :contentReference[oaicite:17]{index=17} -->
+        <p>
+            Diaples somos; los que fueron, los que son y los que serán.
         </p>
-        <div class="tools">
-            <span class="tool">Manifiesto Ágil</span>
-            <span class="tool">Sprints y revisiones</span>
-            <span class="tool">Retrospectivas</span>
-            <span class="tool">Gestión de conflictos</span>
-            <span class="tool">Scaling agile</span>
-            <!-- Ítems resumidos del módulo: :contentReference[oaicite:18]{index=18} -->
-        </div>
     </div>
 </section>
 
-<!-- REQUISITOS DE ACCESO -->
+
 <section>
     <div class="container">
-        <h2 class="section-title">Requisitos de acceso</h2>
-        <div class="modules">
-            <div class="mod">
-                <span class="mod-num">.NET</span>
-                <div>
-                    <h3>Programa .NET (220&nbsp;h)</h3>
-                    <p>Técnico Superior, Bachiller, Grado o CP nivel 3 (familia Informática) o experiencia acreditada según perfil. <!-- :contentReference[oaicite:19]{index=19} --></p>
-                </div>
-            </div>
-            <div class="mod">
-                <span class="mod-num">Scrum</span>
-                <div>
-                    <h3>Metodologías ágiles (100&nbsp;h)</h3>
-                    <p>Bachiller/FP/CP equivalentes; se valora experiencia y conocimientos de desarrollo/inglés lectura. <!-- :contentReference[oaicite:20]{index=20} --></p>
-                </div>
-            </div>
-        </div>
+        <h2 class="section-title">¿Qué son los diaples?</h2>
+        <p>
+            Son figuras mitológicas de la tradición aragonesa, sobre todo de la zona del Pirineo. Representan a
+            pequeños seres, diablillos diminutos o duendecillos, que no paran de injuriar y de hacer cosas sin
+            descanso. El diapleron es la figura mayor, que porta a los diaples en un cañoto y puede entregarlo a
+            algún lugareño para su reto personal.
+        </p>
+        <p>
+            Los diaples que viven dentro del cañoto pueden ser liberados y harán todas las tareas que se les
+            indique. Pero si no reciben encargos, su inquietud puede acabar con el dueño del cañoto, quedando
+            peligrosamente liberados para hacer todo tipo de injurias y travesuras.
+        </p>
+        <h3 class="section-title" style="font-size:1.5rem">Otros seres mitológicos</h3>
+            <ul class="feature-grid myth-grid">
+                <li class="myth-card">
+                    <h4>Diaplerons</h4>
+                    <p>Figura mayor que guía a los diaples. Lleva el <em>cañoto</em> donde viajan los diablillos y puede
+                    entregarlo a alguien para que asuma el reto de gobernarlos.</p>
+                </li>
+
+                <li class="myth-card">
+                    <h4>Bruxas y bruxons</h4>
+                    <p>Brujas y brujos del Pirineo: hierbas, rezos y pócimas. Protagonizan aquelarres y se les atribuye el mal
+                    de ojo, aunque también saben curar males y espantar tormentas.</p>
+                </li>
+
+                <li class="myth-card">
+                    <h4>Encantarias</h4>
+                    <p>Mujeres encantadas que aparecen en fuentes, ríos o cuevas —sobre todo la Noche de San Juan— para
+                    custodiar tesoros o pedir favores a cambio de silencio y discreción.</p>
+                </li>
+
+                <li class="myth-card">
+                    <h4>Fadas</h4>
+                    <p>Hadas aragonesas, normalmente benévolas pero caprichosas: ayudan a quien respeta el monte y la palabra,
+                    castigan a quien rompe promesas.</p>
+                </li>
+
+                <li class="myth-card">
+                    <h4>Chigans</h4>
+                    <p>Duendes burlones y viajeros: cambian cosas de sitio, gastan bromas y desaparecen sin dejar rastro. En
+                    ocasiones protegen a los niños si se les trata con respeto.</p>
+                </li>
+
+                <li class="myth-card">
+                    <h4>Omes Granizos</h4>
+                    <p>“Hombres del granizo”: espíritus de la tormenta que “pastorean” nubes. Los conjuros de los pueblos
+                    trataban de desviarlos para salvar cosechas.</p>
+                </li>
+
+                <li class="myth-card myth-card--wide">
+                    <h4>Lacuerco</h4>
+                    <p>Serpiente peluda que, según la tradición, se colaba en las cunas para mamar de la madre mientras callaba
+                    al bebé con la cola. Para detectarlo se rodeaba la cuna de ceniza y se buscaba su rastro por la mañana.</p>
+                </li>
+            </ul>
+
     </div>
 </section>
 
-<!-- EVALUACIÓN -->
 <section>
     <div class="container">
-        <h2 class="section-title">Evaluación</h2>
-        <p class="section-sub">Evaluación continua con actividades y pruebas teórico-prácticas; calificación final Apto / No Apto. <!-- :contentReference[oaicite:21]{index=21} :contentReference[oaicite:22]{index=22} --></p>
+        <h2 class="section-title">Historia del grupo</h2>
+        <p>
+            Diaples d’a Uerba nace de una forma curiosa. En principio surge la idea de animar un carnaval en
+            Zaragoza, con diaples tirando carruchas a lo largo del desfile. Al año siguiente, un grupo de gente se
+            junta para el carnaval de San Chuan de Plan con un manifiesto en contra de la línea de alta tensión
+            Aragón–Cazaril. Entonces se uniforman dando lugar a la vestimenta que más tarde llevará el grupo,
+            alrededor de 1991.
+        </p>
+        <p>
+            Este grupo, perteneciente al Ligallo de Fablans de l’Aragonés, vio en los Diaples una forma de
+            subvencionar la asociación y se constituyó como colla Diaples d’a Uerba. La finalidad era divulgar
+            costumbres y tradiciones aragonesas —lengua aragonesa, bailes, música, paloteaos— defendiendo una
+            cultura de fuego en un guion de lucha contra las injusticias: “Cremando inchusticias”.
+        </p>
+        <p>
+            A principios de 2003 se desligan de la asociación por diferencias de opiniones y en marzo se
+            constituyen como asociación sin ánimo de lucro Os Diaples d´a Uerba. La independencia permite tomar
+            decisiones sin dar explicaciones, con derecho de opinión para todos sus miembros. Trabajamos bajo el
+            voluntariado, sin obligación, solo compromiso y funcionamiento asambleario y horizontal.
+        </p>
+        <p>
+            Seguimos con los mismos intereses del principio: mirar hacia delante, crear nuevas perspectivas,
+            estudiar, investigar y ayudar a quien pide colaboración. Queremos que todo el mundo disfrute, como
+            nosotros lo hacemos, en nuestros espectáculos. Nuestra ambición es un mundo mejor; mientras llega,
+            creamos fiestas para darnos a conocer y recibimos con agrado todo lo que nos ofrezcan, aunque sea una
+            sonrisa.
+        </p>
+        <p>
+            El grupo ha cambiado y evolucionado con el tiempo. Unas personas se van, otras llegan, nuevas
+            participan. Somos un ente que sobrevive y se adapta a su entorno, siempre asegurando la fiesta y la
+            diversión. Diaples; una gran familia.
+        </p>
     </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-band">
-    <div class="container cta-band__inner">
-        <div>
-            <h3>¿Listo para empezar?</h3>
-            <p class="section-sub">Reserva tu plaza y recibe el prework de bienvenida.</p>
-        </div>
-        <div class="btn-group">
-            <a class="btn" asp-controller="Home" asp-action="Register">Inscribirme</a>
-            <a class="btn ghost" asp-controller="Home" asp-action="Contact">Preguntar dudas</a>
-        </div>
+<section>
+    <div class="container">
+        <h2 class="section-title">Otros grupos con los que hemos compartido fuego</h2>
+            <div class="groups-grid">
+            <article class="groups-card">
+                <h3>Dentro de Aragón</h3>
+                <ul class="group-list">
+                <li><a href="https://es-es.facebook.com/diaplesmadalena/" rel="nofollow noopener" target="_blank">Diaples d'a Madalena, de Zaragoza</a></li>
+                <li><a href="https://es-es.facebook.com/osdiapleronsdolugar/" rel="nofollow noopener" target="_blank">Os diaplerons d'o lugar, de La Hoz de la Vieja</a></li>
+                <li><a href="https://www.focyflama.com/" rel="nofollow noopener" target="_blank">Foc y Flama, de La Codoñera</a></li>
+                <li>Diablets de La Fresneda</li>
+                <li>Diablos de La Portellada</li>
+                <li>Diables de Val de Robres</li>
+                </ul>
+            </article>
+
+            <article class="groups-card">
+                <h3>Otros lugares</h3>
+                <ul class="group-list">
+                <li><a href="https://diablesdelleida.cat/" rel="nofollow noopener" target="_blank">Diables de Lleida</a></li>
+                <li><a href="https://diablesonyar.org/" rel="nofollow noopener" target="_blank">Diables de l'Onyar, Girona</a></li>
+                <li><a href="https://www.facebook.com/Grupdefocdenoubarris/" rel="nofollow noopener" target="_blank">Diables de Nou Barris, Barcelona</a></li>
+                <li><a href="https://www.facebook.com/Fotem-li-FOC-Alcanar-636851706420993/" rel="nofollow noopener" target="_blank">Dimonis Fotem-li foc, Alcanar</a></li>
+                <li><a href="https://www.facebook.com/Diabmonis-La-Rapita-639231979493761/" rel="nofollow noopener" target="_blank">Diabmonis de La Ràpita</a></li>
+                <li><a href="https://www.facebook.com/diablesdecastello/" rel="nofollow noopener" target="_blank">Diables de Castelló</a></li>
+                <li><a href="https://www.facebook.com/dimonisdelaplana.correfocs/" rel="nofollow noopener" target="_blank">Dimonis de La Plana</a></li>
+                <li><a href="https://www.facebook.com/ElsDimonisDeMorella/" rel="nofollow noopener" target="_blank">Els Dimonis de Morella</a></li>
+                </ul>
+            </article>
+            </div>
+
     </div>
 </section>

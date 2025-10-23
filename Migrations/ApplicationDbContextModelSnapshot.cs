@@ -213,13 +213,13 @@ namespace DiaplesWeb.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("DiaplesWeb.Models.Registration", b =>
+            modelBuilder.Entity("DiaplesWeb.Models.ContactMessage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("CreatedAtUtc")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
@@ -227,13 +227,8 @@ namespace DiaplesWeb.Migrations
                         .HasMaxLength(160)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Experience")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Message")
-                        .HasMaxLength(2000)
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -241,14 +236,13 @@ namespace DiaplesWeb.Migrations
                         .HasMaxLength(160)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Plan")
-                        .IsRequired()
-                        .HasMaxLength(60)
+                    b.Property<string>("Phone")
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Registrations");
+                    b.ToTable("ContactMessages");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

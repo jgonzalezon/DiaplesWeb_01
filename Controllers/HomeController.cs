@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using DiaplesWeb.Models;
 using DiaplesWeb.Data;
@@ -15,31 +16,38 @@ namespace DiaplesWeb.Controllers
 
         public IActionResult Index() => View();
         public IActionResult About() => View();
-        public IActionResult Contact() => View();
-
         [HttpGet]
-        public IActionResult Register() => View(new RegistrationViewModel());
+        public IActionResult Contact()
+        {
+            var model = new ContactViewModel();
+            return View(model);
+        }
+        public IActionResult Espectaculos() => View();
+        public IActionResult Galeria() => View();
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Register(RegistrationViewModel model)
+        public IActionResult Contact(ContactViewModel model)
         {
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
-            var reg = new Registration
+            var entity = new ContactMessage
             {
                 Name = model.Name,
                 Email = model.Email,
-                Experience = model.Experience,
-                Plan = model.Plan,
-                Message = model.Message
+                Phone = model.Phone,
+                Message = model.Message,
+                CreatedAt = DateTime.UtcNow
             };
 
-            _db.Registrations.Add(reg);
+            _db.ContactMessages.Add(entity);
             _db.SaveChanges();
 
-            TempData["RegisterOk"] = $"¡Gracias {model.Name}! Tu registro se ha guardado correctamente.";
-            return RedirectToAction(nameof(Index));
+            TempData["ContactOk"] = "¡Gracias por escribirnos! Te responderemos muy pronto.";
+            return RedirectToAction(nameof(Contact));
         }
     }
 }

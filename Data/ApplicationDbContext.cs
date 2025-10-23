@@ -9,6 +9,6 @@ namespace DiaplesWeb.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
 
-        public DbSet<Registration> Registrations => Set<Registration>();
+        public DbSet<ContactMessage> ContactMessages => Set<ContactMessage>();
     }
 }

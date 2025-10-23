@@ -1,12 +1,76 @@
+@model DiaplesWeb.Models.ContactViewModel
 @{
     ViewData["Title"] = "Contacto";
 }
-<div class="container">
-    <h2 class="section-title">Contacto</h2>
-    <p class="section-sub">Escríbenos a <a href="mailto:info@dotnetpro.academy">info@dotnetpro.academy</a></p>
 
-    <div class="card">
-        <p>Horario de atención: Lun-Jue 10:00–18:00 · Vie 10:00–14:00 (CET)</p>
-        <p>También resolvemos dudas por el canal privado de alumnos.</p>
+<div class="container">
+    <header class="section-head">
+        <h2 class="section-title">Contacto</h2>
+        <p class="section-sub">Escríbenos para contrataciones, dudas o para unirte a la tribu diablera.</p>
+        @if (TempData["ContactOk"] is string ok)
+        {
+            <div class="alert-success">@ok</div>
+        }
+    </header>
+
+    <div class="contact-layout">
+        <aside class="contact-card">
+            <h3 class="contact-card__title">Asociación Cultural<br />Os Diaples d'a Uerba</h3>
+            <p class="contact-card__text">Calle Pedro Liñán 8<br />Zaragoza, Aragón</p>
+            <p class="contact-card__text">
+                <strong>Teléfono:</strong> <a href="tel:+34656813706">+34 656 813 706</a><br />
+                <strong>Correo:</strong> <a href="mailto:diaples@diaples.es">diaples@diaples.es</a><br />
+                <strong>Web:</strong> <a href="https://www.diaples.es" target="_blank" rel="noopener">www.diaples.es</a>
+            </p>
+            <div class="contact-card__social">
+                <span class="chip">Facebook</span>
+                <span class="chip">YouTube</span>
+            </div>
+            <p class="contact-card__hint">También puedes encontrarnos en nuestros ensayos los jueves al anochecer.</p>
+        </aside>
+
+        <div class="form-card">
+            <form asp-action="Contact" method="post" class="form">
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly" class="val-summary"></div>
+
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="input" placeholder="Nombre y apellidos" />
+                        <span asp-validation-for="Name" class="val-msg"></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="input" placeholder="nombre@correo.com" />
+                        <span asp-validation-for="Email" class="val-msg"></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label asp-for="Phone"></label>
+                        <input asp-for="Phone" class="input" placeholder="Teléfono (opcional)" />
+                        <span asp-validation-for="Phone" class="val-msg"></span>
+                    </div>
+
+                    <div class="form-field form-field--full">
+                        <label asp-for="Message"></label>
+                        <textarea asp-for="Message" class="input" rows="5" placeholder="Cuéntanos en qué podemos ayudarte"></textarea>
+                        <span asp-validation-for="Message" class="val-msg"></span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn" type="submit">Enviar mensaje</button>
+                </div>
+            </form>
+        </div>
     </div>
+
+    <p class="contact-footnote">Comparte material gráfico, propuestas de actuaciones o simplemente salúdanos. ¡Nos encanta el fuego y la buena compañía!</p>
 </div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

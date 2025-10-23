@@ -1,24 +1,110 @@
-﻿@{
+@{
     ViewData["Title"] = "Inicio";
-}
-
-@if (TempData["RegisterOk"] is string ok)
-{
-    <div class="container" style="margin-top:20px">
-        <div class="card" style="border:1px solid var(--border); background:var(--bg-2); padding:14px; border-radius:var(--radius)">
-            @ok
-        </div>
-    </div>
 }
 
 <section class="hero">
     <div class="container" style="text-align:center">
-        <h1>Bienvenido al curso de .NET MVC</h1>
-        <p>Aprende a construir aplicaciones web modernas con ASP.NET Core MVC y EF Core.</p>
-        <div class="btn-group">
-            <a class="btn" asp-controller="Home" asp-action="About">Sobre el curso</a>
-            <a class="btn" asp-controller="Home" asp-action="Register">Inscribirme</a>
-        </div>
+        <h1>Os Diaples d'a Uerba</h1>
+        <p class="lead">Grupo de diablos, brujas y otras bestias que llenan las calles con música, fuego y pirotecnia.</p>
 
+        <figure style="margin:32px auto 16px; max-width:420px">
+            <img src="~/img/Inicio/logo_diaples.jpg"
+                 alt="Logotipo de Os Diaples d'a Uerba"
+                 style="width:100%; border-radius:var(--radius); border:1px solid var(--border);" />
+            <figcaption style="margin-top:8px; font-size:0.9rem; color:var(--muted)">
+                Desde 1992 promoviendo la cultura aragonesa por toda la geografía peninsular.
+            </figcaption>
+        </figure>
+
+        <p>Animamos las fiestas populares con ritmos, chispas y diversión, llevando nuestra pasión por las tradiciones a cada rincón.</p>
+        <a class="btn" asp-controller="Home" asp-action="About" style="margin-top:24px; display:inline-block;">
+            Conoce a los Diaples
+        </a>
+    </div>
+</section>
+
+<section style="padding:60px 0">
+    <div class="container" style="display:grid; gap:32px">
+        <article class="card" style="padding:32px; border-radius:var(--radius); border:1px solid var(--border); background:var(--bg-2)">
+            <h2>Nuestro espíritu</h2>
+            <p>Somos una asociación cultural voluntaria con sede en Zaragoza y formada por un grupo variado de unas 30 personas. A lo largo de nuestra historia hemos contado con innumerables colaboraciones que nos han permitido seguir creciendo y compartiendo la cultura aragonesa.</p>
+            <p>Nuestros espectáculos de calle combinan teatralidad y artificios pirotécnicos de baja intensidad pero gran impacto visual. Diaples, brujas y bestias danzan entre chispas y colores mientras la música en directo marca ritmos tradicionales aragoneses y fusiones con otras culturas.</p>
+            <p>¿Quieres saber más? Visita la sección de «Diaples» y descubre cada detalle de nuestra trayectoria.</p>
+        </article>
+
+        <article class="card" style="padding:32px; border-radius:var(--radius); border:1px solid var(--border); background:var(--bg-2)">
+            <h2>Espectáculos que ofrecemos</h2>
+            <p>Nos encanta avivar las fiestas provocando emociones distintas, jugando y danzando con el fuego y la pólvora al ritmo de la música en directo.</p>
+            <ul>
+                <li>Espectáculos grandes: alrededor de una hora de diversión.</li>
+                <li>Espectáculos pequeños: unos 35 minutos de intensidad.</li>
+                <li>Actuaciones en plaza o en formato pasacalles.</li>
+                <li>Adaptaciones según las necesidades del evento.</li>
+            </ul>
+            <p><a asp-controller="Home" asp-action="Contact">Solicita más información sobre nuestras actuaciones.</a></p>
+        </article>
+
+        <article class="card" style="padding:32px; border-radius:var(--radius); border:1px solid var(--border); background:var(--bg-2)">
+            <h2>Actuación destacada</h2>
+                <figure class="img-center">
+                    <img src="~/img/Inicio/Diables-lonyar_Diaples_pilares2016-5066.jpg"
+                        alt="Actuación de los Diaples en la Plaza del Pilar de Zaragoza en 2016"
+                        style="width:100%; max-height:340px; object-fit:cover; border-radius:var(--radius); border:1px solid var(--border);" />
+                    <figcaption>
+                        Actuación en la Plaza del Pilar de Zaragoza durante las fiestas de 2016.
+                    </figcaption>
+                </figure>
+            <p>Una de las noches más memorables en las que llenamos la plaza de fuego, percusión y sonrisas. Cada representación es única y la adaptamos al espacio y al público para lograr experiencias inolvidables.</p>
+        </article>
+
+
+        <article class="card" style="padding:32px; border-radius:var(--radius); border:1px solid var(--border); background:var(--bg-2)">
+            <h2>Lugares donde hemos dejado huella</h2>
+            <p>Nos movemos principalmente por Aragón, pero también llevamos nuestro fuego a otros rincones del Estado. Hemos participado en festivales, ferias y fiestas populares, y seguimos sumando destinos.</p>
+            <div class="grid" style="display:grid; gap:16px">
+                <div>
+                    <h3 style="margin-bottom:8px">Festivales de música</h3>
+                <ul>
+                    <li><a href="http://www.demandafolk.com/" title="Sitio Web del Festival Demandafolk" target="_blank">Demandafolk</a>, Tolbaños de arriba, Burgos.</li>
+                    <li><a href="https://www.pirineos-sur.es/os-diaples-da-uerba-ofrecieron-una-noche-de-demonios-y-fuego-en-pirineos-sur/" rel="nofollow" title="Artículo de la actuación." target="_blank">Pirineos Sur</a>, Sallent de Gállego, Huesca.</li>
+                    <li><a href="http://www.festivalcastillodeainsa.com/" rel="nofollow" title="Web del festival." target="_blank">Castillo de Ainsa</a>, Ainsa, Huesca.</li>
+                    <li><a href="http://tamborilefestival.blogspot.com/2010/06/os-diaples-da-uerba.html" title="BLog del Festival de música de calle" target="_blank">Tamborile</a>, Mezquita de Jarque, Teruel.</li>
+                    <li><a href="https://es.wikipedia.org/wiki/Mariporr%C3%B3n" rel="nofollow" title="Wikipedía del extinto festival" target="_blank">Mariporrón</a>, Tormantos, La Rioja.</li>
+                </ul>
+                </div>
+                <div>
+                    <h3 style="margin-bottom:8px">Fiestas de pueblos y ciudades</h3>
+                    <ul>
+                        <li>Tardienta.</li>
+                        <li>Sabinánigo.</li>
+                        <li>Tarazona.</li>
+                        <li>Aliaga.</li>
+                        <li>Nuez de Ebro.</li>
+                        <li>Altsasu.</li>
+                        <li>Villanueva de la Vera.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="margin-bottom:8px">Ferias y mercados temáticos</h3>
+                    <ul>
+                        <li>Mercado Medieval de las Tres Culturas (Zaragoza).</li>
+                        <li>Feria de brujería y magia de Trasmoz (Zaragoza).</li>
+                        <li>Noche Andalusí de la Rosa, Baños de la Encina (Jaén).</li>
+                    </ul>
+                </div>
+            </div>
+            <p>Consulta nuestro mapa interactivo para descubrir todas las localizaciones donde hemos actuado. Si no encuentras tu localidad y hemos pasado por allí, ¡avísanos y lo añadiremos!</p>
+            <!-- Mapa interactivo -->
+            <div class="map-container" style="margin: 24px 0;">
+                <iframe 
+                    src="https://www.google.com/maps/d/embed?mid=1SfW-sLdo4DvtViYDgc_8UXBTno4&hl=es&z=6"
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+            </div>
+
+            
+            <p><a asp-controller="Home" asp-action="Contact">Envíanos un mensaje</a> para contarnos tu recuerdo o solicitar una nueva visita.</p>
+        </article>
     </div>
 </section>
