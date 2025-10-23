@@ -5,9 +5,11 @@ services:
     name: osdiaples
     env: docker
     plan: free
+    region: oregon
+    dockerCommand: ""
+    dockerContext: .
+    dockerfilePath: ./Dockerfile
     autoDeploy: true
-    image:
-      url: jgonzalezon/osdiaples:latest   
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
