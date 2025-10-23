@@ -1,0 +1,36 @@
+# VS / Rider
+.vs/
+.idea/
+*.user
+*.suo
+
+# Build output
+bin/
+obj/
+**/bin/
+**/obj/
+
+# Publish output
+publish/
+**/publish/
+
+# NuGet
+*.nupkg
+*.snupkg
+project.assets.json
+*.csproj.nuget.*
+.nuget/packages/
+
+# ASP.NET static web assets (generados)
+**/obj/**/staticwebassets*/
+**/obj/**/msbuild.*.props
+**/obj/**/msbuild.*.targets
+
+# Logs / misc
+*.log
+*.pid
+*.svclog
+
+# Node (si usas front)
+node_modules/
+dist/

@@ -1,0 +1,15 @@
+# render.yaml — configuración de despliegue en Render
+
+services:
+  - type: web
+    name: osdiaples
+    env: docker
+    plan: free
+    autoDeploy: true
+    image:
+      url: jgonzalezon/osdiaples:latest   # <--- pon aquí tu usuario de Docker Hub
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: PORT
+        value: 8080

@@ -2,15 +2,6 @@
     ViewData["Title"] = "Inicio";
 }
 
-@if (TempData["RegisterOk"] is string ok)
-{
-    <div class="container" style="margin-top:20px">
-        <div class="card" style="border:1px solid var(--border); background:var(--bg-2); padding:14px; border-radius:var(--radius)">
-            @ok
-        </div>
-    </div>
-}
-
 <section class="hero">
     <div class="container" style="text-align:center">
         <h1>Os Diaples d'a Uerba</h1>
@@ -55,15 +46,14 @@
 
         <article class="card" style="padding:32px; border-radius:var(--radius); border:1px solid var(--border); background:var(--bg-2)">
             <h2>Actuación destacada</h2>
-            <figure style="margin:0">
-                <img src="~/img/Inicio/Diables-lonyar_Diaples_pilares2016-5066.jpg"
-                    alt="Actuación de los Diaples en la Plaza del Pilar de Zaragoza en 2016"
-                    style="width:100%; max-height:340px; object-fit:cover; border-radius:var(--radius); border:1px solid var(--border);" />
-                
-                <figcaption style="margin-top:12px; font-size:0.9rem; color:var(--muted)">
-                    Actuación en la Plaza del Pilar de Zaragoza durante las fiestas de 2016.
-                </figcaption>
-            </figure>
+                <figure class="img-center">
+                    <img src="~/img/Inicio/Diables-lonyar_Diaples_pilares2016-5066.jpg"
+                        alt="Actuación de los Diaples en la Plaza del Pilar de Zaragoza en 2016"
+                        style="width:100%; max-height:340px; object-fit:cover; border-radius:var(--radius); border:1px solid var(--border);" />
+                    <figcaption>
+                        Actuación en la Plaza del Pilar de Zaragoza durante las fiestas de 2016.
+                    </figcaption>
+                </figure>
             <p>Una de las noches más memorables en las que llenamos la plaza de fuego, percusión y sonrisas. Cada representación es única y la adaptamos al espacio y al público para lograr experiencias inolvidables.</p>
         </article>
 
@@ -74,13 +64,13 @@
             <div class="grid" style="display:grid; gap:16px">
                 <div>
                     <h3 style="margin-bottom:8px">Festivales de música</h3>
-                    <ul>
-                        <li>Demandafolk, Tolbaños de Arriba (Burgos).</li>
-                        <li>Pirineos Sur, Sallent de Gállego (Huesca).</li>
-                        <li>Castillo de Aínsa, Aínsa (Huesca).</li>
-                        <li>Tamborile, Mezquita de Jarque (Teruel).</li>
-                        <li>Mariporrón, Tormantos (La Rioja).</li>
-                    </ul>
+                <ul>
+                    <li><a href="http://www.demandafolk.com/" title="Sitio Web del Festival Demandafolk" target="_blank">Demandafolk</a>, Tolbaños de arriba, Burgos.</li>
+                    <li><a href="https://www.pirineos-sur.es/os-diaples-da-uerba-ofrecieron-una-noche-de-demonios-y-fuego-en-pirineos-sur/" rel="nofollow" title="Artículo de la actuación." target="_blank">Pirineos Sur</a>, Sallent de Gállego, Huesca.</li>
+                    <li><a href="http://www.festivalcastillodeainsa.com/" rel="nofollow" title="Web del festival." target="_blank">Castillo de Ainsa</a>, Ainsa, Huesca.</li>
+                    <li><a href="http://tamborilefestival.blogspot.com/2010/06/os-diaples-da-uerba.html" title="BLog del Festival de música de calle" target="_blank">Tamborile</a>, Mezquita de Jarque, Teruel.</li>
+                    <li><a href="https://es.wikipedia.org/wiki/Mariporr%C3%B3n" rel="nofollow" title="Wikipedía del extinto festival" target="_blank">Mariporrón</a>, Tormantos, La Rioja.</li>
+                </ul>
                 </div>
                 <div>
                     <h3 style="margin-bottom:8px">Fiestas de pueblos y ciudades</h3>
@@ -104,6 +94,16 @@
                 </div>
             </div>
             <p>Consulta nuestro mapa interactivo para descubrir todas las localizaciones donde hemos actuado. Si no encuentras tu localidad y hemos pasado por allí, ¡avísanos y lo añadiremos!</p>
+            <!-- Mapa interactivo -->
+            <div class="map-container" style="margin: 24px 0;">
+                <iframe 
+                    src="https://www.google.com/maps/d/embed?mid=1SfW-sLdo4DvtViYDgc_8UXBTno4&hl=es&z=6"
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+            </div>
+
+            
             <p><a asp-controller="Home" asp-action="Contact">Envíanos un mensaje</a> para contarnos tu recuerdo o solicitar una nueva visita.</p>
         </article>
     </div>
