@@ -857,3 +857,84 @@ body.is-intro-lock footer{
 @media (orientation: portrait){
   .container, .page-content { width:80vw; }
 }
+
+
+/* Todas las imágenes dentro del contenido y tarjetas */
+.page-content img,
+.feature-card img,
+.groups-card img,
+.myth-card img,
+.form-card img,
+.table-card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;     /* si hay tamaño fijo del contenedor, recorta */
+}
+
+/* Asegura que las tarjetas redondeadas recorten lo que sobresalga */
+.feature-card,
+.groups-card,
+.myth-card,
+.form-card,
+.table-card {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+/* Si tienes <figure> con imagen grande dentro de .page-content */
+.page-content figure { margin: 0; }
+.page-content figure > img { width: 100%; height: auto; display:block; }
+
+
+/* El NAV siempre a 100% de ancho */
+.nav { width: 100%; }
+.nav .container {
+  width: 100%;
+  /* 10% de margen visual a cada lado para alinear con el contenido */
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+/* El resto del contenido (NO el header) usa 80% en vertical */
+@media (orientation: portrait){
+  /* Zona principal centrada al 80% => se ven 10% a izquierda y 10% a derecha */
+  .page-content { width: 80vw; margin-left: auto; margin-right: auto; }
+  /* Si usas .content .container para secciones internas, igual */
+  .content > .container { width: 80vw; margin-left:auto; margin-right:auto; }
+}
+
+/* En horizontal/desktop seguimos con tu ancho habitual */
+@media (orientation: landscape){
+  .content > .container { width: min(1200px, 92%); }
+}
+
+
+/* El NAV siempre a 100% de ancho */
+.nav { width: 100%; }
+.nav .container {
+  width: 100%;
+  /* 10% de margen visual a cada lado para alinear con el contenido */
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+/* El resto del contenido (NO el header) usa 80% en vertical */
+@media (orientation: portrait){
+  /* Zona principal centrada al 80% => se ven 10% a izquierda y 10% a derecha */
+  .page-content { width: 80vw; margin-left: auto; margin-right: auto; }
+  /* Si usas .content .container para secciones internas, igual */
+  .content > .container { width: 80vw; margin-left:auto; margin-right:auto; }
+}
+
+/* En horizontal/desktop seguimos con tu ancho habitual */
+@media (orientation: landscape){
+  .content > .container { width: min(1200px, 92%); }
+}
+
+
+/* Evita que cosas internas empujen el ancho */
+.page-content, .content > .container { overflow-wrap: anywhere; }
+
+/* Si alguna imagen tiene tamaño fijo por HTML inline, la forzamos a respetar el contenedor */
+img[width], img[height] { height: auto !important; max-width: 100% !important; }
