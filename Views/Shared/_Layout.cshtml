@@ -33,30 +33,36 @@
     </div>
 
     <header class="nav">
-        <div class="container nav-wrap">
-            <a class="brand" asp-controller="Home" asp-action="Index" style="display:flex; align-items:center; gap:1px;">
-                <img src="~/img/Inicio/logo_horizontal-diaples.gif"
-                    alt="Logo Os Diaples d'a Uerba"
-                    style="height:60px; width:auto; border-radius:8px;" />
-                
-            </a>
+    <div class="container nav-wrap">
+        <a class="brand" asp-controller="Home" asp-action="Index" style="display:flex; align-items:center; gap:1px;">
+        <img src="~/img/Inicio/logo_horizontal-diaples.gif"
+            alt="Logo Os Diaples d'a Uerba"
+            style="height:50px; width:auto; border-radius:8px;" />
+        </a>
 
+        <!-- Toggle móvil -->
+        <input id="nav-toggle" type="checkbox" class="nav-toggle" />
+        <label for="nav-toggle" class="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+        </label>
 
-            <!-- ENLACES -->
-            <nav class="nav-links">
-                <a asp-controller="Home" asp-action="About">Os Diaples</a>
-                <a asp-controller="Home" asp-action="Espectaculos">Espectáculos</a>
-                <a asp-controller="Home" asp-action="Galeria">Galería</a>
-                <a asp-controller="Home" asp-action="Contact">Contacto</a>
-            </nav>
-
-            <!-- BOTÓN / LOGIN -->
-            <div style="display:flex; align-items:center; gap:6px;">
-                <!-- 🔽 Aquí va el parcial de login/logout -->
-                <partial name="_LoginPartial" />
-            </div>
+        <!-- Menú -->
+        <nav class="nav-menu">
+        <div class="nav-links">
+            <a asp-controller="Home" asp-action="About">Os Diaples</a>
+            <a asp-controller="Home" asp-action="Espectaculos">Espectáculos</a>
+            <a asp-controller="Home" asp-action="Galeria">Galería</a>
+            <a asp-controller="Home" asp-action="Contact">Contacto</a>
         </div>
+
+        <!-- Acciones (login/registro/logout) -->
+        <div class="nav-actions">
+            <partial name="_LoginPartial" />
+        </div>
+        </nav>
+    </div>
     </header>
+
 
     <main role="main" class="content page-content">
         @RenderBody()

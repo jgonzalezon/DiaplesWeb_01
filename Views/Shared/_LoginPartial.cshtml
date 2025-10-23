@@ -4,17 +4,17 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <div style="display:flex; gap:10px; align-items:center;">
-        <span style="color:var(--muted); font-size:.95rem;">Hola, @User.Identity?.Name</span>
-        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" method="post">
-            <button type="submit" class="btn ghost">Salir</button>
+    <div class="nav-actions">
+        <span class="hello">Hola, @User.Identity?.Name</span>
+        <form class="logout-form" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" method="post">
+            <button type="submit" class="btn btn--outline">Salir</button>
         </form>
     </div>
 }
 else
 {
-    <div style="display:flex; gap:8px;">
-        <a class="btn ghost" asp-area="Identity" asp-page="/Account/Login">Entrar</a>
-        <a class="btn" asp-area="Identity" asp-page="/Account/Register">Registro</a>
+    <div class="nav-actions">
+        <a class="btn btn--outline" asp-area="Identity" asp-page="/Account/Login" aria-label="Entrar">Entrar</a>
+        <a class="btn" asp-area="Identity" asp-page="/Account/Register" aria-label="Registro">Registro</a>
     </div>
 }

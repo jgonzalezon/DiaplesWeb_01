@@ -7,7 +7,7 @@ services:
     plan: free
     autoDeploy: true
     image:
-      url: jgonzalezon/osdiaples:latest   # <--- pon aquí tu usuario de Docker Hub
+      url: jgonzalezon/osdiaples:latest   
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
