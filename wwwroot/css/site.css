@@ -15,9 +15,10 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
     font-family: 'Inter', sans-serif;
-    background: var(--bg); /* base: tema oscuro */
+    background: var(--bg);
     color: var(--txt);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 a { color: inherit; text-decoration: none; }
 
@@ -28,7 +29,10 @@ a { color: inherit; text-decoration: none; }
     z-index: 10;
     background: rgba(11, 15, 20, 0.9);
     backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    background-color: rgba(11, 15, 20, 0.95); /* fallback */
     border-bottom: 1px solid var(--border);
+    width: 100%;
 }
 .container {
     width: min(1200px, 92%);
@@ -104,15 +108,6 @@ section + section { margin-top: 30px; }
 .footer h4 {
     color: var(--txt);
     margin-bottom: 10px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .footer .foot > div:nth-child(2) {
-        text-align: center;
-        margin: 0 auto;
-        justify-self: center;
-    }
 }
 
 /* ===== BOTONES HERO ===== */
@@ -855,7 +850,8 @@ body.is-intro-lock footer{
 
 /* Vertical: contenido al 80% (10% márgenes) */
 @media (orientation: portrait){
-  .container, .page-content { width:80vw; }
+  .page-content { width: 80vw; margin: 0 auto; }
+  .content > .container { width: 80vw; margin: 0 auto; }
 }
 
 
@@ -886,14 +882,11 @@ body.is-intro-lock footer{
 .page-content figure { margin: 0; }
 .page-content figure > img { width: 100%; height: auto; display:block; }
 
-
 /* El NAV siempre a 100% de ancho */
-.nav { width: 100%; }
 .nav .container {
-  width: 100%;
-  /* 10% de margen visual a cada lado para alinear con el contenido */
-  padding-left: 10vw;
-  padding-right: 10vw;
+    width: 100%;
+    padding-left: 8vw;
+    padding-right: 8vw;
 }
 
 /* El resto del contenido (NO el header) usa 80% en vertical */
@@ -908,33 +901,38 @@ body.is-intro-lock footer{
 @media (orientation: landscape){
   .content > .container { width: min(1200px, 92%); }
 }
-
-
-/* El NAV siempre a 100% de ancho */
-.nav { width: 100%; }
-.nav .container {
-  width: 100%;
-  /* 10% de margen visual a cada lado para alinear con el contenido */
-  padding-left: 10vw;
-  padding-right: 10vw;
-}
-
-/* El resto del contenido (NO el header) usa 80% en vertical */
-@media (orientation: portrait){
-  /* Zona principal centrada al 80% => se ven 10% a izquierda y 10% a derecha */
-  .page-content { width: 80vw; margin-left: auto; margin-right: auto; }
-  /* Si usas .content .container para secciones internas, igual */
-  .content > .container { width: 80vw; margin-left:auto; margin-right:auto; }
-}
-
-/* En horizontal/desktop seguimos con tu ancho habitual */
-@media (orientation: landscape){
-  .content > .container { width: min(1200px, 92%); }
-}
-
 
 /* Evita que cosas internas empujen el ancho */
 .page-content, .content > .container { overflow-wrap: anywhere; }
 
 /* Si alguna imagen tiene tamaño fijo por HTML inline, la forzamos a respetar el contenedor */
 img[width], img[height] { height: auto !important; max-width: 100% !important; }
+
+
+/* Video responsivo centrado (imitando estilo Vimeo) */
+.video-wrapper {
+    position: relative;
+    width: min(960px, 100%);
+    margin: 1.5rem auto;
+    padding-bottom: 56.25%; /* relación 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    background: #000;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: brightness(0.95);
+}
+
+@media (max-width: 768px) {
+    .video-wrapper { padding-bottom: 62%; }
+}
