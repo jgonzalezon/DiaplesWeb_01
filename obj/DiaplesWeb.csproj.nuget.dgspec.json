@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jgonz\\Documents\\GitHub\\DiaplesWeb_01\\DiaplesWeb.csproj": {}
+    "C:\\Users\\Oceano\\Desktop\\Curso NET\\Práctica día 1\\DiaplesWeb_01\\DiaplesWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jgonz\\Documents\\GitHub\\DiaplesWeb_01\\DiaplesWeb.csproj": {
+    "C:\\Users\\Oceano\\Desktop\\Curso NET\\Práctica día 1\\DiaplesWeb_01\\DiaplesWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jgonz\\Documents\\GitHub\\DiaplesWeb_01\\DiaplesWeb.csproj",
+        "projectUniqueName": "C:\\Users\\Oceano\\Desktop\\Curso NET\\Práctica día 1\\DiaplesWeb_01\\DiaplesWeb.csproj",
         "projectName": "DiaplesWeb",
-        "projectPath": "C:\\Users\\jgonz\\Documents\\GitHub\\DiaplesWeb_01\\DiaplesWeb.csproj",
-        "packagesPath": "C:\\Users\\jgonz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jgonz\\Documents\\GitHub\\DiaplesWeb_01\\obj\\",
+        "projectPath": "C:\\Users\\Oceano\\Desktop\\Curso NET\\Práctica día 1\\DiaplesWeb_01\\DiaplesWeb.csproj",
+        "packagesPath": "C:\\Users\\Oceano\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Oceano\\Desktop\\Curso NET\\Práctica día 1\\DiaplesWeb_01\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\jgonz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Oceano\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -75,6 +74,10 @@
               "target": "Package",
               "version": "[9.0.10, )"
             },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[9.0.6, )"
@@ -99,7 +102,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

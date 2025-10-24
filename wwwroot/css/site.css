@@ -601,6 +601,13 @@ body.is-intro-lock footer{
   position: relative;
   z-index: 2;
 }
+@media (min-width: 1200px){
+  .page-content {
+    max-width: 75ch; /* similar a 60-70 caracteres de ancho visible */
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 /* Fondo lateral visible gracias al GIF */
 .has-intro body { background: transparent; } /* antes era global */
@@ -988,4 +995,14 @@ img[width], img[height] { height: auto !important; max-width: 100% !important; }
 .feature-grid .feature p {
   margin: 0;
   color: var(--muted);
+}
+
+/* Limitamos el ancho del texto a 60 caracteres en pantallas anchas */
+@media (min-width: 1200px){
+  p, li, .feature-grid .feature p {
+    max-width: 60ch;
+    width: min(60ch, 90%); /* ajusta el contenedor al ancho del texto aprox. 60 caracteres */
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

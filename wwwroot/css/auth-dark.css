@@ -1,0 +1,68 @@
+:root{
+  --bg:#0b0f14;--bg-2:#0f141b;--bg-3:#121923;
+  --txt:#f8e6e6;--muted:#c79f9f;
+  --brand:#fe6e6e;--brand-2:#ff4d4d;--border:#1f2a37;--radius:14px;
+}
+.auth-dark{background:radial-gradient(1200px 600px at 20% 0%,#0d141c 0%,var(--bg) 60%);color:var(--txt)}
+.auth-dark h1,.auth-dark h2,.auth-dark h3,.auth-dark label{color:var(--txt)}
+.auth-dark .text-muted,.auth-dark .form-text{color:var(--muted)!important}
+.auth-dark .form-control{background:var(--bg-3);color:var(--txt);border:1px solid var(--border);border-radius:var(--radius)}
+.auth-dark .form-control:focus{background:#0f1722;border-color:#2b3a4a;box-shadow:0 0 0 .25rem rgba(254,110,110,.15)}
+.auth-dark ::placeholder{color:#9da6b2;opacity:.85}
+.auth-dark .btn-primary{background:var(--brand);border-color:var(--brand-2);border-radius:var(--radius)}
+.auth-dark .btn-primary:hover{background:var(--brand-2);border-color:var(--brand-2)}
+.auth-dark a{color:#ff9b9b}
+.auth-dark a:hover{color:#ffcccc;text-decoration:underline}
+.auth-dark .border{border-color:var(--border)!important}
+.auth-dark .bg-light,.auth-dark .list-group-item{background:var(--bg-2)!important;color:var(--txt)}
+.auth-dark .validation-summary-errors,.auth-dark .field-validation-error{color:#ffb3b3}
+
+
+/* --- Auth cards como Contacto --- */
+.auth-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: clamp(1rem, 2vw, 2rem);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02);
+}
+
+/* Inputs oscuros redondeados con glow rojo como en Contacto */
+.input-dark.form-control {
+  background: var(--bg-3);
+  color: var(--txt);
+  border: 1px solid #2a3442;
+  border-radius: 16px;
+  padding: .75rem 1rem;
+}
+.input-dark.form-control::placeholder { color: #9aa4b2; opacity: .9; }
+.input-dark.form-control:focus {
+  background: #0f1722;
+  color: var(--txt);
+  border-color: #e26666;
+  box-shadow: 0 0 0 .15rem rgba(254,110,110,.15), 0 0 0 .35rem rgba(254,110,110,.08) inset;
+}
+
+/* Etiquetas y ayudas como Contacto */
+.form-label { color: var(--txt); font-weight: 600; }
+.form-text, .text-muted { color: var(--muted)!important; }
+
+/* Botón degradado tipo Contacto */
+.btn-gradient {
+  border-radius: 16px;
+  border: 0;
+  padding: .8rem 1.2rem;
+  background-image: linear-gradient(180deg, #ff8b8b, #fe6e6e);
+  color: #1a1a1a;
+  font-weight: 700;
+  box-shadow: 0 8px 22px rgba(254,110,110,.35);
+  transition: transform .08s ease, filter .2s ease, box-shadow .2s ease;
+}
+.btn-gradient:hover { filter: brightness(1.03); box-shadow: 0 10px 28px rgba(254,110,110,.45); }
+.btn-gradient:active { transform: translateY(1px) scale(0.998); }
+
+/* Helpers */
+.hr-soft { border: 0; border-top: 1px solid var(--border); opacity: .8; margin: 1rem 0; }
+
+/* Ocultar panel de external logins del template por defecto */
+.auth-hide-external { display: none !important; }

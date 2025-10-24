@@ -10,10 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// DB + Identity
+// DB + Identity (ruta absoluta a app.db)
+var dbPath = Path.Combine(builder.Environment.ContentRootPath, "app.db");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data Source=app.db"));
+    options.UseSqlite($"Data Source={dbPath}"));
 
+// Nota: AddDefaultIdentity + AddRoles es correcto si quieres roles con la UI por defecto.
 builder.Services
     .AddDefaultIdentity<IdentityUser>(options =>
     {
@@ -30,18 +32,17 @@ builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-// ✅ Swagger siempre habilitado (o muévelo al if que prefieras)
-app.UseSwagger();
-app.UseSwaggerUI(); // /swagger
-
-if (!app.Environment.IsDevelopment())
+// 👇 Swagger en DESARROLLO (antes lo tenías en producción)
+if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
+    app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 else
 {
-    app.UseDeveloperExceptionPage();
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -52,26 +53,23 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// 👇 Mantén MVC (vistas)
+// Endpoints
+app.MapRazorPages(); // publica /Identity/...
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllers(); // API
 
-// 👇 IMPORTANTE: publica los controladores API
-app.MapControllers();
-
-app.MapRazorPages();
-
-// Migración + seed ...
+// Migración + seed + LOG de la ruta de BD
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     await db.Database.MigrateAsync();
+    app.Logger.LogInformation("SQLite DB path in use: {DbPath}", dbPath);
     await SeedAdminAsync(scope.ServiceProvider);
 }
 
 app.Run();
-
 
 static async Task SeedAdminAsync(IServiceProvider services)
 {

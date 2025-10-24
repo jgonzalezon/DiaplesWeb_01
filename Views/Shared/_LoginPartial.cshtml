@@ -5,7 +5,10 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <div class="nav-actions">
-        <span class="hello">Hola, @User.Identity?.Name</span>
+        <a class="nav-link text-light fw-semibold"
+        asp-area="Identity" asp-page="/Account/Manage/Index" title="Cuenta">
+            @User.Identity?.Name
+        </a>
         <form class="logout-form" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" method="post">
             <button type="submit" class="btn btn--outline">Salir</button>
         </form>
