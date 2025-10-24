@@ -436,13 +436,7 @@ section + section { margin-top: 30px; }
   padding:8px 10px; border-radius:999px; font-size:.92rem;
 }
 
-/* Qué aprenderás (grid) */
-.feature-grid {
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:16px;
-  margin: 14px 0 22px;
-}
+
 
 /* ---- Tarjetas .feature (unificado) ---- */
 .feature {
@@ -744,43 +738,50 @@ body.is-intro-lock footer{
 
 
 /* ===== Carrusel de fotos ===== */
+/* Carrusel de fotos reducido a la mitad y adaptable */
 .photo-carousel {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    display: flex;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: var(--bg-2);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-    padding: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  padding: 8px;
+  max-width: 50%; /* mitad del tamaño actual */
+  margin: 1.5rem auto; /* centrado */
 }
 
 .carousel-track {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 8px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
 }
 
 .photo-carousel a {
-    flex: 0 0 auto;
-    scroll-snap-align: center;
-    display: inline-block;
-    text-decoration: none;
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  display: inline-block;
+  text-decoration: none;
+  width: 100%;
 }
 
 .photo-carousel img {
-    width: 100%;
-    max-width: 420px;
-    height: auto;
-    border-radius: var(--radius);
-    object-fit: cover;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .photo-carousel img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 20px rgba(255, 70, 0, 0.5);
-    cursor: pointer;
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(255, 70, 0, 0.5);
+  cursor: pointer;
+}
+
+@media (max-width: 980px){
+  .photo-carousel { max-width: 90%; }
 }
 
 
@@ -935,4 +936,56 @@ img[width], img[height] { height: auto !important; max-width: 100% !important; }
 
 @media (max-width: 768px) {
     .video-wrapper { padding-bottom: 62%; }
+}
+
+/* Full-width layout for narrow mobiles */
+@media (max-width: 480px){
+  /* Header 100% + compact padding */
+  .nav{ width:100%; }
+  .nav .container{ width:100%; padding-left:12px; padding-right:12px; }
+
+  /* Central content 100% */
+  .container{ width:100%; padding-left:12px; padding-right:12px; }
+  .content > .container{ width:100%; margin:0; padding-left:12px; padding-right:12px; }
+  .page-content{ width:100%; margin:0; border-radius:0; box-shadow:none; padding:24px 12px; }
+
+  /* Footer 100% */
+  .footer{ width:100%; padding-left:0; padding-right:0; }
+  .footer .foot{ grid-template-columns: 1fr; gap:16px; }
+
+  /* Hide dynamic background/gif to avoid visual overflow */
+  .site-bg, .intro__media{ display:none !important; }
+}
+
+/* Centrado de texto en grid de fotógrafos */
+/* Centrado y estilización de fotógrafos */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  justify-content: center;
+  align-items: stretch;
+  text-align: center;
+  margin: 1.5rem auto;
+  max-width: 960px;
+}
+
+.feature-grid .feature {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.feature-grid .feature h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--txt);
+}
+
+.feature-grid .feature p {
+  margin: 0;
+  color: var(--muted);
 }
