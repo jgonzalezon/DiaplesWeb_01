@@ -23,7 +23,10 @@
 
         <div class="mb-3">
           <label asp-for="Input.Email" class="form-label">Email</label>
-          <input asp-for="Input.Email" class="form-control input-dark" autocomplete="username" placeholder="nombre@correo.com" />
+          <input asp-for="Input.Email"
+                class="form-control input-dark"
+                autocomplete="email"
+                placeholder="nombre@correo.com" />
           <span asp-validation-for="Input.Email" class="text-danger small"></span>
         </div>
 

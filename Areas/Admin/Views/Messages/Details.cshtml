@@ -1,0 +1,9 @@
+@model DiaplesWeb.Models.ContactMessage
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>@Model.Name <small style="color:var(--muted)">&lt;@Model.Email&gt;</small></h2>
+<p><strong>Teléfono:</strong> @Model.Phone</p>
+<p><strong>Fecha:</strong> @Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")</p>
+<article style="white-space:pre-wrap;margin-top:12px">@Model.Message</article>
+<a asp-action="Index" class="btn" style="margin-top:16px">Volver</a>

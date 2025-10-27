@@ -1,0 +1,34 @@
+@model List<(Microsoft.AspNetCore.Identity.IdentityUser User, System.Collections.Generic.IList<string> Roles)>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Usuarios</h2>
+
+<form method="post" asp-action="Create" style="margin-bottom:16px">
+  <input name="userName" placeholder="Usuario" />
+  <input name="email" placeholder="Email" type="email" />
+  <input name="password" placeholder="Contraseña" type="password" />
+  <input name="role" placeholder="Rol (Admin/User...)" />
+  <button class="btn">Crear</button>
+</form>
+
+<table class="table-dark">
+  <thead><tr><th>Usuario</th><th>Teléfono</th><th>Email</th><th>Roles</th><th></th></tr></thead>
+  <tbody>
+  @foreach (var row in Model)
+  {
+    <tr>
+      <td>@row.User.UserName</td>
+      <td>@row.User.PhoneNumber</td>
+      <td>@row.User.Email</td>
+      <td>@string.Join(", ", row.Roles)</td>
+      <td>
+        <form method="post" asp-action="Delete" style="display:inline">
+          <input type="hidden" name="id" value="@row.User.Id" />
+          <button class="btn" onclick="return confirm('¿Borrar usuario?')">Borrar</button>
+        </form>
+      </td>
+    </tr>
+  }
+  </tbody>
+</table>

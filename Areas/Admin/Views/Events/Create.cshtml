@@ -1,0 +1,28 @@
+@model DiaplesWeb.Models.EventItem
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Crear evento</h2>
+@if (TempData["ok"] is string ok) { <div class="alert-success">@ok</div> }
+
+<form asp-action="Create" method="post" class="form">
+  <div class="mb-3">
+    <label asp-for="Title"></label>
+    <input asp-for="Title" class="input" />
+    <span asp-validation-for="Title" class="val-msg"></span>
+  </div>
+  <div class="mb-3">
+    <label>Fecha y hora</label>
+    <input asp-for="Date" type="datetime-local" class="input"
+           value="@Model.Date.ToString("yyyy-MM-ddTHH:mm")" />
+    <span asp-validation-for="Date" class="val-msg"></span>
+  </div>
+  <div class="mb-3">
+    <label asp-for="Location"></label>
+    <input asp-for="Location" class="input" />
+    <span asp-validation-for="Location" class="val-msg"></span>
+  </div>
+  <button class="btn">Guardar</button>
+</form>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

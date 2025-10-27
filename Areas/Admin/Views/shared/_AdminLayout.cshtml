@@ -1,0 +1,35 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Administración</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="~/css/site.css" />
+  <style>
+    .admin-wrap{display:grid;grid-template-columns:260px 1fr;gap:24px;min-height:80vh}
+    .admin-aside{background:var(--bg-2);border-radius:var(--radius);padding:16px}
+    .admin-aside a{display:block;padding:.7rem 1rem;border-radius:10px;margin-bottom:6px;text-decoration:none}
+    .admin-aside a:hover{background:var(--bg-3)}
+    .admin-main{background:var(--bg-2);border-radius:var(--radius);padding:20px}
+  </style>
+</head>
+<body>
+<div class="container admin-wrap">
+  <aside class="admin-aside">
+    <h3 style="margin-bottom:10px">Panel</h3>
+<aside class="admin-aside">
+  <h3>Panel</h3>
+        <a href="~/Admin/Users">Usuarios</a>
+        <a href="~/Admin/Messages">Mensajes</a>
+        <a href="~/Admin/Events/Create">Eventos</a>
+</aside>
+
+  </aside>
+  <main class="admin-main">
+    @RenderBody()
+  </main>
+</div>
+@RenderSection("Scripts", required: false)
+</body>
+</html>

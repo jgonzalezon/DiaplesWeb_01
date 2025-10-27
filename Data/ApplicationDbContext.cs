@@ -10,5 +10,8 @@ namespace DiaplesWeb.Data
             : base(options) { }
 
         public DbSet<ContactMessage> ContactMessages => Set<ContactMessage>();
+
+        public DbSet<DiaplesWeb.Models.EventItem> Events { get; set; }
+
     }
 }

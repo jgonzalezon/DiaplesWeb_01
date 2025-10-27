@@ -553,7 +553,7 @@ section + section { margin-top: 30px; }
 }
 .intro__media{
   position: absolute; inset: 0;
-  background: #000 url('/img/Inicio/fondoDiaples.gif') center/cover no-repeat;
+  background: #000 url('/img/Inicio/fondoDiaples.jpg') center/cover no-repeat;
   filter: blur(8px) brightness(0.55);
   transform: scale(1.05);
   animation: introZoomOut 1.5s ease both;
@@ -1005,4 +1005,84 @@ img[width], img[height] { height: auto !important; max-width: 100% !important; }
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+#btn-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  background: var(--brand, #fe6e6e);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 100;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+#btn-top:hover {
+  transform: scale(1.1);
+  background: var(--brand-2, #ff4d4d);
+}
+
+/* Mostrar solo en móvil */
+@media (min-width: 768px) {
+  #btn-top {
+    display: none !important;
+  }
+}
+
+/* En el formulario de contacto, cada campo ocupa una fila completa */
+.form-card .form-grid {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 1rem; 
+}
+
+.form-field {
+  width: 100%;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ====== CONTACTO: igualdad de altura ====== */
+
+/* el contenedor de ambas columnas */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* dos columnas del mismo ancho */
+  gap: 2rem;
+  align-items: stretch; /* 👈 fuerza que ambas columnas tengan la misma altura */
+}
+
+/* en pantallas pequeñas, una debajo de otra */
+@media (max-width: 992px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* tarjetas iguales */
+.contact-card,
+.form-card {
+  background: var(--bg-2);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* 👈 asegura que ambas crezcan igual */
+  box-sizing: border-box;
 }
