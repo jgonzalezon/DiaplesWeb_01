@@ -62,16 +62,15 @@ app.UseAuthorization();
 
 // Endpoints
 app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
+
+// 2️⃣ Luego el default general
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapAreaControllerRoute(
-    name: "admin",
-    areaName: "Admin",
-    pattern: "Admin/{controller=Dashboard}/{action=Index}/{id?}");
-app.MapRazorPages(); // publica /Identity/...
-
-
+app.MapRazorPages(); // Identity
 app.MapControllers(); // API
 
 // --- Migraciones + Seed + Log de ruta de BD ---

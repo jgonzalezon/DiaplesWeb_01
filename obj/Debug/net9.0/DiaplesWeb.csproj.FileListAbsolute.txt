@@ -1004,5 +1004,5 @@ C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\bin\Debug\net9.
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\qk2go5lc20-svch42ro27.gz
-C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-g8twt2aq5u.gz
+C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\qk2go5lc20-gc4za6dy2w.gz
+C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-v5zh57us66.gz

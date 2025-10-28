@@ -66,3 +66,5 @@
 
 /* Ocultar panel de external logins del template por defecto */
 .auth-hide-external { display: none !important; }
+.table-dark td, .table-dark th { vertical-align: middle; }
+.bg-dark-subtle { background: #121923; border-radius: 14px;}

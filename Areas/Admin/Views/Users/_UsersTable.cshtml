@@ -1,0 +1,45 @@
+@model List<(Microsoft.AspNetCore.Identity.IdentityUser User, System.Collections.Generic.IList<string> Roles)>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @foreach (var err in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <div>@err.ErrorMessage</div>
+        }
+    </div>
+}
+
+<table class="table table-dark table-hover align-middle">
+  <thead>
+    <tr>
+      <th style="width:25%">Usuario</th>
+      <th style="width:20%">Teléfono</th>
+      <th style="width:25%">Email</th>
+      <th style="width:20%">Roles</th>
+      <th style="width:10%"></th>
+    </tr>
+  </thead>
+  <tbody>
+  @foreach (var row in Model)
+  {
+    <tr>
+      <td>@row.User.UserName</td>
+      <td>@(row.User.PhoneNumber ?? "—")</td>
+      <td>@row.User.Email</td>
+      <td>@string.Join(", ", row.Roles)</td>
+      <td class="text-end">
+        <form method="post"
+            asp-area="Admin"
+            asp-controller="Users"
+            asp-action="Delete"
+            class="deleteForm d-inline">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="id" value="@row.User.Id" />
+            <button class="btn btn-sm btn-danger">Borrar</button>
+        </form>
+      </td>
+    </tr>
+  }
+  </tbody>
+</table>

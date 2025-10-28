@@ -2,33 +2,158 @@
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-<h2>Usuarios</h2>
+<section class="card p-4 bg-dark-subtle">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="m-0">Usuarios</h2>
+    <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-outline-light btn-sm">← Volver al sitio</a>
+  </div>
 
-<form method="post" asp-action="Create" style="margin-bottom:16px">
-  <input name="userName" placeholder="Usuario" />
-  <input name="email" placeholder="Email" type="email" />
-  <input name="password" placeholder="Contraseña" type="password" />
-  <input name="role" placeholder="Rol (Admin/User...)" />
-  <button class="btn">Crear</button>
-</form>
+  <form id="createForm"
+        method="post"
+        asp-area="Admin" asp-controller="Users" asp-action="Create"
+        class="row g-2 align-items-center mb-3">
+    @Html.AntiForgeryToken()
 
-<table class="table-dark">
-  <thead><tr><th>Usuario</th><th>Teléfono</th><th>Email</th><th>Roles</th><th></th></tr></thead>
-  <tbody>
-  @foreach (var row in Model)
-  {
-    <tr>
-      <td>@row.User.UserName</td>
-      <td>@row.User.PhoneNumber</td>
-      <td>@row.User.Email</td>
-      <td>@string.Join(", ", row.Roles)</td>
-      <td>
-        <form method="post" asp-action="Delete" style="display:inline">
-          <input type="hidden" name="id" value="@row.User.Id" />
-          <button class="btn" onclick="return confirm('¿Borrar usuario?')">Borrar</button>
-        </form>
-      </td>
-    </tr>
+    <div class="col-md-3">
+      <input name="userName" class="form-control" placeholder="Usuario" required />
+    </div>
+
+    <div class="col-md-3">
+      <input name="email" class="form-control" placeholder="Email" type="email" required />
+    </div>
+
+    <div class="col-md-3">
+      <div class="input-group">
+        <input name="password" id="pwd" class="form-control" placeholder="Contraseña" type="password" required />
+        <button type="button" class="btn btn-outline-secondary" id="btnTogglePwd" title="Mostrar/Ocultar">👁️</button>
+        <button type="button" class="btn btn-outline-secondary" id="btnGenPwd" title="Generar">🎲</button>
+      </div>
+      <div class="progress mt-2" style="height:6px;">
+        <div class="progress-bar" id="pwdMeter" role="progressbar" style="width:0%"></div>
+      </div>
+      <div class="form-text" id="pwdHint">Usa letras y números.</div>
+    </div>
+
+    <div class="col-md-2">
+      <input name="role" class="form-control" placeholder="Rol (Admin/User…)" value="User" />
+    </div>
+
+    <div class="col-md-1 d-grid">
+      <button class="btn btn-danger" id="btnCreate">Crear</button>
+    </div>
+
+    <div class="col-12">
+      <div id="createMsg"></div>
+    </div>
+  </form>
+
+  <div id="usersTable">
+    @await Html.PartialAsync("_UsersTable", Model)
+  </div>
+</section>
+
+@section Scripts {
+<script>
+(function () {
+  const usersTable   = document.getElementById('usersTable');
+  const form         = document.getElementById('createForm');
+  const btnCreate    = document.getElementById('btnCreate');
+  const btnGenPwd    = document.getElementById('btnGenPwd');
+  const btnTogglePwd = document.getElementById('btnTogglePwd');
+  const pwd          = document.getElementById('pwd');
+  const meter        = document.getElementById('pwdMeter');
+  const hint         = document.getElementById('pwdHint');
+  const msg          = document.getElementById('createMsg');
+
+  async function postForm(form) {
+    const prev = btnCreate ? btnCreate.innerText : '';
+    if (btnCreate) { btnCreate.disabled = true; btnCreate.innerText = 'Guardando…'; }
+    if (msg) msg.innerHTML = '';
+    try {
+      const resp = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+        body: new FormData(form)
+      });
+      if (!resp.ok) throw new Error('Error ' + resp.status);
+      const html = await resp.text();
+      usersTable.innerHTML = html;
+
+      form.reset();
+      if (meter) { meter.style.width = '0%'; meter.className = 'progress-bar'; }
+      if (hint)  { hint.innerText = 'Usa letras y números.'; }
+      toast('Usuario creado');
+    } catch (e) {
+      error('No se pudo completar la operación (' + e.message + ')');
+      console.error(e);
+    } finally {
+      if (btnCreate) { btnCreate.disabled = false; btnCreate.innerText = prev; }
+    }
   }
-  </tbody>
-</table>
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    postForm(e.target);
+  });
+
+  // Delegación para borrar (formularios dentro de la tabla)
+  usersTable.addEventListener('submit', function (e) {
+    if (e.target.matches('form.deleteForm')) {
+      e.preventDefault();
+      if (!confirm('¿Borrar usuario?')) return;
+      postForm(e.target);
+    }
+  });
+
+  // Generar contraseña segura
+  if (btnGenPwd && pwd) {
+    btnGenPwd.addEventListener('click', function () {
+      pwd.value = genPwd();
+      updateStrength();
+    });
+  }
+
+  // Mostrar/ocultar contraseña
+  if (btnTogglePwd && pwd) {
+    btnTogglePwd.addEventListener('click', function () {
+      pwd.type = (pwd.type === 'password') ? 'text' : 'password';
+    });
+  }
+
+  // Medidor de fuerza
+  if (pwd) {
+    pwd.addEventListener('input', updateStrength);
+  }
+  function updateStrength() {
+    if (!pwd || !meter || !hint) return;
+    const s = score(pwd.value);
+    meter.style.width = (s * 25) + '%';
+    meter.className = 'progress-bar ' + (
+      s <= 1 ? 'bg-danger' :
+      s === 2 ? 'bg-warning' :
+      s === 3 ? 'bg-info' : 'bg-success');
+    hint.innerText = (
+      s <= 1 ? 'Contraseña débil' :
+      s === 2 ? 'Aceptable' :
+      s === 3 ? 'Buena' : 'Fuerte');
+  }
+  function score(v) {
+    let s = 0;
+    if (v.length >= 6) s++;
+    if (/[A-Z]/.test(v) && /[a-z]/.test(v)) s++;
+    if (/\d/.test(v)) s++;
+    if (/[^A-Za-z0-9]/.test(v) || v.length >= 12) s++;
+    return Math.min(s, 4);
+  }
+  function genPwd() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@$%*?';
+    return Array.from({length: 12}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  }
+
+  // Mensajes simples
+  function toast(text){ if (msg) msg.innerHTML = '<div class="alert alert-success py-2 my-2">'+text+'</div>'; }
+  function error(text){ if (msg) msg.innerHTML = '<div class="alert alert-danger  py-2 my-2">'+text+'</div>'; }
+
+})();
+</script>
+}
