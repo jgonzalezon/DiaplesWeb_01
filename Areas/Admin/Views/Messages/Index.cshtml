@@ -3,14 +3,27 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 <h2>Mensajes</h2>
+
+@if (TempData["MsgOk"] is string ok && !string.IsNullOrWhiteSpace(ok))
+{
+    <div class="alert alert-success my-2">@ok</div>
+}
+@if (TempData["MsgError"] is string err && !string.IsNullOrWhiteSpace(err))
+{
+    <div class="alert alert-danger my-2">@err</div>
+}
+
 <ul style="list-style:none;padding:0;margin:0">
 @foreach (var m in Model)
 {
   <li style="padding:12px;border-bottom:1px solid var(--border)">
-    <a asp-action="Details" asp-route-id="@m.Id" style="display:block;text-decoration:none">
+    <a asp-area="Admin" asp-controller="Messages" asp-action="Details" asp-route-id="@m.Id"
+       style="display:block;text-decoration:none">
       <strong>@m.Name</strong> &lt;@m.Email&gt;
       <div style="color:var(--muted);font-size:.95rem">@m.CreatedAt.ToString("yyyy-MM-dd HH:mm")</div>
-      <div style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--txt)">@m.Message</div>
+      <div style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--txt)">
+        @m.Message
+      </div>
     </a>
   </li>
 }

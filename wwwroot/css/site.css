@@ -1091,3 +1091,239 @@ img[width], img[height] { height: auto !important; max-width: 100% !important; }
 .bg-dark-subtle { background:#121923; border-radius:14px; }
 .progress { background:#0f141b; }
 .progress-bar { transition: width .25s ease; }
+
+
+
+/* ===== Admin > Usuarios ===== */
+.admin-card {
+    padding: 1.25rem 1.25rem 1rem;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.admin-section {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    margin-bottom: .75rem;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: .2px;
+}
+
+/* Asegurar el mismo look & feel que el resto de inputs */
+.form { width: 100%; }
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 18px;
+}
+.form-field { display: flex; flex-direction: column; }
+.form-field--full { grid-column: 1 / -1; }
+
+.form label {
+    font-size: .95rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.input,
+.form input,
+.form select,
+.form textarea {
+    appearance: none;
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    color: var(--txt);
+    border-radius: 12px;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease, transform .05s;
+    width: 100%;
+}
+.form select { cursor: pointer; }
+.form textarea { resize: vertical; }
+
+.input:focus,
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 4px rgba(110,168,254,.15);
+}
+
+::placeholder { color: #aabbd0; opacity: .85; }
+
+/* Input-group del password alineado al estilo del formulario */
+.form .input-group > .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.form .input-group > .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Botón de acción principal */
+.btn-primary-like {
+    background: var(--brand);
+    border: 1px solid var(--brand-2);
+    color: #111;
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 10px 16px;
+}
+.btn-primary-like:hover {
+    filter: brightness(1.05);
+}
+/* === Botonera tipo píldora para el input de password === */
+.btn-pill-left {
+  border-top-left-radius: 999px !important;
+  border-bottom-left-radius: 999px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right: 0; /* unir borde con el siguiente */
+}
+
+.btn-pill-right {
+  border-top-right-radius: 999px !important;
+  border-bottom-right-radius: 999px !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+/* Que ambos botones compartan altura con el input si van en input-group */
+.input-group .btn-pill-left,
+.input-group .btn-pill-right {
+  padding: 10px 14px; /* similar a tus inputs */
+  height: 42px;       /* ajusta si usas otra altura */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Botón primario estilo del sitio para reutilizar en tabla */
+.btn-primary-like {
+  background: var(--brand);
+  border: 1px solid var(--brand-2);
+  color: #111;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 10px 16px;
+}
+.btn-primary-like:hover { filter: brightness(1.05); }
+
+/* Selects dentro de la tabla con el mismo look que los formularios */
+.table .form select {
+  appearance: none;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--txt);
+  border-radius: 12px;
+  padding: 8px 12px;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.table .form select:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px rgba(110,168,254,.15);
+}
+
+/* Acciones por fila (rol + guardar + borrar en una línea) */
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap; /* por si hay poco ancho */
+}
+
+/* Uniformar alturas/tamaños */
+.user-actions select{
+  min-width: 96px;          /* caben “Admin”/“User” sin saltar */
+  height: 34px;             /* más bajo */
+  padding: 6px 8px;         /* compacto */
+  font-size: .85rem;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--txt);
+  border-radius: 10px;
+}
+.user-actions select:focus{
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(110,168,254,.15);
+}
+
+.user-actions .btn{
+  padding: 6px 10px;
+  line-height: 1;
+  font-size: .85rem;
+  border-radius: 10px;
+}
+
+.user-actions .btn-sm {
+  padding: 8px 12px;       /* más alto que el .btn-sm por defecto */
+  line-height: 1;
+  border-radius: 12px;
+}
+
+/* Opcional: estrechar la columna Acciones en desktop */
+@media (min-width: 992px){
+  td.td-actions, th.th-actions { width: 28%; }
+}
+/* Dar más holgura a la columna de acciones en desktop */
+@media (min-width: 992px){
+  td.td-actions, th.th-actions{ width: 28%; }
+}
+
+/* Si aún ves saltos en pantallas justas, reduce un poco más en <=1200px */
+@media (max-width: 1200px){
+  .user-actions{ gap: 6px; }
+  .user-actions select{ min-width: 88px; font-size: .8rem; height: 32px; padding: 5px 8px; }
+  .user-actions .btn{ font-size: .8rem; padding: 5px 9px; }
+  }
+
+/* Espaciado coherente para secciones */
+
+/* Fila de acciones fija en una sola línea */
+.actions-row{
+  display:flex;
+  justify-content:space-between;  /* izq / dcha */
+  align-items:center;
+  gap:12px;
+  flex-wrap:nowrap;               /* NO permitir salto */
+  margin-top:32px;                /* el margen va en el contenedor */
+}
+
+/* Los hijos no se expanden */
+.actions-row > *{
+  flex:0 0 auto;
+}
+
+/* El form no debe romper línea */
+.actions-row form{
+  display:inline-flex;
+  align-items:center;
+  margin:0;
+}
+
+/* Botones uniformes */
+.btn-action{
+  min-width:140px;
+  font-size:1rem;
+  padding:10px 20px;
+  border-radius:var(--radius);
+  font-weight:600;
+}
+
+/* Quita el margen del botón volver para no empujarlo abajo */
+.btn-volver{ margin-top:0; }

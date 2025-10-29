@@ -25,5 +25,24 @@ namespace DiaplesWeb.Areas.Admin.Controllers
             if (m == null) return NotFound();
             return View(m);
         }
+
+        // NUEVO: borrar desde Details
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            var m = _db.ContactMessages.Find(id);
+            if (m == null)
+            {
+                TempData["MsgError"] = "El mensaje ya no existe.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            _db.ContactMessages.Remove(m);
+            _db.SaveChanges();
+
+            TempData["MsgOk"] = "Mensaje borrado";
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

@@ -2,69 +2,114 @@
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-<section class="card p-4 bg-dark-subtle">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2 class="m-0">Usuarios</h2>
+<section class="admin-card">
+  <div class="section-header">
+    <h2 class="section-title m-0">Usuarios</h2>
     <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-outline-light btn-sm">← Volver al sitio</a>
   </div>
 
-  <form id="createForm"
-        method="post"
-        asp-area="Admin" asp-controller="Users" asp-action="Create"
-        class="row g-2 align-items-center mb-3">
-    @Html.AntiForgeryToken()
+  <!-- Sección: Crear usuario -->
+  <div class="admin-section">
+    <h5 class="text-muted mb-2">Crear usuario</h5>
 
-    <div class="col-md-3">
-      <input name="userName" class="form-control" placeholder="Usuario" required />
-    </div>
-    <div class="col-md-3">
-      <input name="email" class="form-control" placeholder="Email" type="email" required />
-    </div>
-    <div class="col-md-3">
-      <div class="input-group">
-        <input name="password" id="pwd" class="form-control" placeholder="Contraseña" type="password" required />
-        <button type="button" class="btn btn-outline-secondary" id="btnTogglePwd" title="Mostrar/Ocultar">👁️</button>
-        <button type="button" class="btn btn-outline-secondary" id="btnGenPwd" title="Generar">🎲</button>
+    <form id="createForm"
+          method="post"
+          asp-area="Admin" asp-controller="Users" asp-action="Create"
+          class="form">
+      @Html.AntiForgeryToken()
+
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="userName">Usuario</label>
+          <input id="userName" name="userName" placeholder="Usuario" required />
+        </div>
+
+        <div class="form-field">
+          <label for="role">Rol</label>
+          <select id="role" name="role">
+              <option value="User" selected>User</option>
+              <option value="Admin">Admin</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Email" required />
+        </div>
+
+        <div class="form-field">
+          <label for="pwd">Contraseña</label>
+
+          <input name="password" id="pwd" type="password" placeholder="Contraseña" required />
+
+          <div class="mt-2" role="group" aria-label="Acciones contraseña">
+            <button type="button" class="btn btn-primary-like btn-pill-left" id="btnTogglePwd" title="Mostrar/Ocultar">
+              Mostrar/Ocultar
+            </button>
+            <button type="button" class="btn btn-primary-like btn-pill-right" id="btnGenPwd" title="Aleatorio">
+              Aleatorio
+            </button>
+          </div>
+
+          <div class="progress mt-2" style="height:6px;">
+            <div class="progress-bar" id="pwdMeter" role="progressbar" style="width:0%"></div>
+          </div>
+          <div class="form-text" id="pwdHint">Usa letras y números.</div>
+        </div>
+
+
+        <div class="form-field form-field--full">
+          <button class="btn btn-primary-like" id="btnCreate">Crear</button>
+        </div>
+
+        <div class="form-field form-field--full">
+          <div id="createMsg"></div>
+        </div>
       </div>
-      <div class="progress mt-2" style="height:6px;">
-        <div class="progress-bar" id="pwdMeter" role="progressbar" style="width:0%"></div>
-      </div>
-      <div class="form-text" id="pwdHint">Usa letras y números.</div>
-    </div>
-    <div class="col-md-2">
-      <input name="role" class="form-control" placeholder="Rol (Admin/User…)" value="User" />
-    </div>
-    <div class="col-md-1 d-grid">
-      <button class="btn btn-danger" id="btnCreate">Crear</button>
-    </div>
+    </form>
+  </div>
 
-    <div class="col-12">
-      <div id="createMsg"></div>
+  <!-- Sección: Tabla de usuarios -->
+  <div class="admin-section">
+    <h5 class="text-muted mb-2">Listado</h5>
+    <div id="usersTable">
+      @await Html.PartialAsync("_UsersTable", Model)
     </div>
-  </form>
-
-  <div id="usersTable">
-    @await Html.PartialAsync("_UsersTable", Model)
   </div>
 </section>
 
 @section Scripts {
 <script>
 (function () {
+  // ---- Elementos base
   var usersTable   = document.getElementById('usersTable');
-  var form         = document.getElementById('createForm');
-  var btnCreate    = document.getElementById('btnCreate');
+  var formCreate   = document.getElementById('createForm'); // formulario de "Crear usuario"
+  var msgCreate    = document.getElementById('createMsg');  // contenedor de toasts
+
+  // Controles de password (si existen)
   var btnGenPwd    = document.getElementById('btnGenPwd');
   var btnTogglePwd = document.getElementById('btnTogglePwd');
   var pwd          = document.getElementById('pwd');
   var meter        = document.getElementById('pwdMeter');
   var hint         = document.getElementById('pwdHint');
-  var msg          = document.getElementById('createMsg');
 
-  async function postForm(f) {
-    var prev = btnCreate ? btnCreate.innerText : '';
-    if (btnCreate) { btnCreate.disabled = true; btnCreate.innerText = 'Guardando…'; }
-    if (msg) msg.innerHTML = '';
+  // ---- Utilidades UI
+  function toast(text){
+    if (msgCreate) msgCreate.innerHTML =
+      '<div class="alert alert-success py-2 my-2">' + text + '</div>';
+  }
+  function error(text){
+    if (msgCreate) msgCreate.innerHTML =
+      '<div class="alert alert-danger  py-2 my-2">' + text + '</div>';
+  }
+
+  // postForm: deshabilita SOLO el botón del formulario enviado y muestra mensaje contextual
+  async function postForm(f, opts) {
+    var submitBtn = f.querySelector('button[type="submit"], button:not([type])');
+    var prevText  = submitBtn ? submitBtn.innerText : '';
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.innerText = 'Procesando…'; }
+    if (msgCreate) msgCreate.innerHTML = '';
+
     try {
       var resp = await fetch(f.action, {
         method: 'POST',
@@ -72,50 +117,79 @@
         body: new FormData(f)
       });
       if (!resp.ok) throw new Error('Error ' + resp.status);
+
       var html = await resp.text();
       usersTable.innerHTML = html;
 
-      f.reset();
-      if (meter) { meter.style.width = '0%'; meter.className = 'progress-bar'; }
-      if (hint)  { hint.innerText = 'Usa letras y números.'; }
-      toast('Usuario creado');
+      // Mensaje de éxito
+      if (opts && opts.successText) {
+        toast(opts.successText);
+      } else if (f === formCreate) {
+        toast('Usuario creado');
+      } else {
+        toast('Operación realizada');
+      }
+
+      // Reset SOLO si era el formulario de creación
+      if (f === formCreate) {
+        formCreate.reset();
+        var roleSelect = document.getElementById('role');
+        if (roleSelect) roleSelect.value = 'User';
+        if (meter) { meter.style.width = '0%'; meter.className = 'progress-bar'; }
+        if (hint)  { hint.innerText = 'Usa letras y números.'; }
+      }
     } catch (e) {
       error('No se pudo completar la operación (' + e.message + ')');
       console.error(e);
     } finally {
-      if (btnCreate) { btnCreate.disabled = false; btnCreate.innerText = prev; }
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.innerText = prevText; }
     }
   }
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    postForm(e.target);
+  // ---- Listeners
+
+  // Crear usuario
+  if (formCreate) {
+    formCreate.addEventListener('submit', function (e) {
+      e.preventDefault();
+      postForm(e.target, { successText: 'Usuario creado' });
+    });
+  }
+
+  // Guardar rol (delegación en tabla)
+  usersTable.addEventListener('submit', function (e) {
+    if (e.target.matches('form.roleForm')) {
+      e.preventDefault();
+      var roleVal = e.target.querySelector('select[name="role"]')?.value || '';
+      postForm(e.target, { successText: 'Cambiado rol a ' + roleVal });
+    }
   });
 
+  // Borrar usuario (delegación en tabla)
   usersTable.addEventListener('submit', function (e) {
     if (e.target.matches('form.deleteForm')) {
       e.preventDefault();
       if (!confirm('¿Borrar usuario?')) return;
-      postForm(e.target);
+      postForm(e.target, { successText: 'Usuario borrado' });
     }
   });
 
+  // ---- Password: generar / mostrar-ocultar / medidor
   if (btnGenPwd && pwd) {
     btnGenPwd.addEventListener('click', function () {
       pwd.value = genPwd();
       updateStrength();
     });
   }
-
   if (btnTogglePwd && pwd) {
     btnTogglePwd.addEventListener('click', function () {
       pwd.type = (pwd.type === 'password') ? 'text' : 'password';
     });
   }
-
   if (pwd) {
     pwd.addEventListener('input', updateStrength);
   }
+
   function updateStrength() {
     if (!pwd || !meter || !hint) return;
     var s = score(pwd.value);
@@ -137,8 +211,6 @@
     for (var i = 0; i < 12; i++) out += chars[Math.floor(Math.random() * chars.length)];
     return out;
   }
-  function toast(text){ if (msg) msg.innerHTML = '<div class="alert alert-success py-2 my-2">' + text + '</div>'; }
-  function error(text){ if (msg) msg.innerHTML = '<div class="alert alert-danger  py-2 my-2">' + text + '</div>'; }
 })();
 </script>
 }
