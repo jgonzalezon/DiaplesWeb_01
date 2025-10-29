@@ -17,11 +17,9 @@
     <div class="col-md-3">
       <input name="userName" class="form-control" placeholder="Usuario" required />
     </div>
-
     <div class="col-md-3">
       <input name="email" class="form-control" placeholder="Email" type="email" required />
     </div>
-
     <div class="col-md-3">
       <div class="input-group">
         <input name="password" id="pwd" class="form-control" placeholder="Contraseña" type="password" required />
@@ -33,11 +31,9 @@
       </div>
       <div class="form-text" id="pwdHint">Usa letras y números.</div>
     </div>
-
     <div class="col-md-2">
       <input name="role" class="form-control" placeholder="Rol (Admin/User…)" value="User" />
     </div>
-
     <div class="col-md-1 d-grid">
       <button class="btn btn-danger" id="btnCreate">Crear</button>
     </div>
@@ -55,31 +51,31 @@
 @section Scripts {
 <script>
 (function () {
-  const usersTable   = document.getElementById('usersTable');
-  const form         = document.getElementById('createForm');
-  const btnCreate    = document.getElementById('btnCreate');
-  const btnGenPwd    = document.getElementById('btnGenPwd');
-  const btnTogglePwd = document.getElementById('btnTogglePwd');
-  const pwd          = document.getElementById('pwd');
-  const meter        = document.getElementById('pwdMeter');
-  const hint         = document.getElementById('pwdHint');
-  const msg          = document.getElementById('createMsg');
+  var usersTable   = document.getElementById('usersTable');
+  var form         = document.getElementById('createForm');
+  var btnCreate    = document.getElementById('btnCreate');
+  var btnGenPwd    = document.getElementById('btnGenPwd');
+  var btnTogglePwd = document.getElementById('btnTogglePwd');
+  var pwd          = document.getElementById('pwd');
+  var meter        = document.getElementById('pwdMeter');
+  var hint         = document.getElementById('pwdHint');
+  var msg          = document.getElementById('createMsg');
 
-  async function postForm(form) {
-    const prev = btnCreate ? btnCreate.innerText : '';
+  async function postForm(f) {
+    var prev = btnCreate ? btnCreate.innerText : '';
     if (btnCreate) { btnCreate.disabled = true; btnCreate.innerText = 'Guardando…'; }
     if (msg) msg.innerHTML = '';
     try {
-      const resp = await fetch(form.action, {
+      var resp = await fetch(f.action, {
         method: 'POST',
         headers: { 'X-Requested-With': 'XMLHttpRequest' },
-        body: new FormData(form)
+        body: new FormData(f)
       });
       if (!resp.ok) throw new Error('Error ' + resp.status);
-      const html = await resp.text();
+      var html = await resp.text();
       usersTable.innerHTML = html;
 
-      form.reset();
+      f.reset();
       if (meter) { meter.style.width = '0%'; meter.className = 'progress-bar'; }
       if (hint)  { hint.innerText = 'Usa letras y números.'; }
       toast('Usuario creado');
@@ -96,7 +92,6 @@
     postForm(e.target);
   });
 
-  // Delegación para borrar (formularios dentro de la tabla)
   usersTable.addEventListener('submit', function (e) {
     if (e.target.matches('form.deleteForm')) {
       e.preventDefault();
@@ -105,7 +100,6 @@
     }
   });
 
-  // Generar contraseña segura
   if (btnGenPwd && pwd) {
     btnGenPwd.addEventListener('click', function () {
       pwd.value = genPwd();
@@ -113,32 +107,24 @@
     });
   }
 
-  // Mostrar/ocultar contraseña
   if (btnTogglePwd && pwd) {
     btnTogglePwd.addEventListener('click', function () {
       pwd.type = (pwd.type === 'password') ? 'text' : 'password';
     });
   }
 
-  // Medidor de fuerza
   if (pwd) {
     pwd.addEventListener('input', updateStrength);
   }
   function updateStrength() {
     if (!pwd || !meter || !hint) return;
-    const s = score(pwd.value);
+    var s = score(pwd.value);
     meter.style.width = (s * 25) + '%';
-    meter.className = 'progress-bar ' + (
-      s <= 1 ? 'bg-danger' :
-      s === 2 ? 'bg-warning' :
-      s === 3 ? 'bg-info' : 'bg-success');
-    hint.innerText = (
-      s <= 1 ? 'Contraseña débil' :
-      s === 2 ? 'Aceptable' :
-      s === 3 ? 'Buena' : 'Fuerte');
+    meter.className = 'progress-bar ' + (s <= 1 ? 'bg-danger' : (s === 2 ? 'bg-warning' : (s === 3 ? 'bg-info' : 'bg-success')));
+    hint.innerText = (s <= 1 ? 'Contraseña débil' : (s === 2 ? 'Aceptable' : (s === 3 ? 'Buena' : 'Fuerte')));
   }
   function score(v) {
-    let s = 0;
+    var s = 0;
     if (v.length >= 6) s++;
     if (/[A-Z]/.test(v) && /[a-z]/.test(v)) s++;
     if (/\d/.test(v)) s++;
@@ -146,14 +132,13 @@
     return Math.min(s, 4);
   }
   function genPwd() {
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@$%*?';
-    return Array.from({length: 12}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+    var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!$%*?';
+    var out = '';
+    for (var i = 0; i < 12; i++) out += chars[Math.floor(Math.random() * chars.length)];
+    return out;
   }
-
-  // Mensajes simples
-  function toast(text){ if (msg) msg.innerHTML = '<div class="alert alert-success py-2 my-2">'+text+'</div>'; }
-  function error(text){ if (msg) msg.innerHTML = '<div class="alert alert-danger  py-2 my-2">'+text+'</div>'; }
-
+  function toast(text){ if (msg) msg.innerHTML = '<div class="alert alert-success py-2 my-2">' + text + '</div>'; }
+  function error(text){ if (msg) msg.innerHTML = '<div class="alert alert-danger  py-2 my-2">' + text + '</div>'; }
 })();
 </script>
 }
