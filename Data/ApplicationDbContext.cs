@@ -11,7 +11,18 @@ namespace DiaplesWeb.Data
 
         public DbSet<ContactMessage> ContactMessages => Set<ContactMessage>();
 
-        public DbSet<DiaplesWeb.Models.EventItem> Events { get; set; }
+        public DbSet<EventItem> Events => Set<EventItem>();
+
+        public DbSet<EventAttendance> EventAttendances => Set<EventAttendance>();
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<EventAttendance>()
+                .HasIndex(a => new { a.EventItemId, a.UserId })
+                .IsUnique();
+        }
 
     }
 }

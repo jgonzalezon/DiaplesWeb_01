@@ -1,0 +1,103 @@
+@using System.Globalization
+@using System.Linq
+@model DiaplesWeb.Models.AdminEventsIndexViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Eventos";
+    var culture = new CultureInfo("es-ES");
+}
+
+@if (TempData["ok"] is string ok)
+{
+    <div class="alert-success">@ok</div>
+}
+
+<div class="admin-events">
+    <aside class="admin-events__sidebar">
+        <div class="admin-events__sidebar-header">
+            <h2>Eventos</h2>
+            <a asp-action="Create" class="btn btn-small">Crear evento</a>
+        </div>
+
+        @if (!Model.Events.Any())
+        {
+            <p class="admin-events__empty">Todavía no hay eventos registrados.</p>
+        }
+        else
+        {
+            <ul class="admin-events__list">
+                @foreach (var evt in Model.Events)
+                {
+                    var isSelected = Model.SelectedEventId == evt.Id;
+                    <li class="admin-events__list-item @(isSelected ? "is-selected" : string.Empty)">
+                        <a asp-action="Index" asp-route-id="@evt.Id">
+                            <span class="admin-events__list-title">@evt.Title</span>
+                            <span class="admin-events__list-meta">@evt.Date.ToString("dd MMM yyyy · HH:mm", culture)</span>
+                            <span class="admin-events__list-location">@evt.Location</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+    </aside>
+
+    <section class="admin-events__content">
+        @if (Model.SelectedEvent is null)
+        {
+            <div class="admin-events__placeholder">
+                <p>Selecciona un evento de la lista para ver los detalles y la asistencia.</p>
+            </div>
+        }
+        else
+        {
+            <article class="admin-events__details">
+                <header>
+                    <h2>@Model.SelectedEvent.Title</h2>
+                    <p class="admin-events__details-meta">
+                        <strong>@Model.SelectedEvent.Date.ToString("dddd, d 'de' MMMM 'de' yyyy · HH:mm", culture)</strong><br />
+                        <span>@Model.SelectedEvent.Location</span>
+                    </p>
+                </header>
+
+                <section class="admin-events__attendees">
+                    <h3>Asistencia del equipo</h3>
+                    @if (!Model.SelectedEvent.Attendees.Any())
+                    {
+                        <p class="admin-events__empty">No hay usuarios registrados todavía.</p>
+                    }
+                    else
+                    {
+                        <ul>
+                            @foreach (var attendee in Model.SelectedEvent.Attendees)
+                            {
+                                <li>
+                                    <div class="admin-events__attendee-info">
+                                        <span class="admin-events__attendee-name">@attendee.DisplayName</span>
+                                        @if (!string.IsNullOrWhiteSpace(attendee.Email))
+                                        {
+                                            <span class="admin-events__attendee-email">@attendee.Email</span>
+                                        }
+                                    </div>
+                                    <div class="admin-events__attendee-status">
+                                        <label>Asistencia</label>
+                                        <select disabled>
+                                            @foreach (var option in Model.StatusOptions)
+                                            {
+                                                <option value="@option.Status" @(option.Status == attendee.Status ? "selected" : null)>@option.DisplayName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    }
+                </section>
+            </article>
+
+            <section class="admin-events__calendar">
+                <h3>Calendario de eventos</h3>
+                @await Html.PartialAsync("_EventsCalendar", Model.CalendarItems)
+            </section>
+        }
+    </section>
+</div>

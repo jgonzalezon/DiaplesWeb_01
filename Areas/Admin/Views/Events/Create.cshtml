@@ -3,6 +3,9 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 <h2>Crear evento</h2>
+<p class="admin-events__back">
+    <a asp-action="Index">← Volver al listado</a>
+</p>
 @if (TempData["ok"] is string ok) { <div class="alert-success">@ok</div> }
 
 <form asp-action="Create" method="post" class="form">

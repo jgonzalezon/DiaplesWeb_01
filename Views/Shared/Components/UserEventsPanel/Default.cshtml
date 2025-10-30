@@ -1,0 +1,58 @@
+@using System.Globalization
+@using System.Linq
+@model DiaplesWeb.Models.UserEventsPanelViewModel
+@{
+    var culture = new CultureInfo("es-ES");
+}
+
+@if (Model.Events.Any())
+{
+<section class="user-events-panel" aria-label="Eventos del equipo">
+    <div class="user-events-panel__list">
+        <header class="user-events-panel__header">
+            <h2>Eventos del grupo</h2>
+            <p>Actualiza tu disponibilidad y consulta los próximos eventos.</p>
+        </header>
+
+        @if (Model.ShowSavedMessage)
+        {
+            <div class="alert-success">Preferencias de asistencia guardadas.</div>
+        }
+
+        <form method="post" asp-controller="UserEvents" asp-action="SaveAttendance" class="user-events-panel__form">
+            <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+            <div class="user-events-panel__items">
+                @for (var i = 0; i < Model.Events.Count; i++)
+                {
+                    var evt = Model.Events[i];
+                    <article class="user-events-panel__item">
+                        <header>
+                            <h3>@evt.Title</h3>
+                            <p>
+                                <strong>@evt.Date.ToString("dddd, d 'de' MMMM", culture)</strong><br />
+                                <span>@evt.Date.ToString("HH:mm", culture) · @evt.Location</span>
+                            </p>
+                        </header>
+                        <input type="hidden" name="Updates[@i].EventId" value="@evt.Id" />
+                        <label class="user-events-panel__select-label">
+                            Asistencia
+                            <select name="Updates[@i].Status" class="user-events-panel__select">
+                                @foreach (var option in Model.StatusOptions)
+                                {
+                                    <option value="@((int)option.Status)" @(option.Status == evt.Status ? "selected" : null)>@option.DisplayName</option>
+                                }
+                            </select>
+                        </label>
+                    </article>
+                }
+            </div>
+            <button type="submit" class="btn btn-gradient">Guardar</button>
+        </form>
+    </div>
+
+    <div class="user-events-panel__calendar">
+        <h3>Calendario</h3>
+        @await Html.PartialAsync("_EventsCalendar", Model.CalendarItems)
+    </div>
+</section>
+}

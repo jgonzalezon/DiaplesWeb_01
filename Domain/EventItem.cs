@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DiaplesWeb.Models
@@ -14,5 +15,7 @@ namespace DiaplesWeb.Models
 
         [Required, StringLength(160)]
         public string Location { get; set; } = string.Empty;
+
+        public ICollection<EventAttendance> Attendances { get; set; } = new List<EventAttendance>();
     }
 }

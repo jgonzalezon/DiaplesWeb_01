@@ -1,0 +1,93 @@
+@using System.Globalization
+@using System.Linq
+@model IEnumerable<DiaplesWeb.Models.EventCalendarItem>
+@{
+    var items = Model.OrderBy(e => e.Date).ToList();
+    var culture = new CultureInfo("es-ES");
+    var months = items
+        .Select(i => new DateTime(i.Date.Year, i.Date.Month, 1))
+        .Distinct()
+        .OrderBy(d => d)
+        .ToList();
+    DayOfWeek firstDayOfWeek = DayOfWeek.Monday;
+    var dayHeaders = new[] { "L", "M", "X", "J", "V", "S", "D" };
+}
+
+@if (!items.Any())
+{
+    <p class="admin-events__empty">No hay eventos disponibles para mostrar.</p>
+}
+else
+{
+    <div class="event-calendar">
+        @foreach (var month in months)
+        {
+            var daysInMonth = DateTime.DaysInMonth(month.Year, month.Month);
+            var firstDay = new DateTime(month.Year, month.Month, 1);
+            var offset = ((int)firstDay.DayOfWeek - (int)firstDayOfWeek + 7) % 7;
+            var cells = new List<DateTime?>();
+            for (var i = 0; i < offset; i++)
+            {
+                cells.Add(null);
+            }
+            for (var day = 1; day <= daysInMonth; day++)
+            {
+                cells.Add(new DateTime(month.Year, month.Month, day));
+            }
+            while (cells.Count % 7 != 0)
+            {
+                cells.Add(null);
+            }
+
+            <section class="event-calendar__month">
+                <header>
+                    <h4>@month.ToString("MMMM yyyy", culture)</h4>
+                </header>
+                <div class="event-calendar__grid">
+                    @foreach (var header in dayHeaders)
+                    {
+                        <span class="event-calendar__day-name">@header</span>
+                    }
+
+                    @foreach (var cell in cells)
+                    {
+                        if (cell is null)
+                        {
+                            <div class="event-calendar__day event-calendar__day--empty"></div>
+                        }
+                        else
+                        {
+                            var dayEvents = items.Where(i => i.Date.Date == cell.Value.Date).ToList();
+                            var cssClass = "event-calendar__day";
+                            if (dayEvents.Any())
+                            {
+                                cssClass += " event-calendar__day--has-event";
+                                var statusClasses = dayEvents
+                                    .Select(e => e.CssClass)
+                                    .Where(c => !string.IsNullOrWhiteSpace(c))
+                                    .Distinct();
+                                foreach (var extraClass in statusClasses)
+                                {
+                                    cssClass += $" {extraClass}";
+                                }
+                            }
+
+                            <div class="@cssClass">
+                                <span class="event-calendar__day-number">@cell.Value.Day</span>
+                                @if (dayEvents.Any())
+                                {
+                                    <ul class="event-calendar__events">
+                                        @foreach (var ev in dayEvents)
+                                        {
+                                            <li>@ev.Title</li>
+                                        }
+                                    </ul>
+                                }
+                            </div>
+                        }
+                    }
+                </div>
+            </section>
+        }
+    </div>
+}
