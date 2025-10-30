@@ -1404,3 +1404,411 @@ img[width], img[height] { height: auto !important; max-width: 100% !important; }
   background: #11361e; color: #b7f5c6; border: 1px solid #1d6a34;
   border-radius: 10px; padding: 8px 12px; margin-bottom: 10px;
 }
+/* Leyenda */
+.legend { display:flex; gap:12px; align-items:center; margin-bottom:10px; }
+.legend-item { display:inline-flex; align-items:center; gap:6px; color: var(--muted); font-size: .95rem; }
+.dot { display:inline-block; width:10px; height:10px; border-radius:50%; background: currentColor; }
+.dot--yes   { color: #62d679; }   /* ajusta a tu paleta si quieres */
+.dot--maybe { color: #e6b85c; }
+.dot--no    { color: #9aa3ad; }
+
+/* FullCalendar: colorear eventos según asistencia */
+.fc .fc-event.att-yes .fc-event-main {
+  background: rgba(98, 214, 121, .2);
+  border: 1px solid #62d679;
+}
+.fc .fc-event.att-maybe .fc-event-main {
+  background: rgba(230, 184, 92, .18);
+  border: 1px solid #e6b85c;
+}
+.fc .fc-event.att-no .fc-event-main {
+  background: rgba(154, 163, 173, .15);
+  border: 1px solid #9aa3ad;
+}
+
+/* Opcional: texto siempre legible en tema oscuro */
+.fc .fc-event .fc-event-title { color: var(--txt); }
+
+
+/* =============================
+   EVENTOS (usuario + admin)
+   ============================= */
+
+/* Listado general */
+.event-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.event-item {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.event-item:hover {
+  background: var(--bg-3);
+  transform: translateY(-2px);
+}
+
+.event-info strong {
+  font-size: 1.1rem;
+  display: block;
+  color: var(--txt);
+}
+
+.event-info .meta {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.event-info .sep {
+  margin: 0 0.3rem;
+  color: var(--muted);
+}
+
+.event-info .loc {
+  font-style: italic;
+}
+
+/* Descripción resumen (lista) */
+.desc-clamp {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* máximo 2 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+/* Enlace "ver detalles" */
+.link-details {
+  display: inline-block;
+  margin-top: 0.4rem;
+  color: var(--brand);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.link-details:hover {
+  color: var(--brand-2);
+  text-decoration: underline;
+}
+
+/* Formulario de asistencia */
+.attendance-form {
+  margin-top: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.select-status {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--txt);
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.select-status:focus {
+  outline: none;
+  border-color: var(--brand);
+}
+
+/* Botones pequeños */
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--brand);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.btn-sm:hover {
+  background: var(--brand-2);
+}
+
+/* ==========================================
+   DETALLES DE EVENTO (usuario o admin)
+   ========================================== */
+
+.event-details .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.event-details .meta {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.event-details .card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+.event-details .card h3 {
+  margin-bottom: 0.6rem;
+  color: var(--brand);
+}
+
+.event-details .card p {
+  color: var(--txt);
+  white-space: pre-line;
+}
+
+.row-form {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+/* ==========================================
+   FULLCALENDAR integración (usuario)
+   ========================================== */
+
+.fc .fc-toolbar-title {
+  font-size: 1.1rem;
+}
+
+.fc-daygrid-event {
+  border-radius: var(--radius);
+  padding: 0.2rem 0.4rem;
+  border: none;
+  font-size: 0.85rem;
+}
+
+/* Colores según estado */
+.att-yes .fc-event-title {
+  color: #66ff66;
+}
+
+.att-maybe .fc-event-title {
+  color: #ffcc66;
+}
+
+.att-no .fc-event-title {
+  color: #ff6666;
+}
+/* =============================
+   EVENTOS (usuario + admin)
+   ============================= */
+
+/* Listado general */
+.event-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.event-item {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.event-item:hover {
+  background: var(--bg-3);
+  transform: translateY(-2px);
+}
+
+.event-info strong {
+  font-size: 1.1rem;
+  display: block;
+  color: var(--txt);
+}
+
+.event-info .meta {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.event-info .sep {
+  margin: 0 0.3rem;
+  color: var(--muted);
+}
+
+.event-info .loc {
+  font-style: italic;
+}
+
+/* Descripción resumen (lista) */
+.desc-clamp {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* máximo 2 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+/* Enlace "ver detalles" */
+.link-details {
+  display: inline-block;
+  margin-top: 0.4rem;
+  color: var(--brand);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.link-details:hover {
+  color: var(--brand-2);
+  text-decoration: underline;
+}
+
+/* Formulario de asistencia */
+.attendance-form {
+  margin-top: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.select-status {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--txt);
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.select-status:focus {
+  outline: none;
+  border-color: var(--brand);
+}
+
+/* Botones pequeños */
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--brand);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.btn-sm:hover {
+  background: var(--brand-2);
+}
+
+/* ==========================================
+   DETALLES DE EVENTO (usuario o admin)
+   ========================================== */
+
+.event-details .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.event-details .meta {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.event-details .card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+.event-details .card h3 {
+  margin-bottom: 0.6rem;
+  color: var(--brand);
+}
+
+.event-details .card p {
+  color: var(--txt);
+  white-space: pre-line;
+}
+
+.row-form {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+/* ==========================================
+   FULLCALENDAR integración (usuario)
+   ========================================== */
+
+.fc .fc-toolbar-title {
+  font-size: 1.1rem;
+}
+
+.fc-daygrid-event {
+  border-radius: var(--radius);
+  padding: 0.2rem 0.4rem;
+  border: none;
+  font-size: 0.85rem;
+}
+
+/* Colores según estado */
+.att-yes .fc-event-title {
+  color: #66ff66;
+}
+
+.att-maybe .fc-event-title {
+  color: #ffcc66;
+}
+
+.att-no .fc-event-title {
+  color: #ff6666;
+}
+/* Textarea de descripción */
+.textarea-desc {
+  resize: vertical;
+  min-height: 120px;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--txt);
+  font-family: inherit;
+  line-height: 1.5;
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius);
+}
+
+.textarea-desc:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 2px rgba(254, 110, 110, 0.2);
+}

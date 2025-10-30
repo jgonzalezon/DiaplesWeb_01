@@ -12,12 +12,14 @@ namespace DiaplesWeb.Models
         public string Title { get; set; } = string.Empty;
 
         [Required]
-        public DateTime Date { get; set; }   // día + hora
+        public DateTime Date { get; set; }
 
         [Required, StringLength(160)]
         public string Location { get; set; } = string.Empty;
 
-        // (añadiremos después la navegación)
+        [StringLength(1000)]
+        [DataType(DataType.MultilineText)]
+        public string? Description { get; set; }   
         public ICollection<Attendance>? Attendances { get; set; }
     }
 }

@@ -65,8 +65,10 @@
         @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
         {
             <a href="~/Admin/Dashboard" class="btn btn-gradient">Administración</a>
-
-
+        }
+        @if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
+        {
+            <a href="~/MyEvents" class="btn btn-gradient">Eventos</a>
         }
         </nav>
     </div>

@@ -1,0 +1,52 @@
+@using DiaplesWeb.Models
+@* Si usas VM tipada, cambia el dynamic por MyEventDetailsVM *@
+@model dynamic
+
+@{
+    ViewData["Title"] = "Detalles del evento";
+    var ev = Model.Event as EventItem;
+    var myStatus = (AttendanceStatus)Model.MyStatus;
+}
+
+<section class="event-details page">
+  <div class="header">
+    <div>
+      <h2>@ev.Title</h2>
+      <div class="meta">
+        <span class="date">@ev.Date.ToString("dd/MM/yyyy HH:mm")</span>
+        @if (!string.IsNullOrWhiteSpace(ev.Location))
+        {
+          <span class="sep">·</span><span class="loc">@ev.Location</span>
+        }
+      </div>
+    </div>
+    <div class="actions">
+      <a class="btn btn-ghost" asp-action="Index">Volver</a>
+    </div>
+  </div>
+
+  @if (!string.IsNullOrWhiteSpace(ev.Description))
+  {
+    <article class="card">
+      <h3>Descripción</h3>
+      <p style="white-space:pre-line">@ev.Description</p>
+    </article>
+  }
+
+  <article class="card">
+    <h3>Mi asistencia</h3>
+    <form asp-action="UpdateMyAttendance" method="post" class="row-form">
+      @Html.AntiForgeryToken()
+      <input type="hidden" name="id" value="@ev.Id" />
+      @{
+          var currentStr = myStatus.ToString() ?? "No";
+      }
+      <select name="status" class="input input-sm">
+        <option value="Yes" selected="@(currentStr == "Yes" ? "selected" : null)">Sí</option>
+        <option value="Maybe" selected="@(currentStr == "Maybe" ? "selected" : null)">Pendiente</option>
+        <option value="No" selected="@(currentStr == "No" ? "selected" : null)">No</option>
+      </select>
+      <button class="btn btn-sm" type="submit">Guardar</button>
+    </form>
+  </article>
+</section>

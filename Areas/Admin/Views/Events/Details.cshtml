@@ -15,6 +15,14 @@
           <span class="sep">·</span><span class="loc">@Model.Event.Location</span>
         }
       </div>
+      @if (!string.IsNullOrWhiteSpace(Model.Event.Description))
+        {
+          <div class="desc card" style="margin-top:1rem;">
+            <h3>Descripción</h3>
+            <p style="white-space:pre-line">@Model.Event.Description</p>
+          </div>
+        }
+
     </div>
     <div class="actions">
       <a class="btn btn-ghost" asp-action="Index">Volver</a>
