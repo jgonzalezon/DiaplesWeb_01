@@ -1,0 +1,86 @@
+@model DiaplesWeb.Models.ViewModels.EventDetailsViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Detalles evento";
+}
+
+<section class="event-details">
+  <div class="header">
+    <div>
+      <h2>@Model.Event.Title</h2>
+      <div class="meta">
+        <span class="date">@Model.Event.Date.ToString("dd/MM/yyyy HH:mm")</span>
+        @if (!string.IsNullOrWhiteSpace(Model.Event.Location))
+        {
+          <span class="sep">·</span><span class="loc">@Model.Event.Location</span>
+        }
+      </div>
+    </div>
+    <div class="actions">
+      <a class="btn btn-ghost" asp-action="Index">Volver</a>
+      <a class="btn" asp-action="Create">+ Nuevo</a>
+    </div>
+  </div>
+
+  @if (TempData["ok"] is string ok)
+  {
+      <div class="alert-success">@ok</div>
+  }
+  @if (TempData["MsgError"] is string err)
+  {
+      <div class="alert-danger">@err</div>
+  }
+
+  <div class="card">
+    <h3>Asistencia</h3>
+    @if (Model.Rows == null || !Model.Rows.Any())
+    {
+        <p class="muted">No hay usuarios registrados.</p>
+    }
+    else
+    {
+      <div class="table-wrap">
+        <table class="table table-dark table-hover align-middle">
+          <thead>
+            <tr>
+              <th style="width:25%">Usuario</th>
+              <th style="width:20%">Teléfono</th>
+              <th style="width:25%">Email</th>
+              <th style="width:20%">Asistencia</th>
+              <th style="width:10%"></th>
+            </tr>
+          </thead>
+          <tbody>
+          @foreach (var r in Model.Rows)
+          {
+            <tr>
+              <td>@(r.UserName ?? "—")</td>
+              <td>@(string.IsNullOrWhiteSpace(r.PhoneNumber) ? "—" : r.PhoneNumber)</td>
+              <td>@(string.IsNullOrWhiteSpace(r.Email) ? "—" : r.Email)</td>
+              <td>
+                <form asp-action="UpdateAttendance" method="post" class="row-form">
+                  @Html.AntiForgeryToken()
+                  <input type="hidden" name="id" value="@Model.Event.Id" />
+                  <input type="hidden" name="userId" value="@r.UserId" />
+@{
+    // Valor actual; por si acaso, caemos a "No"
+                        var currentStr = (r?.Status.ToString()) ?? "No"; // "Yes" | "Maybe" | "No"
+                    }
+                    <select name="status" class="input input-sm">
+                    <option value="Yes" selected="@(currentStr == "Yes" ? "selected" : null)">Sí</option>
+                    <option value="Maybe" selected="@(currentStr == "Maybe" ? "selected" : null)">Pendiente</option>
+                    <option value="No" selected="@(currentStr == "No" ? "selected" : null)">No</option>
+                    </select>
+                  <button class="btn btn-sm" type="submit">Guardar</button>
+                </form>
+              </td>
+              <td></td>
+            </tr>
+          }
+          </tbody>
+        </table>
+      </div>
+    }
+  </div>
+</section>
+

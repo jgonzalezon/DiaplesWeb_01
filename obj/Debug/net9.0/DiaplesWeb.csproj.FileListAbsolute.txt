@@ -413,4 +413,4 @@ C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.pdb
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.genruntimeconfig.cache
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\ref\DiaplesWeb.dll
-C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-sf6736mxit.gz
+C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-pqptn05u8w.gz

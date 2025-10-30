@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using DiaplesWeb.Data;
+using DiaplesWeb.Models;
+
 
 namespace DiaplesWeb.Areas.Admin.Controllers
 {

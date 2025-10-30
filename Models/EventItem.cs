@@ -1,4 +1,6 @@
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace DiaplesWeb.Models
 {
@@ -14,5 +16,8 @@ namespace DiaplesWeb.Models
 
         [Required, StringLength(160)]
         public string Location { get; set; } = string.Empty;
+
+        // (añadiremos después la navegación)
+        public ICollection<Attendance>? Attendances { get; set; }
     }
 }

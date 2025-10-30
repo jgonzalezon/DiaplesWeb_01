@@ -1,0 +1,111 @@
+@model List<DiaplesWeb.Models.EventItem>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Eventos";
+}
+
+<section class="admin-events">
+  <div class="grid-2col">
+    <!-- Columna izquierda: Lista -->
+    <aside class="panel-left">
+      <div class="panel-header">
+        <h2 class="title">Eventos</h2>
+        <a class="btn btn-primary" asp-action="Create">+ Nuevo</a>
+      </div>
+
+      @if (Model == null || !Model.Any())
+      {
+          <p class="muted">No hay eventos todavía.</p>
+      }
+      else
+      {
+        <ul class="event-list">
+          @foreach (var e in Model)
+          {
+              var isPast = e.Date < DateTime.Now;
+              <li class="event-item @(isPast ? "is-past" : "")">
+                <div class="event-main">
+                  <a asp-action="Details" asp-route-id="@e.Id">
+                    <strong>@e.Title</strong>
+                  </a>
+                  <div class="meta">
+                    <span class="date">@e.Date.ToString("dd/MM/yyyy HH:mm")</span>
+                    @if (!string.IsNullOrWhiteSpace(e.Location))
+                    {
+                      <span class="sep">·</span>
+                      <span class="loc">@e.Location</span>
+                    }
+                  </div>
+                </div>
+                <div class="event-actions">
+                  <a class="btn btn-sm" asp-action="Details" asp-route-id="@e.Id">Detalles</a>
+                </div>
+              </li>
+          }
+        </ul>
+      }
+    </aside>
+
+    <!-- Columna derecha: Calendario -->
+    <section class="panel-right">
+      <h2 class="title">Calendario</h2>
+      <div id="calendar"></div>
+    </section>
+  </div>
+</section>
+
+
+
+  <!-- FullCalendar CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+  <!-- FullCalendar JS (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var calendarEl = document.getElementById('calendar');
+      if (!calendarEl) return;
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        height: 'auto',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+        },
+        // Pide al backend solo lo visible (start/end vienen del propio FC)
+        events: function (info, successCallback, failureCallback) {
+          var url = '@Url.Action("CalendarFeed", "Events", new { area = "Admin" })';
+          var params = new URLSearchParams({
+            start: info.startStr,
+            end: info.endStr
+          });
+          fetch(url + '?' + params.toString(), { credentials: 'include' })
+            .then(r => r.json())
+            .then(data => successCallback(data))
+            .catch(err => failureCallback(err));
+        },
+        eventClick: function (info) {
+          // Permite navegar al Details (el feed ya trae 'url')
+          if (info.event.url) {
+            window.location.href = info.event.url;
+            info.jsEvent.preventDefault();
+          }
+        },
+        // Opcional: tooltip simple con la location
+        eventDidMount: function (info) {
+          var loc = info.event.extendedProps?.location;
+          if (loc) {
+            info.el.setAttribute('title', loc);
+          }
+        }
+      });
+
+      calendar.render();
+    });
+  </script>
+}
