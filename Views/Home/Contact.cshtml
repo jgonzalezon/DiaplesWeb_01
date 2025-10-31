@@ -1,9 +1,10 @@
 @model DiaplesWeb.Models.ContactViewModel
 @{
     ViewData["Title"] = "Contacto";
+    ViewData["BodyClass"] = "page-contact";  // 👈 activa el CSS específico
 }
 
-<div class="container">
+<div class="container contact-page">
     <header class="section-head">
         <h2 class="section-title">Contacto</h2>
         <p class="section-sub">Escríbenos para contrataciones, dudas o para unirte a la tribu diablera.</p>
@@ -22,27 +23,16 @@
                 <strong>Correo:</strong> <a href="mailto:diaples@diaples.es">diaples@diaples.es</a><br />
                 <strong>Web:</strong> <a href="https://www.diaples.es" target="_blank" rel="noopener">www.diaples.es</a>
             </p>
-        <div class="contact-card__social">
-            <a href="https://es-es.facebook.com/osdiaples/"
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="chip">
-            Facebook
-            </a>
-            <a href="https://www.youtube.com/user/osdiaplesdauerba"
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="chip">
-            YouTube
-            </a>
-        </div>
+            <div class="contact-card__social">
+                <a href="https://es-es.facebook.com/osdiaples/" target="_blank" rel="noopener noreferrer" class="chip">Facebook</a>
+                <a href="https://www.youtube.com/user/osdiaplesdauerba" target="_blank" rel="noopener noreferrer" class="chip">YouTube</a>
+            </div>
             <p class="contact-card__hint">También puedes encontrarnos en nuestros ensayos los jueves al anochecer.</p>
         </aside>
 
         <div class="form-card">
             <form asp-action="Contact" method="post" class="form">
                 @Html.AntiForgeryToken()
-
                 <div asp-validation-summary="ModelOnly" class="val-summary"></div>
 
                 <div class="form-grid">
@@ -78,9 +68,68 @@
         </div>
     </div>
 
-    <p class="contact-footnote">Comparte material gráfico, propuestas de actuaciones o simplemente salúdanos. ¡Nos encanta el fuego y la buena compañía!</p>
+    <p class="contact-footnote">
+        Comparte material gráfico, propuestas de actuaciones o simplemente salúdanos.
+        ¡Nos encanta el fuego y la buena compañía!
+    </p>
 </div>
 
-@section Scripts{
+@section Styles {
+<style>
+  /* ——— Ampliar y centrar SOLO en la vista de Contacto ——— */
+  .page-contact .page-content {
+    max-width: 1200px !important;
+    width: min(92vw, 1200px) !important;
+    margin-inline: auto !important;
+    padding-inline: 0;
+    position: relative;
+  }
+
+  /* Si el layout pinta un fondo oscuro, lo desactivamos aquí */
+  .page-contact .page-content::before {
+    content: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Estilo de la tarjeta principal */
+  .contact-page {
+    max-width: 1100px;
+    width: min(92vw, 1100px);
+    margin-inline: auto;
+    position: relative;
+    padding: 24px;
+  }
+  .contact-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: rgba(12,16,22,.72);
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.04),
+      0 12px 40px rgba(0,0,0,.45);
+    z-index: 0;
+  }
+  .contact-page > * { position: relative; z-index: 1; }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 2rem;
+  }
+
+  @@media (max-width: 900px) {
+    .page-contact .page-content,
+    .contact-page {
+      width: 96vw;
+      max-width: 96vw;
+    }
+    .contact-layout { grid-template-columns: 1fr; }
+  }
+</style>
+}
+
+@section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

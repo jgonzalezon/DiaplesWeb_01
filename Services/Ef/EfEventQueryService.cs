@@ -1,0 +1,49 @@
+// Infrastructure layer (por ejemplo en /Services/Ef)
+using DiaplesWeb.Data;
+using DiaplesWeb.Models;
+using Microsoft.EntityFrameworkCore;
+
+
+public class EfEventQueryService : IEventQueryService
+{
+    private readonly ApplicationDbContext _db;
+    private readonly IAttendanceService _attendance;
+    public EfEventQueryService(ApplicationDbContext db, IAttendanceService attendance)
+    {
+        _db = db; _attendance = attendance;
+    }
+
+    public Task<List<EventItem>> GetAllOrderedAsync()
+        => _db.Events.OrderBy(e => e.Date).ToListAsync();
+
+    public Task<EventItem?> FindAsync(int id)
+        => _db.Events.FirstOrDefaultAsync(e => e.Id == id);
+
+    public async Task<List<CalendarItemDto>> GetCalendarAsync(
+        DateTime from, DateTime to, string userId, Func<int, string> linkBuilder)
+    {
+        var myStatuses = await _attendance.GetStatusesAsync(userId);
+
+        var items = await _db.Events
+            .Where(e => e.Date >= from && e.Date <= to)
+            .OrderBy(e => e.Date)
+            .Select(e => new { e.Id, e.Title, e.Date, e.Location })
+            .ToListAsync();
+
+        return items.Select(e =>
+        {
+            var status = myStatuses.TryGetValue(e.Id, out var s) ? s : AttendanceStatus.No;
+            var cls = status switch
+            {
+                AttendanceStatus.Yes => "att-yes",
+                AttendanceStatus.Maybe => "att-maybe",
+                _ => "att-no"
+            };
+            return new CalendarItemDto(
+                e.Id, e.Title, e.Date, e.Location, status,
+                new[] { cls },
+                new { location = e.Location, status = status.ToString(), url = linkBuilder(e.Id) }
+            );
+        }).ToList();
+    }
+}

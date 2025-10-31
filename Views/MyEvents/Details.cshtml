@@ -11,10 +11,10 @@
 <section class="event-details page">
   <div class="header">
     <div>
-      <h2>@ev.Title</h2>
+      <h2>@ev?.Title</h2>
       <div class="meta">
-        <span class="date">@ev.Date.ToString("dd/MM/yyyy HH:mm")</span>
-        @if (!string.IsNullOrWhiteSpace(ev.Location))
+        <span class="date">@ev?.Date.ToString("dd/MM/yyyy HH:mm")</span>
+        @if (!string.IsNullOrWhiteSpace(ev?.Location))
         {
           <span class="sep">·</span><span class="loc">@ev.Location</span>
         }
@@ -25,11 +25,11 @@
     </div>
   </div>
 
-  @if (!string.IsNullOrWhiteSpace(ev.Description))
+  @if (!string.IsNullOrWhiteSpace(ev?.Description))
   {
     <article class="card">
       <h3>Descripción</h3>
-      <p style="white-space:pre-line">@ev.Description</p>
+      <p style="white-space:pre-line">@ev?.Description</p>
     </article>
   }
 
@@ -37,7 +37,7 @@
     <h3>Mi asistencia</h3>
     <form asp-action="UpdateMyAttendance" method="post" class="row-form">
       @Html.AntiForgeryToken()
-      <input type="hidden" name="id" value="@ev.Id" />
+      <input type="hidden" name="id" value="@ev?.Id" />
       @{
           var currentStr = myStatus.ToString() ?? "No";
       }

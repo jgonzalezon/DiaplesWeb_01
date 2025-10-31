@@ -34,7 +34,8 @@ builder.Services
     })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-
+builder.Services.AddScoped<IAttendanceService, EfAttendanceService>();
+builder.Services.AddScoped<IEventQueryService, EfEventQueryService>();
 
 
 var app = builder.Build();

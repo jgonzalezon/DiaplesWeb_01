@@ -1,6 +1,7 @@
 @model List<DiaplesWeb.Models.EventItem>
 @{
     ViewData["Title"] = "Mis eventos";
+    ViewData["BodyClass"] = "page-myevents";
     var myStatuses = ViewBag.MyStatuses as Dictionary<int, DiaplesWeb.Models.AttendanceStatus>;
 }
 
@@ -35,7 +36,9 @@
               var anchorId = $"event-{e.Id}";
               <li class="event-item" id="@anchorId">
                 <div class="event-info">
-                  <strong>@e.Title</strong>
+                  <a class="event-title" asp-action="Details" asp-route-id="@e.Id">
+                    <strong>@e.Title</strong>
+                  </a>
                   <div class="meta">
                     <span class="date">@e.Date.ToString("dd/MM/yyyy HH:mm")</span>
                     @if (!string.IsNullOrWhiteSpace(e.Location))
@@ -43,13 +46,10 @@
                       <span class="sep">·</span><span class="loc">@e.Location</span>
                     }
                   </div>
-                   @* 👇 Descripción (resumen de 2 líneas) *@
                   @if (!string.IsNullOrWhiteSpace(e.Description))
                   {
                     <p class="desc-clamp">@e.Description</p>
                   }
-
-                  <a class="link-details" asp-action="Details" asp-route-id="@e.Id">Ver detalles</a>
                 </div>
 
                 
@@ -120,4 +120,75 @@
       calendar.render();
     });
   </script>
+}
+
+
+@section Styles {
+<style>
+  /* ———  A. Layout: centrar y ampliar SOLO en MyEvents ——— */
+  .page-myevents .page-content {
+    /* el wrapper del layout se centra y se hace más ancho */
+    max-width: 1200px;                 /* ⬅️ ajusta a tu gusto */
+    width: min(92vw, 1200px);
+    margin-inline: auto;
+    padding-inline: 0;                 /* elimina padding lateral si lo tuviera */
+    position: relative;
+  }
+
+  /* Si el layout usa otro contenedor interno, lo igualamos */
+  .page-myevents .page-content > .container,
+  .page-myevents .page-content > .content,
+  .page-myevents .page-content > .content-frame,
+  .page-myevents .page-content > .content-shell {
+    max-width: inherit;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  /* Si el layout pinta un fondo oscuro con ::before, lo apagamos aquí */
+  .page-myevents .page-content::before,
+  .page-myevents .content-frame::before,
+  .page-myevents .content-shell::before {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* ———  B. Tu bloque MyEvents (fondo + grid) ——— */
+  .my-events {
+    max-width: 1100px;                 /* el tamaño que comentas */
+    width: min(92vw, 1100px);
+    margin-inline: auto;
+    position: relative;
+    padding: 16px;
+  }
+  .my-events::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: rgba(12,16,22,.72);
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.04),
+      0 12px 40px rgba(0,0,0,.45);
+    z-index: 0;
+  }
+  .my-events > *{ position: relative; z-index: 1; }
+
+  /* Izquierda 0.5fr / derecha 1fr como tienes ahora */
+  .my-events .grid-2col{
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    gap: 2rem;
+  }
+
+  /* Botón debajo del select */
+  .my-events .attendance-form{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: flex-start;
+  }
+
+
+</style>
 }

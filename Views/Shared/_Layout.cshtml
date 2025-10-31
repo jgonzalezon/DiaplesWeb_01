@@ -11,13 +11,14 @@
     <meta name="description" content="Os Diaples d'a Uerba · Espectáculos de fuego, animación y tradición aragonesa. Conoce a la tribu diablera y cómo contactar con nosotros.">
     <link rel="icon" type="image/ico" href="~/favicon.ico" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    @RenderSection("Styles", required: false)
 
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     
 </head>
 
 
-<body>
+<body class="@(ViewData["BodyClass"] ?? "")">
 
 
     <!-- Fondo fijo para toda la web (quedará después del intro) -->
@@ -192,6 +193,7 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const introMedia = document.querySelector(".intro__media");
+  if (!introMedia) return;
   const gifURL = "/img/Inicio/fondoDiaples.gif";
 
   // Preload del GIF
