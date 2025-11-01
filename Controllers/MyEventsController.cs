@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using DiaplesWeb.Models;
+using DiaplesWeb.Services.Contracts;  
+
 
 [Authorize]
 public class MyEventsController : Controller
@@ -21,27 +23,38 @@ public class MyEventsController : Controller
     }
 
     // GET: /MyEvents
-    public async Task<IActionResult> Index()
+    // GET: /MyEvents?page=1
+    public async Task<IActionResult> Index(int page = 1)
     {
+        const int pageSize = 4;
         var userId = _userManager.GetUserId(User);
         if (userId is null) return Challenge();
 
-        var events = await _events.GetAllOrderedAsync();
+        var (items, total) = await _events.GetPagedAsync(page, pageSize);
         ViewBag.MyStatuses = await _attendance.GetStatusesAsync(userId);
-        return View(events);
+
+        var vm = new DiaplesWeb.Models.ViewModels.PagedEventsViewModel
+        {
+            Events = items,
+            Page = page,
+            PageSize = pageSize,
+            TotalCount = total
+        };
+        return View(vm);
     }
 
     // POST: /MyEvents/UpdateMyAttendance
     [HttpPost, ValidateAntiForgeryToken]
-    public async Task<IActionResult> UpdateMyAttendance(int id, AttendanceStatus status)
+    public async Task<IActionResult> UpdateMyAttendance(int id, AttendanceStatus status, int? page)
     {
         var userId = _userManager.GetUserId(User);
         if (userId is null) return Challenge();
 
         await _attendance.UpdateAsync(id, userId, status);
         TempData["ok"] = "Tu asistencia se ha actualizado.";
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Index), new { page = page ?? 1 });
     }
+
 
     // GET: /MyEvents/Details/5
     [HttpGet]

@@ -1,4 +1,4 @@
-@model List<DiaplesWeb.Models.EventItem>
+@model DiaplesWeb.Models.ViewModels.PagedEventsViewModel
 @{
     ViewData["Title"] = "Mis eventos";
     ViewData["BodyClass"] = "page-myevents";
@@ -22,14 +22,14 @@
           <div class="alert-success">@ok</div>
       }
 
-      @if (Model == null || !Model.Any())
+      @if (Model == null || !Model.Events.Any())
       {
           <p class="muted">No hay eventos disponibles.</p>
       }
       else
       {
         <ul class="event-list">
-          @foreach (var e in Model)
+          @foreach (var e in Model.Events)
           {
               var current = myStatuses != null && myStatuses.TryGetValue(e.Id, out var s)
                             ? s : DiaplesWeb.Models.AttendanceStatus.No;
@@ -72,6 +72,38 @@
           }
         </ul>
       }
+
+      <!-- Paginador -->
+<nav class="pager" aria-label="Paginación">
+  <ul class="pager-list">
+    <li>
+      <a class="@($"pager-btn {(Model?.Page == 1 ? "is-disabled" : "")}")"
+         asp-action="Index"
+         asp-route-page="@(Model?.Page - 1 ?? 0)">
+        Anterior
+      </a>
+    </li>
+
+    @for (int i = 1; i <= Model?.TotalPages; i++)
+    {
+      <li>
+        <a class="@($"pager-btn {(i == Model.Page ? "is-active" : "")}")"
+           asp-action="Index"
+           asp-route-page="@i">
+          @i
+        </a>
+      </li>
+    }
+
+    <li>
+      <a class="@($"pager-btn {(Model?.Page >= Model?.TotalPages ? "is-disabled" : "")}")"
+         asp-action="Index"
+         asp-route-page="@(Model?.Page + 1)">
+        Siguiente
+      </a>
+    </li>
+  </ul>
+</nav>
     </aside>
 
     <!-- Calendario -->

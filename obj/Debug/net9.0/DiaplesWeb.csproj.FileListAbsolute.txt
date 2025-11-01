@@ -413,6 +413,7 @@ C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.pdb
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.genruntimeconfig.cache
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\ref\DiaplesWeb.dll
+C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-qvd433a5cf.gz
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\appsettings.json
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\DiaplesWeb.staticwebassets.runtime.json
@@ -751,6 +752,7 @@ C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\nezrqn
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\v0zgfp0y55-87fc7y1x7t.gz
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\qk2go5lc20-gc4za6dy2w.gz
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-qvd433a5cf.gz
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\gsc57r7cij-wicygw73mt.gz
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\js993n93b3-xtxxf3hu2r.gz
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\85dany85an-t1cqhe9u97.gz
@@ -829,5 +831,3 @@ C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\refint\DiaplesWeb
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.pdb
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.genruntimeconfig.cache
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\ref\DiaplesWeb.dll
-C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-44exw38375.gz
-C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-qvd433a5cf.gz

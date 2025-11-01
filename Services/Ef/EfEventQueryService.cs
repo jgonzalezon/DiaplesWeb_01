@@ -1,6 +1,7 @@
 // Infrastructure layer (por ejemplo en /Services/Ef)
 using DiaplesWeb.Data;
 using DiaplesWeb.Models;
+using DiaplesWeb.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -46,4 +47,17 @@ public class EfEventQueryService : IEventQueryService
             );
         }).ToList();
     }
+
+public async Task<(List<EventItem> Items, int TotalCount)> GetPagedAsync(int page, int pageSize)
+{
+    if (page < 1) page = 1;
+    var query = _db.Events.OrderBy(e => e.Date);
+    var total = await query.CountAsync();
+    var items = await query
+        .Skip((page - 1) * pageSize)
+        .Take(pageSize)
+        .ToListAsync();
+    return (items, total);
+}
+
 }

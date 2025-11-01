@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System;
 using System.IO;
 using DiaplesWeb.Data;
+using DiaplesWeb.Services.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
