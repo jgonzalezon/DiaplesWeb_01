@@ -371,3 +371,28 @@ appearance: none;
 /* Ajuste de imágenes globales (seguridad) */
 img[width],img[height]{height:auto!important;max-width:100%!important}
 
+.btn-danger { background:#c0392b; color:#fff; }
+.btn-danger:hover { filter:brightness(1.1); }
+.actions { display:flex; gap:.5rem; align-items:center;}
+
+/* === Mantener footer al fondo de la página === */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* altura mínima = alto de la ventana */
+}
+
+/* el contenido principal se expande y empuja el footer abajo */
+.page-content {
+  flex: 1 0 auto;
+}
+
+/* el footer siempre se queda al final */
+footer {
+  flex-shrink: 0;
+}

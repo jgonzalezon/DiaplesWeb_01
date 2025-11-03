@@ -164,5 +164,40 @@ namespace DiaplesWeb.Areas.Admin.Controllers
             TempData["ok"] = "Asistencia actualizada.";
             return RedirectToAction(nameof(Details), new { id });
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var ev = await _db.Events.FindAsync(id);
+            if (ev == null)
+            {
+                TempData["MsgError"] = "El evento no existe o ya fue borrado.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Eliminar asistencias asociadas (por si no hay cascade)
+            var att = await _db.Attendances
+                .Where(a => a.EventId == id)
+                .ToListAsync();
+            if (att.Count > 0)
+                _db.Attendances.RemoveRange(att);
+
+            _db.Events.Remove(ev);
+
+            try
+            {
+                await _db.SaveChangesAsync();
+                TempData["ok"] = "Evento borrado correctamente.";
+            }
+            catch (DbUpdateException)
+            {
+                TempData["MsgError"] = "No se pudo borrar el evento. Revisa dependencias.";
+                return RedirectToAction(nameof(Details), new { id });
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

@@ -27,6 +27,12 @@
     <div class="actions">
       <a class="btn btn-ghost" asp-action="Index">Volver</a>
       <a class="btn" asp-action="Create">+ Nuevo</a>
+        <form asp-action="Delete" method="post" style="display:inline"
+        onsubmit="return confirm('¿Seguro que quieres borrar este evento? Se eliminarán también las asistencias.');">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" value="@Model.Event.Id" />
+    <button type="submit" class="btn btn-danger">Borrar</button>
+  </form>
     </div>
   </div>
 
