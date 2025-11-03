@@ -14,8 +14,15 @@ public class EfEventQueryService : IEventQueryService
         _db = db; _attendance = attendance;
     }
 
-    public Task<List<EventItem>> GetAllOrderedAsync()
-        => _db.Events.OrderBy(e => e.Date).ToListAsync();
+public Task<List<EventItem>> GetAllOrderedAsync()
+{
+    var now = DateTime.Now;
+    return _db.Events
+        .AsNoTracking()
+        .Where(e => e.Date >= now)
+        .OrderBy(e => e.Date)
+        .ToListAsync();
+}
 
     public Task<EventItem?> FindAsync(int id)
         => _db.Events.FirstOrDefaultAsync(e => e.Id == id);
@@ -51,12 +58,22 @@ public class EfEventQueryService : IEventQueryService
 public async Task<(List<EventItem> Items, int TotalCount)> GetPagedAsync(int page, int pageSize)
 {
     if (page < 1) page = 1;
-    var query = _db.Events.OrderBy(e => e.Date);
+    if (pageSize < 1) pageSize = 4;
+
+    // Solo eventos futuros (o de hoy en adelante)
+    var now = DateTime.Now;
+
+    var query = _db.Events
+        .AsNoTracking()
+        .Where(e => e.Date >= now)       //  excluye pasados
+        .OrderBy(e => e.Date);
+
     var total = await query.CountAsync();
     var items = await query
         .Skip((page - 1) * pageSize)
         .Take(pageSize)
         .ToListAsync();
+
     return (items, total);
 }
 

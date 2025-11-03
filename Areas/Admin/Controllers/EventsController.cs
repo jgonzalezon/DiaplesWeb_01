@@ -4,11 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DiaplesWeb.Data;
 using DiaplesWeb.Models;
-using System.Globalization;
 using DiaplesWeb.Models.ViewModels;
-using System.Linq;
-
-
+using DiaplesWeb.Services.Contracts;   // 👈 usa los servicios
+using System.Globalization;
 
 namespace DiaplesWeb.Areas.Admin.Controllers
 {
@@ -18,56 +16,64 @@ namespace DiaplesWeb.Areas.Admin.Controllers
     {
         private readonly ApplicationDbContext _db;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly IEventQueryService _events;   // 👈 consultas de eventos (paginado, calendario)
 
-        public EventsController(ApplicationDbContext db, UserManager<IdentityUser> userManager)
+        public EventsController(
+            ApplicationDbContext db,
+            UserManager<IdentityUser> userManager,
+            IEventQueryService events)
         {
             _db = db;
             _userManager = userManager;
+            _events = events;
         }
 
-        // ====== NUEVO: Lista izquierda + Calendario derecha ======
+        // ====== LISTA + PAGINACIÓN (4 por página) ======
+        // GET: /Admin/Events?page=1
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            // Lista de eventos (próximos primero), muestra también los pasados ordenados por fecha descendente al final
-            var events = await _db.Events
-                .OrderBy(e => e.Date >= DateTime.Now ? 0 : 1) // primero próximos (0), luego pasados (1)
-                .ThenBy(e => e.Date)
-                .ToListAsync();
+            const int pageSize = 4;
+            // Reutiliza el mismo filtrado que en usuarios (futuros / hoy en adelante)
+            var (items, total) = await _events.GetPagedAsync(page, pageSize);
 
-            return View(events);
+            var vm = new PagedEventsViewModel
+            {
+                Events = items,
+                Page = page,
+                PageSize = pageSize,
+                TotalCount = total
+            };
+            return View(vm);
         }
 
-        // ====== NUEVO: Feed JSON para FullCalendar ======
-        // FullCalendar envía normalmente ?start=YYYY-MM-DD&end=YYYY-MM-DD (rango visible)
+        // ====== FEED JSON PARA FULLCALENDAR ======
         [HttpGet]
         public async Task<IActionResult> CalendarFeed([FromQuery] DateTime? start, [FromQuery] DateTime? end)
         {
-            // Rango de seguridad por si no llega start/end
-            var from = start?.Date ?? DateTime.UtcNow.Date.AddMonths(-1);
-            var to   = end?.Date   ?? DateTime.UtcNow.Date.AddMonths(2);
+            var from = start?.Date ?? DateTime.UtcNow.AddMonths(-1);
+            var to   = end?.Date   ?? DateTime.UtcNow.AddMonths(2);
 
-            // Filtra por rango visible (mejor rendimiento)
-            var items = await _db.Events
-                .Where(e => e.Date >= from && e.Date <= to)
-                .OrderBy(e => e.Date)
-                .Select(e => new
-                {
-                    id = e.Id,
-                    title = e.Title,
-                    start = e.Date.ToString("o", CultureInfo.InvariantCulture), // ISO 8601
-                    url = Url.Action("Details", "Events", new { area = "Admin", id = e.Id }),
-                    extendedProps = new
-                    {
-                        location = e.Location
-                    }
-                })
-                .ToListAsync();
+            // Para admin no necesitamos colorear por asistencia, pero podemos reutilizar el service:
+            var items = await _events.GetCalendarAsync(
+                from, to, userId: _userManager.GetUserId(User) ?? string.Empty,
+                linkBuilder: (eventId) => Url.Action("Details", "Events", new { area = "Admin", id = eventId })!
+            );
 
-            return Ok(items);
+            var shaped = items.Select(i => new
+            {
+                id = i.Id,
+                title = i.Title,
+                start = i.Date.ToString("o"),
+                url = (i.ExtendedProps as dynamic).url,
+                extendedProps = new { location = i.Location },
+                classNames = i.ClassNames
+            });
+
+            return Ok(shaped);
         }
 
-        // ========== Ya tenías Create GET/POST; los mantenemos ==========
+        // ====== CREATE ======
         [HttpGet]
         public IActionResult Create() => View(new EventItem { Date = DateTime.Now });
 
@@ -80,7 +86,7 @@ namespace DiaplesWeb.Areas.Admin.Controllers
             _db.Events.Add(model);
             await _db.SaveChangesAsync();
 
-            // Si ya tienes Attendance y sembrado, deja este bloque:
+            // (Opcional) crear asistencia "No" para todos los usuarios
             var users = await _userManager.Users.AsNoTracking().ToListAsync();
             var rows = users.Select(u => new Attendance
             {
@@ -96,78 +102,67 @@ namespace DiaplesWeb.Areas.Admin.Controllers
             return RedirectToAction(nameof(Create));
         }
 
+        // ====== DETAILS (admin ve todas las asistencias) ======
         [HttpGet]
-[HttpGet]
-public async Task<IActionResult> Details(int id)
-{
-    var ev = await _db.Events.FindAsync(id);
-    if (ev == null) return NotFound();
-
-    // Traemos todas las asistencias de ese evento
-    var attendance = await _db.Attendances
-        .Where(a => a.EventId == id)
-        .ToListAsync();
-
-    // Todos los usuarios registrados
-    var users = await _userManager.Users.AsNoTracking().ToListAsync();
-
-    // Construimos las filas uniendo Users + Attendance (LEFT JOIN manual)
-    var rows = users.Select(u =>
-    {
-        var att = attendance.FirstOrDefault(a => a.UserId == u.Id);
-        return new AttendanceRowVM
+        public async Task<IActionResult> Details(int id)
         {
-            UserId = u.Id,
-            UserName = u.UserName,
-            Email = u.Email,
-            PhoneNumber = u.PhoneNumber,
-            Status = att?.Status ?? AttendanceStatus.No // si no hay registro, se da por No
-        };
-    })
-    .OrderBy(r => r.Status == AttendanceStatus.Yes ? 0 :
-                  r.Status == AttendanceStatus.Maybe ? 1 : 2)
-    .ThenBy(r => r.UserName)
-    .ToList();
+            var ev = await _db.Events.FindAsync(id);
+            if (ev == null) return NotFound();
 
-    var vm = new EventDetailsViewModel
-    {
-        Event = ev,
-        Rows = rows
-    };
+            var attendance = await _db.Attendances
+                .Where(a => a.EventId == id)
+                .ToListAsync();
 
-    return View(vm);
-}
+            var users = await _userManager.Users.AsNoTracking().ToListAsync();
 
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> UpdateAttendance(int id, string userId, AttendanceStatus status)
-    {
-        // id = EventId
-        var row = await _db.Attendances.FindAsync(id, userId);
-        if (row == null)
-        {
-            // Crear el registro si no existía
-            row = new Attendance
+            var rows = users.Select(u =>
             {
-                EventId = id,
-                UserId = userId,
-                Status = status,
-                UpdatedAt = DateTime.UtcNow
-            };
-            _db.Attendances.Add(row);
-        }
-        else
-        {
-            // Actualizar si ya existe
-            row.Status = status;
-            row.UpdatedAt = DateTime.UtcNow;
-            _db.Attendances.Update(row);
+                var att = attendance.FirstOrDefault(a => a.UserId == u.Id);
+                return new AttendanceRowVM
+                {
+                    UserId = u.Id,
+                    UserName = u.UserName,
+                    Email = u.Email,
+                    PhoneNumber = u.PhoneNumber,
+                    Status = att?.Status ?? AttendanceStatus.No
+                };
+            })
+            .OrderBy(r => r.Status == AttendanceStatus.Yes ? 0 :
+                          r.Status == AttendanceStatus.Maybe ? 1 : 2)
+            .ThenBy(r => r.UserName)
+            .ToList();
+
+            var vm = new EventDetailsViewModel { Event = ev, Rows = rows };
+            return View(vm);
         }
 
-        await _db.SaveChangesAsync();
-        TempData["ok"] = "Asistencia actualizada.";
-        return RedirectToAction(nameof(Details), new { id });
-    }
+        // ====== UPDATE asistencia de un usuario en este evento ======
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateAttendance(int id, string userId, AttendanceStatus status)
+        {
+            var row = await _db.Attendances.FindAsync(id, userId);
+            if (row == null)
+            {
+                row = new Attendance
+                {
+                    EventId = id,
+                    UserId = userId,
+                    Status = status,
+                    UpdatedAt = DateTime.UtcNow
+                };
+                _db.Attendances.Add(row);
+            }
+            else
+            {
+                row.Status = status;
+                row.UpdatedAt = DateTime.UtcNow;
+                _db.Attendances.Update(row);
+            }
+
+            await _db.SaveChangesAsync();
+            TempData["ok"] = "Asistencia actualizada.";
+            return RedirectToAction(nameof(Details), new { id });
+        }
     }
 }
