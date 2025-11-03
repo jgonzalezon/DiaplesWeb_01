@@ -10,6 +10,8 @@ using System;
 using System.IO;
 using DiaplesWeb.Data;
 using DiaplesWeb.Services.Contracts;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using DiaplesWeb.Services.Email;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +30,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services
     .AddDefaultIdentity<IdentityUser>(options =>
     {
-        options.SignIn.RequireConfirmedAccount = false;
+        options.SignIn.RequireConfirmedAccount = true;
         options.Password.RequiredLength = 6;
         options.Password.RequireNonAlphanumeric = false;
         options.Password.RequireUppercase = false;
@@ -37,6 +39,7 @@ builder.Services
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddScoped<IAttendanceService, EfAttendanceService>();
 builder.Services.AddScoped<IEventQueryService, EfEventQueryService>();
+builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();
 
 
 var app = builder.Build();

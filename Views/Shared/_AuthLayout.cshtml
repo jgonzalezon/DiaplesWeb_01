@@ -1,3 +1,7 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
 @{
     Layout = null;
     var title = ViewData["Title"] as string ?? "DiaplesWeb";
@@ -12,27 +16,97 @@
   <link rel="stylesheet" href="~/css/auth-dark.css" asp-append-version="true" />
 </head>
 <body class="auth-dark">
-  <header class="container py-3">
-    <div class="d-flex justify-content-between align-items-center">
-      <a class="navbar-brand text-light" asp-controller="Home" asp-action="Index">DiaplesWeb</a>
-      <nav class="d-flex gap-3">
-        <a class="link-light" asp-area="Identity" asp-page="/Account/Login">Entrar</a>
-        <a class="link-light" asp-area="Identity" asp-page="/Account/Register">Registro</a>
+  <!-- === HEADER igual que el layout principal === -->
+  <header class="nav">
+    <div class="container nav-wrap">
+      <a class="brand" asp-area="" asp-controller="Home" asp-action="Index" style="display:flex; align-items:center; gap:1px;">
+        <img src="~/img/Inicio/logo_horizontal-diaples.gif"
+             alt="Logo Os Diaples d'a Uerba"
+             style="height:50px; width:auto; border-radius:8px;" />
+      </a>
+
+      <!-- Toggle móvil -->
+      <input id="nav-toggle" type="checkbox" class="nav-toggle" />
+      <label for="nav-toggle" class="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <!-- Menú -->
+      <nav class="nav-menu">
+        <div class="nav-links">
+        <a asp-area="" asp-controller="Home" asp-action="About">Os Diaples</a>
+        <a asp-area="" asp-controller="Home" asp-action="Espectaculos">Espectáculos</a>
+        <a asp-area="" asp-controller="Home" asp-action="Galeria">Galería</a>
+        <a asp-area="" asp-controller="Home" asp-action="Contact">Contacto</a>
+        </div>
+
+        <div class="nav-actions">
+          <partial name="_LoginPartial" />
+        </div>
+
+        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+        {
+            <a href="~/Admin/Dashboard" class="btn btn-gradient">Administración</a>
+        }
+        @if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
+        {
+            <a href="~/MyEvents" class="btn btn-gradient">Eventos</a>
+        }
       </nav>
     </div>
-    <hr class="border-secondary-subtle my-2" />
   </header>
 
   <main class="container pb-5">
     @RenderBody()
   </main>
 
-  <footer class="container small text-secondary py-4">
-    &copy; @DateTime.UtcNow.Year - DiaplesWeb ·
-    <a class="link-secondary" asp-controller="Home" asp-action="Privacy">Privacy</a>
-  </footer>
+  <!-- === FOOTER igual que el layout principal === -->
+  <footer class="footer">
+    <div class="container foot">
+      <div>
+        <div class="brand" style="display:flex; align-items:center; gap:12px;">
+          <img src="~/img/Inicio/wwwdiapleses.png" 
+               alt="Logo Diaples.es" 
+               style="height:48px; width:auto; border-radius:8px;" />
+        </div>
+        <p style="margin-top:12px; color:var(--muted); line-height:1.6;">
+          Asociación Cultural dedicada a la difusión de la mitología aragonesa a través 
+          del fuego, la música y el espectáculo en la calle desde 1992.
+        </p>
+        <p style="margin-top:16px;">
+          📍 Calle Pedro Liñán 8, Zaragoza, Aragón<br />
+          📞 <a href="tel:+34656813706" style="color:var(--txt);">+34 656 813 706</a><br />
+          ✉️ <a href="mailto:diaples@diaples.es" style="color:var(--txt);">diaples@diaples.es</a>
+        </p>
+      </div>
 
+      <div>
+        <h4>Contenido</h4>
+        <a asp-controller="Home" asp-action="About">Os Diaples</a><br />
+        <a asp-controller="Home" asp-action="Espectaculos">Espectáculos</a><br />
+        <a asp-controller="Home" asp-action="Galeria">Galería</a><br />
+        <a asp-controller="Home" asp-action="Contact">Contacto</a>
+        
+        <div style="margin-top:18px; display:flex; gap:12px;">
+          <a href="https://es-es.facebook.com/osdiaples/" target="_blank" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://x.com/diaplesdauerba" target="_blank" class="social-icon">
+              <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px; text-align:center; font-size:0.9rem; color:var(--muted);">
+      © @DateTime.Now.Year · Os Diaples d'a Uerba · Todos los derechos reservados · 
+      <a href="https://diaples.es" style="color:var(--brand);">www.diaples.es</a>
+    </div>
+  </footer>
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
   <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  
   @RenderSection("Scripts", required: false)
 </body>
 </html>
