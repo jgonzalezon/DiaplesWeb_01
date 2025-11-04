@@ -60,69 +60,52 @@ namespace DiaplesWeb.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Required]
-            [EmailAddress]
-            public string Email { get; set; }
+            [Display(Name = "Email o usuario")]
+            public string Identifier { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Required]
             [DataType(DataType.Password)]
+            [Display(Name = "Contraseña")]
             public string Password { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Recordarme")]
             public bool RememberMe { get; set; }
         }
 
-        public async Task OnGetAsync(string returnUrl = null)
-        {
-            if (!string.IsNullOrEmpty(ErrorMessage))
+            public async Task<IActionResult> OnPostAsync(string returnUrl = null)
             {
-                ModelState.AddModelError(string.Empty, ErrorMessage);
-            }
+                returnUrl ??= Url.Content("~/");
 
-            returnUrl ??= Url.Content("~/");
+                ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
-            // Clear the existing external cookie to ensure a clean login process
-            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+                if (!ModelState.IsValid)
+                    return Page();
 
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+                // 1) Intentar encontrar por UserName
+                var user = await _signInManager.UserManager.FindByNameAsync(Input.Identifier);
 
-            ReturnUrl = returnUrl;
-        }
+                // 2) Si no existe, intentar por Email
+                if (user is null)
+                    user = await _signInManager.UserManager.FindByEmailAsync(Input.Identifier);
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
-        {
-            returnUrl ??= Url.Content("~/");
-
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-
-            if (ModelState.IsValid)
-            {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                // Permitir login con Email o con UserName
-                var userNameToSignIn = Input.Email;
-
-                // Busca por email; si existe, usa su UserName real
-                var byEmail = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
-                if (byEmail != null)
+                // 3) Si no existe ninguno → error
+                if (user is null)
                 {
-                    userNameToSignIn = byEmail.UserName!;
+                    ModelState.AddModelError(string.Empty, "Usuario o contraseña incorrectos.");
+                    return Page();
                 }
 
+                // (Opcional) Requerir email confirmado
+                // if (!await _signInManager.UserManager.IsEmailConfirmedAsync(user)) {
+                //     ModelState.AddModelError(string.Empty, "Debes confirmar tu correo antes de iniciar sesión.");
+                //     return Page();
+                // }
+
+                // 4) Iniciar sesión SIEMPRE con el UserName real
                 var result = await _signInManager.PasswordSignInAsync(
-                    userNameToSignIn, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                    user.UserName!, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
@@ -137,15 +120,10 @@ namespace DiaplesWeb.Areas.Identity.Pages.Account
                     _logger.LogWarning("User account locked out.");
                     return RedirectToPage("./Lockout");
                 }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
-                }
+
+                ModelState.AddModelError(string.Empty, "Usuario o contraseña incorrectos.");
+                return Page();
             }
 
-            // If we got this far, something failed, redisplay form
-            return Page();
-        }
     }
 }

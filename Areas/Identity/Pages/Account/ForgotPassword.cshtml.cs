@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using DiaplesWeb.Services.Email; // para el cast a SmtpEmailSender
 
 namespace DiaplesWeb.Areas.Identity.Pages.Account
 {
@@ -51,34 +52,54 @@ namespace DiaplesWeb.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var user = await _userManager.FindByEmailAsync(Input.Email);
-                if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
-                {
-                    // Don't reveal that the user does not exist or is not confirmed
-                    return RedirectToPage("./ForgotPasswordConfirmation");
-                }
+                return Page();
+            }
 
-                // For more information on how to enable account confirmation and password reset please
-                // visit https://go.microsoft.com/fwlink/?LinkID=532713
-                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                var callbackUrl = Url.Page(
-                    "/Account/ResetPassword",
-                    pageHandler: null,
-                    values: new { area = "Identity", code },
-                    protocol: Request.Scheme);
-
-                await _emailSender.SendEmailAsync(
-                    Input.Email,
-                    "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
+            var user = await _userManager.FindByEmailAsync(Input.Email);
+            if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+            {
+                // No reveles si el email existe o está confirmado
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }
 
-            return Page();
+            // Generar token y URL de reseteo
+            var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+            code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+
+            var callbackUrl = Url.Page(
+                "/Account/ResetPassword",
+                pageHandler: null,
+                values: new { area = "Identity", code },
+                protocol: Request.Scheme);
+
+            // Enviar con TU plantilla (botón + imágenes CID)
+            if (_emailSender is SmtpEmailSender senderEx)
+            {
+                await senderEx.SendTemplatedAsync(
+                    toEmail: Input.Email,
+                    subject: "Reestablecer contraseña · Os Diaples",
+                    title: "¿Necesitas reestablecer tu contraseña?",
+                    intro: "Hemos recibido una solicitud para cambiar la contraseña de tu cuenta.",
+                    body: "Si no fuiste tú, puedes ignorar este mensaje. Si fuiste tú, pulsa el botón para crear una nueva contraseña.",
+                    buttonText: "Crear contraseña nueva",
+                    buttonUrl: callbackUrl,
+                    // Usa una imagen que tengas en /wwwroot/img/Galeria/
+                    heroRel: "/img/Galeria/Diables-lonyar_Diaples_pilares2016-5066.jpg"
+                );
+            }
+            else
+            {
+                // Fallback simple en HTML
+                await _emailSender.SendEmailAsync(
+                    Input.Email,
+                    "Reestablecer contraseña · Os Diaples",
+                    $"Para reestablecer tu contraseña haz clic en <a href='{callbackUrl}'>este enlace</a>."
+                );
+            }
+
+            return RedirectToPage("./ForgotPasswordConfirmation");
         }
     }
 }
