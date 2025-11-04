@@ -17,7 +17,27 @@ var builder = WebApplication.CreateBuilder(args);
 
 // --- Servicios ---
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "Diaples API",
+        Version = "v1",
+        Description = "Endpoints públicos/privados para la web de Os Diaples d'a Uerba.",
+        Contact = new Microsoft.OpenApi.Models.OpenApiContact
+        {
+            Name = "Os Diaples d'a Uerba",
+            Url = new Uri("https://www.diaples.es")
+        },
+        License = new Microsoft.OpenApi.Models.OpenApiLicense
+        {
+            Name = "MIT",
+            Url = new Uri("https://opensource.org/licenses/MIT")
+        }
+    });
+});
+
+builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 

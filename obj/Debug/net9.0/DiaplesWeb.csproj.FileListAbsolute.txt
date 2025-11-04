@@ -829,8 +829,8 @@ C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\refint\DiaplesWeb
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.pdb
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.genruntimeconfig.cache
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\ref\DiaplesWeb.dll
-C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-gc7y5a6szw.gz
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\bin\Debug\net9.0\MailKit.dll
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\bin\Debug\net9.0\MimeKit.dll
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\qk2go5lc20-xzn560utsu.gz
+C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-nw1b64mel8.gz
