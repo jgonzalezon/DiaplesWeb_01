@@ -4,21 +4,21 @@
 
 <section class="hero">
     <div class="container" style="text-align:center">
-        <h1>@Localizer["HeroMainHeading"]</h1>
-        <p class="lead">@Localizer["HeroLeadText"]</p>
+        <h1>@Localizer["HeroMainHeading"].Value</h1>
+        <p class="lead">@Localizer["HeroLeadText"].Value</p>
 
         <figure style="margin:32px auto 16px; max-width:420px">
             <img src="~/img/Inicio/logo_diaples.jpg"
-                 alt="@Localizer["HeroLogoAlt"]"
+                 alt="@Localizer["HeroLogoAlt"].Value"
                  style="width:100%; border-radius:var(--radius); border:1px solid var(--border);" />
             <figcaption style="margin-top:8px; font-size:0.9rem; color:var(--muted)">
-                @Localizer["HeroFigureCaption"]
+                @Localizer["HeroFigureCaption"].Value
             </figcaption>
         </figure>
 
-        <p>@Localizer["HeroDescription"]</p>
+        <p>@Localizer["HeroDescription"].Value</p>
         <a class="btn" asp-controller="Home" asp-action="About" style="margin-top:24px; display:inline-block;">
-            @Localizer["HeroCta"]
+            @Localizer["HeroCta"].Value
         </a>
     </div>
 </section>
@@ -26,73 +26,73 @@
 <section style="padding:60px 0">
     <div class="container" style="display:grid; gap:32px">
         <article class="card" style="padding:32px; border-radius:var(--radius); border:1px solid var(--border); background:var(--bg-2)">
-            <h2>@Localizer["SpiritHeading"]</h2>
-            <p>@Localizer["SpiritParagraph1"]</p>
-            <p>@Localizer["SpiritParagraph2"]</p>
-            <p>@Localizer["SpiritParagraph3"]</p>
+            <h2>@Localizer["SpiritHeading"].Value</h2>
+            <p>@Localizer["SpiritParagraph1"].Value</p>
+            <p>@Localizer["SpiritParagraph2"].Value</p>
+            <p>@Localizer["SpiritParagraph3"].Value</p>
         </article>
 
         <article class="card" style="padding:32px; border-radius:var(--radius); border:1px solid var(--border); background:var(--bg-2)">
-            <h2>@Localizer["ShowsHeading"]</h2>
-            <p>@Localizer["ShowsParagraph"]</p>
+            <h2>@Localizer["ShowsHeading"].Value</h2>
+            <p>@Localizer["ShowsParagraph"].Value</p>
             <ul>
-                <li>@Localizer["ShowsListLarge"]</li>
-                <li>@Localizer["ShowsListSmall"]</li>
-                <li>@Localizer["ShowsListStreet"]</li>
-                <li>@Localizer["ShowsListAdapt"]</li>
+                <li>@Localizer["ShowsListLarge"].Value</li>
+                <li>@Localizer["ShowsListSmall"].Value</li>
+                <li>@Localizer["ShowsListStreet"].Value</li>
+                <li>@Localizer["ShowsListAdapt"].Value</li>
             </ul>
-            <p><a asp-controller="Home" asp-action="Contact">@Localizer["ShowsContactLink"]</a></p>
+            <p><a asp-controller="Home" asp-action="Contact">@Localizer["ShowsContactLink"].Value</a></p>
         </article>
 
         <article class="card" style="padding:32px; border-radius:var(--radius); border:1px solid var(--border); background:var(--bg-2)">
-            <h2>@Localizer["FeaturedHeading"]</h2>
+            <h2>@Localizer["FeaturedHeading"].Value</h2>
             <figure class="img-center">
                 <img src="~/img/Inicio/Diables-lonyar_Diaples_pilares2016-5066.jpg"
-                     alt="@Localizer["FeaturedImageAlt"]"
+                     alt="@Localizer["FeaturedImageAlt"].Value"
                      style="width:100%; max-height:340px; object-fit:cover; border-radius:var(--radius); border:1px solid var(--border);" />
                 <figcaption>
-                    @Localizer["FeaturedCaption"]
+                    @Localizer["FeaturedCaption"].Value
                 </figcaption>
             </figure>
-            <p>@Localizer["FeaturedDescription"]</p>
+            <p>@Localizer["FeaturedDescription"].Value</p>
         </article>
 
         <article class="card" style="padding:32px; border-radius:var(--radius); border:1px solid var(--border); background:var(--bg-2)">
-            <h2>@Localizer["LocationsHeading"]</h2>
-            <p>@Localizer["LocationsParagraph"]</p>
+            <h2>@Localizer["LocationsHeading"].Value</h2>
+            <p>@Localizer["LocationsParagraph"].Value</p>
             <div class="grid" style="display:grid; gap:16px">
                 <div>
-                    <h3 style="margin-bottom:8px">@Localizer["LocationsFestivals"]</h3>
+                    <h3 style="margin-bottom:8px">@Localizer["LocationsFestivals"].Value</h3>
                     <ul>
-                        <li>@Html.Raw(Localizer["LocationsFestivalsItem1"])</li>
-                        <li>@Html.Raw(Localizer["LocationsFestivalsItem2"])</li>
-                        <li>@Html.Raw(Localizer["LocationsFestivalsItem3"])</li>
-                        <li>@Html.Raw(Localizer["LocationsFestivalsItem4"])</li>
-                        <li>@Html.Raw(Localizer["LocationsFestivalsItem5"])</li>
+                        <li>@Html.Raw(Localizer["LocationsFestivalsItem1"].Value)</li>
+                        <li>@Html.Raw(Localizer["LocationsFestivalsItem2"].Value)</li>
+                        <li>@Html.Raw(Localizer["LocationsFestivalsItem3"].Value)</li>
+                        <li>@Html.Raw(Localizer["LocationsFestivalsItem4"].Value)</li>
+                        <li>@Html.Raw(Localizer["LocationsFestivalsItem5"].Value)</li>
                     </ul>
                 </div>
                 <div>
-                    <h3 style="margin-bottom:8px">@Localizer["LocationsTownFestivals"]</h3>
+                    <h3 style="margin-bottom:8px">@Localizer["LocationsTownFestivals"].Value</h3>
                     <ul>
-                        <li>@Localizer["LocationsTownItem1"]</li>
-                        <li>@Localizer["LocationsTownItem2"]</li>
-                        <li>@Localizer["LocationsTownItem3"]</li>
-                        <li>@Localizer["LocationsTownItem4"]</li>
-                        <li>@Localizer["LocationsTownItem5"]</li>
-                        <li>@Localizer["LocationsTownItem6"]</li>
-                        <li>@Localizer["LocationsTownItem7"]</li>
+                        <li>@Localizer["LocationsTownItem1"].Value</li>
+                        <li>@Localizer["LocationsTownItem2"].Value</li>
+                        <li>@Localizer["LocationsTownItem3"].Value</li>
+                        <li>@Localizer["LocationsTownItem4"].Value</li>
+                        <li>@Localizer["LocationsTownItem5"].Value</li>
+                        <li>@Localizer["LocationsTownItem6"].Value</li>
+                        <li>@Localizer["LocationsTownItem7"].Value</li>
                     </ul>
                 </div>
                 <div>
-                    <h3 style="margin-bottom:8px">@Localizer["LocationsMarkets"]</h3>
+                    <h3 style="margin-bottom:8px">@Localizer["LocationsMarkets"].Value</h3>
                     <ul>
-                        <li>@Localizer["LocationsMarketsItem1"]</li>
-                        <li>@Localizer["LocationsMarketsItem2"]</li>
-                        <li>@Localizer["LocationsMarketsItem3"]</li>
+                        <li>@Localizer["LocationsMarketsItem1"].Value</li>
+                        <li>@Localizer["LocationsMarketsItem2"].Value</li>
+                        <li>@Localizer["LocationsMarketsItem3"].Value</li>
                     </ul>
                 </div>
             </div>
-            <p>@Localizer["LocationsClosing"]</p>
+            <p>@Localizer["LocationsClosing"].Value</p>
             <div class="map-container" style="margin: 24px 0;">
                 <iframe
                     src="https://www.google.com/maps/d/embed?mid=1SfW-sLdo4DvtViYDgc_8UXBTno4&hl=es&z=6"
@@ -101,7 +101,7 @@
                 </iframe>
             </div>
 
-            <p><a asp-controller="Home" asp-action="Contact">@Localizer["LocationsContact"]</a></p>
+            <p><a asp-controller="Home" asp-action="Contact">@Localizer["LocationsContact"].Value</a></p>
         </article>
     </div>
 </section>

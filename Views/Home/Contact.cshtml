@@ -6,8 +6,8 @@
 
 <div class="container contact-page">
     <header class="section-head">
-        <h2 class="section-title">@Localizer["ContactHeading"]</h2>
-        <p class="section-sub">@Localizer["ContactSubheading"]</p>
+        <h2 class="section-title">@Localizer["ContactHeading"].Value</h2>
+        <p class="section-sub">@Localizer["ContactSubheading"].Value</p>
         @if (TempData["ContactOk"] is string ok)
         {
             <div class="alert-success">@ok</div>
@@ -16,18 +16,18 @@
 
     <div class="contact-layout">
         <aside class="contact-card">
-            <h3 class="contact-card__title">@Html.Raw(Localizer["ContactCardTitle"])</h3>
-            <p class="contact-card__text">@Html.Raw(Localizer["ContactCardAddress"])</p>
+            <h3 class="contact-card__title">@Html.Raw(Localizer["ContactCardTitle"].Value)</h3>
+            <p class="contact-card__text">@Html.Raw(Localizer["ContactCardAddress"].Value)</p>
             <p class="contact-card__text">
-                <strong>@Localizer["ContactPhoneLabel"]</strong> <a href="tel:+34656813706">+34 656 813 706</a><br />
-                <strong>@Localizer["ContactEmailLabel"]</strong> <a href="mailto:diaples@diaples.es">diaples@diaples.es</a><br />
-                <strong>@Localizer["ContactWebLabel"]</strong> <a href="https://www.diaples.es" target="_blank" rel="noopener">www.diaples.es</a>
+                <strong>@Localizer["ContactPhoneLabel"].Value</strong> <a href="tel:+34656813706">+34 656 813 706</a><br />
+                <strong>@Localizer["ContactEmailLabel"].Value</strong> <a href="mailto:diaples@diaples.es">diaples@diaples.es</a><br />
+                <strong>@Localizer["ContactWebLabel"].Value</strong> <a href="https://www.diaples.es" target="_blank" rel="noopener">www.diaples.es</a>
             </p>
             <div class="contact-card__social">
                 <a href="https://es-es.facebook.com/osdiaples/" target="_blank" rel="noopener noreferrer" class="chip">Facebook</a>
                 <a href="https://www.youtube.com/user/osdiaplesdauerba" target="_blank" rel="noopener noreferrer" class="chip">YouTube</a>
             </div>
-            <p class="contact-card__hint">@Localizer["ContactHint"]</p>
+            <p class="contact-card__hint">@Localizer["ContactHint"].Value</p>
         </aside>
 
         <div class="form-card">
@@ -38,38 +38,38 @@
                 <div class="form-grid">
                     <div class="form-field">
                         <label asp-for="Name"></label>
-                        <input asp-for="Name" class="input" placeholder="@Localizer["ContactNamePlaceholder"]" />
+                        <input asp-for="Name" class="input" placeholder="@Localizer["ContactNamePlaceholder"].Value" />
                         <span asp-validation-for="Name" class="val-msg"></span>
                     </div>
 
                     <div class="form-field">
                         <label asp-for="Email"></label>
-                        <input asp-for="Email" class="input" placeholder="@Localizer["ContactEmailPlaceholder"]" />
+                        <input asp-for="Email" class="input" placeholder="@Localizer["ContactEmailPlaceholder"].Value" />
                         <span asp-validation-for="Email" class="val-msg"></span>
                     </div>
 
                     <div class="form-field">
                         <label asp-for="Phone"></label>
-                        <input asp-for="Phone" class="input" placeholder="@Localizer["ContactPhonePlaceholder"]" />
+                        <input asp-for="Phone" class="input" placeholder="@Localizer["ContactPhonePlaceholder"].Value" />
                         <span asp-validation-for="Phone" class="val-msg"></span>
                     </div>
 
                     <div class="form-field form-field--full">
                         <label asp-for="Message"></label>
-                        <textarea asp-for="Message" class="input" rows="5" placeholder="@Localizer["ContactMessagePlaceholder"]"></textarea>
+                        <textarea asp-for="Message" class="input" rows="5" placeholder="@Localizer["ContactMessagePlaceholder"].Value"></textarea>
                         <span asp-validation-for="Message" class="val-msg"></span>
                     </div>
                 </div>
 
                 <div class="form-actions">
-                    <button class="btn" type="submit">@Localizer["ContactSubmit"]</button>
+                    <button class="btn" type="submit">@Localizer["ContactSubmit"].Value</button>
                 </div>
             </form>
         </div>
     </div>
 
     <p class="contact-footnote">
-        @Localizer["ContactFootnote"]
+        @Localizer["ContactFootnote"].Value
     </p>
 </div>
 
