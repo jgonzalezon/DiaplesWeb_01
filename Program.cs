@@ -68,26 +68,6 @@ builder.Services
 builder.Services.AddScoped<IAttendanceService, EfAttendanceService>();
 builder.Services.AddScoped<IEventQueryService, EfEventQueryService>();
 builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();
-
-
-var app = builder.Build();
-
-// --- Pipeline ---
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-else
-{
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
-}
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
 var supportedCultures = new[]
 {
     new CultureInfo("es"),
@@ -107,6 +87,24 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
         new AcceptLanguageHeaderRequestCultureProvider()
     };
 });
+
+var app = builder.Build();
+
+// --- Pipeline ---
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+else
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
 
 var requestLocalizationOptions = app.Services
     .GetRequiredService<IOptions<RequestLocalizationOptions>>()
