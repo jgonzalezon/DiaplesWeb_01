@@ -1,68 +1,69 @@
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Globalization
+@{
+    var pageTitle = ViewData["Title"] as string;
+}
 <!DOCTYPE html>
-<html>
+<html lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
 <head>
   <meta charset="utf-8" />
-  <title>Administración</title>
+  <title>@(string.IsNullOrWhiteSpace(pageTitle) ? Localizer["AdminTitle"].Value : $"{pageTitle} · {Localizer["AdminTitle"].Value}")</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="~/css/site.css" />
   <style>
-    .admin-wrap{display:grid;grid-template-columns:200px 1.35fr;gap:24px;min-height:80vh}
-    .admin-aside{background:var(--bg-2);border-radius:var(--radius);padding:16px}
-    .admin-aside a{display:block;padding:.7rem 1rem;border-radius:10px;margin-bottom:6px;text-decoration:none}
-    .admin-aside a:hover{background:var(--bg-3)}
-    .admin-main{background:var(--bg-2);border-radius:var(--radius);padding:20px}
+    .admin-wrap{display:grid;grid-template-columns:220px 1.35fr;gap:24px;min-height:80vh;padding:32px 0}
+    .admin-aside{background:var(--bg-2);border-radius:var(--radius);padding:20px;height:fit-content}
+    .admin-aside__title{margin-bottom:12px;font-weight:600;font-size:1.1rem}
+    .admin-aside a{display:block;padding:.7rem 1rem;border-radius:10px;margin-bottom:6px;text-decoration:none;color:var(--txt)}
+    .admin-aside a:hover,.admin-aside a:focus{background:var(--bg-3);outline:none}
+    .admin-main{background:var(--bg-2);border-radius:var(--radius);padding:24px;min-height:60vh}
+    @media (max-width: 900px){
+      .admin-wrap{grid-template-columns:1fr;gap:16px}
+    }
   </style>
 </head>
-<header class="nav">
-  <div class="container nav-wrap">
-    <a class="brand" asp-area="" asp-controller="Home" asp-action="Index"
-       style="display:flex; align-items:center; gap:1px;">
-      <img src="~/img/Inicio/logo_horizontal-diaples.gif"
-           alt="Logo Os Diaples d'a Uerba"
-           style="height:50px; width:auto; border-radius:8px;" />
-    </a>
-
-    <!-- Toggle móvil -->
-    <input id="nav-toggle" type="checkbox" class="nav-toggle" />
-    <label for="nav-toggle" class="hamburger" aria-label="Abrir menú">
-      <span></span><span></span><span></span>
-    </label>
-
-    <!-- Menú -->
-    <nav class="nav-menu">
-      <div class="nav-links">
-        <a asp-area="" asp-controller="Home" asp-action="About">Os Diaples</a>
-        <a asp-area="" asp-controller="Home" asp-action="Espectaculos">Espectáculos</a>
-        <a asp-area="" asp-controller="Home" asp-action="Galeria">Galería</a>
-        <a asp-area="" asp-controller="Home" asp-action="Contact">Contacto</a>
-      </div>
-
-      <!-- Acciones (login/registro/logout) -->
-      <div class="nav-actions">
-        <partial name="_LoginPartial" />
-      </div>
-    </nav>
-  </div>
-</header>
-
-
 <body>
-<div class="container admin-wrap">
-  <aside class="admin-aside">
-    <h3 style="margin-bottom:10px">Panel</h3>
-<aside class="admin-aside">
-  <h3>Panel</h3>
-        <a href="~/Admin/Users">Usuarios</a>
-        <a href="~/Admin/Messages">Mensajes</a>
-        <a href="~/Admin/Events/Index">Eventos</a>
-</aside>
+  <header class="nav">
+    <div class="container nav-wrap">
+      <a class="brand" asp-area="" asp-controller="Home" asp-action="Index"
+         style="display:flex; align-items:center; gap:1px;">
+        <img src="~/img/Inicio/logo_horizontal-diaples.gif"
+             alt="@Localizer["BrandAltText"].Value"
+             style="height:50px; width:auto; border-radius:8px;" />
+      </a>
 
-  </aside>
-  <main class="admin-main">
-    @RenderBody()
-  </main>
-</div>
-@RenderSection("Scripts", required: false)
+      <input id="nav-toggle" type="checkbox" class="nav-toggle" />
+      <label for="nav-toggle" class="hamburger" aria-label="@Localizer["OpenMenuLabel"].Value">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="nav-menu">
+        <div class="nav-links">
+          <a asp-area="" asp-controller="Home" asp-action="About">@Localizer["NavAbout"].Value</a>
+          <a asp-area="" asp-controller="Home" asp-action="Espectaculos">@Localizer["NavShows"].Value</a>
+          <a asp-area="" asp-controller="Home" asp-action="Galeria">@Localizer["NavGallery"].Value</a>
+          <a asp-area="" asp-controller="Home" asp-action="Contact">@Localizer["NavContact"].Value</a>
+        </div>
+
+        <div class="nav-actions">
+          <partial name="_LoginPartial" />
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container admin-wrap">
+    <aside class="admin-aside" aria-label="@Localizer["AdminMenu"].Value">
+      <h2 class="admin-aside__title">@Localizer["AdminMenu"].Value</h2>
+      <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">@Localizer["MenuDashboard"].Value</a>
+      <a asp-area="Admin" asp-controller="Users" asp-action="Index">@Localizer["MenuUsers"].Value</a>
+      <a asp-area="Admin" asp-controller="Messages" asp-action="Index">@Localizer["MenuMessages"].Value</a>
+      <a asp-area="Admin" asp-controller="Events" asp-action="Index">@Localizer["MenuEvents"].Value</a>
+    </aside>
+    <main class="admin-main">
+      @RenderBody()
+    </main>
+  </div>
+
+  @RenderSection("Scripts", required: false)
 </body>
 </html>

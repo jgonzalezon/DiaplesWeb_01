@@ -12,17 +12,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-        @if (ViewData["Title"] != null)
+        @if (ViewData["Title"] is string pageTitle && !string.IsNullOrWhiteSpace(pageTitle))
         {
-            @($"{ViewData["Title"]} - {Localizer["SiteName"]}")
+            @($"{pageTitle} - {Localizer["SiteName"].Value}")
         }
         else
         {
-            @Localizer["SiteName"]
+            @Localizer["SiteName"].Value
         }
     </title>
 
-    <meta name="description" content="@Localizer["MetaDescription"]">
+    <meta name="description" content="@Localizer["MetaDescription"].Value">
     <link rel="icon" type="image/ico" href="~/favicon.ico" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     @RenderSection("Styles", required: false)

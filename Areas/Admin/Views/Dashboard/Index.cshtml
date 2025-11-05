@@ -1,5 +1,6 @@
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = Localizer["DashboardTitle"].Value;
 }
-<h2>Panel de administración</h2>
-<p>Bienvenido al área de administración.</p>
+<h1 class="title-xl">@Localizer["DashboardHeading"].Value</h1>
+<p class="muted">@Localizer["DashboardIntro"].Value</p>

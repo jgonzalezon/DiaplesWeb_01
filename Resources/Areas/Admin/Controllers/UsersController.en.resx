@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="UsersCreateRequired" xml:space="preserve"><value>All fields are required.</value></data>
+  <data name="UsersDeleteSelf" xml:space="preserve"><value>You cannot delete your own account while signed in.</value></data>
+  <data name="UsersUpdateSelf" xml:space="preserve"><value>You cannot change your own role while signed in.</value></data>
+  <data name="UsersInvalidData" xml:space="preserve"><value>Invalid data.</value></data>
+  <data name="UsersNotFound" xml:space="preserve"><value>User not found.</value></data>
+</root>

@@ -49,7 +49,7 @@ namespace DiaplesWeb.Controllers
             _db.ContactMessages.Add(entity);
             _db.SaveChanges();
 
-            TempData["ContactOk"] = _localizer["ContactSuccess"];
+            TempData["ContactOk"] = _localizer["ContactSuccess"].Value;
             return RedirectToAction(nameof(Contact));
         }
     }
