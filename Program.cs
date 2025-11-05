@@ -15,6 +15,7 @@ using DiaplesWeb.Data;
 using DiaplesWeb.Services.Contracts;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using DiaplesWeb.Services.Email;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -94,19 +95,22 @@ var supportedCultures = new[]
     new CultureInfo("an-ES")
 };
 
-var requestLocalizationOptions = new RequestLocalizationOptions
+builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
-    DefaultRequestCulture = new RequestCulture("es"),
-    SupportedCultures = supportedCultures,
-    SupportedUICultures = supportedCultures
-};
+    options.DefaultRequestCulture = new RequestCulture("es");
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedCultures;
+    options.RequestCultureProviders = new List<IRequestCultureProvider>
+    {
+        new QueryStringRequestCultureProvider(),
+        new CookieRequestCultureProvider(),
+        new AcceptLanguageHeaderRequestCultureProvider()
+    };
+});
 
-requestLocalizationOptions.RequestCultureProviders = new List<IRequestCultureProvider>
-{
-    new QueryStringRequestCultureProvider(),
-    new CookieRequestCultureProvider(),
-    new AcceptLanguageHeaderRequestCultureProvider()
-};
+var requestLocalizationOptions = app.Services
+    .GetRequiredService<IOptions<RequestLocalizationOptions>>()
+    .Value;
 
 app.UseRequestLocalization(requestLocalizationOptions);
 
