@@ -90,7 +90,8 @@ app.UseStaticFiles();
 var supportedCultures = new[]
 {
     new CultureInfo("es"),
-    new CultureInfo("en")
+    new CultureInfo("en"),
+    new CultureInfo("an")
 };
 
 var requestLocalizationOptions = new RequestLocalizationOptions

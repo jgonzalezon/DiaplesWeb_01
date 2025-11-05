@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="AdminTitle" xml:space="preserve"><value>Administración</value></data>
+  <data name="BrandAltText" xml:space="preserve"><value>Logo Os Diaples d'a Uerba</value></data>
+  <data name="OpenMenuLabel" xml:space="preserve"><value>Abrir menú</value></data>
+  <data name="NavAbout" xml:space="preserve"><value>Os Diaples</value></data>
+  <data name="NavShows" xml:space="preserve"><value>Espectáculos</value></data>
+  <data name="NavGallery" xml:space="preserve"><value>Galería</value></data>
+  <data name="NavContact" xml:space="preserve"><value>Contacto</value></data>
+  <data name="AdminMenu" xml:space="preserve"><value>Panel</value></data>
+  <data name="MenuDashboard" xml:space="preserve"><value>Resumen</value></data>
+  <data name="MenuUsers" xml:space="preserve"><value>Usuarios</value></data>
+  <data name="MenuMessages" xml:space="preserve"><value>Mensajes</value></data>
+  <data name="MenuEvents" xml:space="preserve"><value>Eventos</value></data>
+</root>
