@@ -1,216 +1,217 @@
-﻿<!DOCTYPE html>
-<html lang="es">
-@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Globalization
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+@{
+    var currentCulture = CultureInfo.CurrentUICulture;
+    var returnUrl = Context.Request.Path + Context.Request.QueryString;
+}
+<!DOCTYPE html>
+<html lang="@currentCulture.TwoLetterISOLanguageName">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Os Diaples d'a Uerba</title>
+    <title>
+        @if (ViewData["Title"] != null)
+        {
+            @($"{ViewData["Title"]} - {Localizer["SiteName"]}")
+        }
+        else
+        {
+            @Localizer["SiteName"]
+        }
+    </title>
 
-    <meta name="description" content="Os Diaples d'a Uerba · Espectáculos de fuego, animación y tradición aragonesa. Conoce a la tribu diablera y cómo contactar con nosotros.">
+    <meta name="description" content="@Localizer["MetaDescription"]">
     <link rel="icon" type="image/ico" href="~/favicon.ico" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     @RenderSection("Styles", required: false)
 
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    
 </head>
 
-
-<body class="@(ViewData["BodyClass"] ?? "")">
-
-
-    <!-- Fondo fijo para toda la web (quedará después del intro) -->
+<body class="@(ViewData["BodyClass"] ?? string.Empty)">
     <div id="site-bg" class="site-bg" aria-hidden="true"></div>
 
-    <!-- Overlay de introducción (solo 1ª vez por sesión) -->
-    <div id="intro" class="intro" role="dialog" aria-label="Introducción Diaples" aria-modal="true">
-      <div class="intro__scrim"></div>
-      <div class="intro__media" aria-hidden="true"></div>
+    <div id="intro" class="intro" role="dialog" aria-label="@Localizer["IntroAriaLabel"]" aria-modal="true">
+        <div class="intro__scrim"></div>
+        <div class="intro__media" aria-hidden="true"></div>
 
-      <div class="intro__content">
-        <h1>Os Diaples d'a Uerba</h1>
-        <p class="lead">Fuego, percusión y cultura aragonesa desde 1992.</p>
-        <button id="intro-enter" class="btn">Entrar</button>
-      </div>
+        <div class="intro__content">
+            <h1>@Localizer["IntroHeading"]</h1>
+            <p class="lead">@Localizer["IntroLead"]</p>
+            <button id="intro-enter" class="btn">@Localizer["IntroButton"]</button>
+        </div>
     </div>
 
     <header class="nav">
-    <div class="container nav-wrap">
-        <a class="brand" asp-controller="Home" asp-action="Index" style="display:flex; align-items:center; gap:1px;">
-        <img src="~/img/Inicio/logo_horizontal-diaples.gif"
-            alt="Logo Os Diaples d'a Uerba"
-            style="height:50px; width:auto; border-radius:8px;" />
-        </a>
+        <div class="container nav-wrap">
+            <a class="brand" asp-controller="Home" asp-action="Index" style="display:flex; align-items:center; gap:1px;">
+                <img src="~/img/Inicio/logo_horizontal-diaples.gif"
+                     alt="@Localizer["BrandAltText"]"
+                     style="height:50px; width:auto; border-radius:8px;" />
+            </a>
 
-        <!-- Toggle móvil -->
-        <input id="nav-toggle" type="checkbox" class="nav-toggle" />
-        <label for="nav-toggle" class="hamburger" aria-label="Abrir menú">
-        <span></span><span></span><span></span>
-        </label>
+            <input id="nav-toggle" type="checkbox" class="nav-toggle" />
+            <label for="nav-toggle" class="hamburger" aria-label="@Localizer["OpenMenuLabel"]">
+                <span></span><span></span><span></span>
+            </label>
 
-        <!-- Menú -->
-        <nav class="nav-menu">
-        <div class="nav-links">
-            <a asp-controller="Home" asp-action="About">Os Diaples</a>
-            <a asp-controller="Home" asp-action="Espectaculos">Espectáculos</a>
-            <a asp-controller="Home" asp-action="Galeria">Galeria</a>
-            <a asp-controller="Home" asp-action="Contact">Contacto</a>
+            <nav class="nav-menu">
+                <div class="nav-links">
+                    <a asp-controller="Home" asp-action="About">@Localizer["NavAbout"]</a>
+                    <a asp-controller="Home" asp-action="Espectaculos">@Localizer["NavShows"]</a>
+                    <a asp-controller="Home" asp-action="Galeria">@Localizer["NavGallery"]</a>
+                    <a asp-controller="Home" asp-action="Contact">@Localizer["NavContact"]</a>
+                </div>
+
+                <div class="nav-actions">
+                    <form asp-controller="Localization" asp-action="SetLanguage" method="post" class="language-switcher">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="returnUrl" value="@returnUrl" />
+                        <select id="culture-select" name="culture" onchange="this.form.submit()" aria-label="@Localizer["LanguageSelectorLabel"]">
+                            @{ var isSpanish = currentCulture.TwoLetterISOLanguageName == "es"; }
+                            @{ var isEnglish = currentCulture.TwoLetterISOLanguageName == "en"; }
+                            @{ var isAragones = currentCulture.TwoLetterISOLanguageName == "an"; }
+                            <option value="es" selected="@isSpanish">@Localizer["LanguageSpanish"]</option>
+                            <option value="en" selected="@isEnglish">@Localizer["LanguageEnglish"]</option>
+                            <option value="an" selected="@isAragones">@Localizer["LanguageAragonese"]</option>
+                        </select>
+                    </form>
+                    <partial name="_LoginPartial" />
+                </div>
+
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <a href="~/Admin/Dashboard" class="btn btn-gradient">@Localizer["AdminLink"]</a>
+                }
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
+                {
+                    <a href="~/MyEvents" class="btn btn-gradient">@Localizer["EventsLink"]</a>
+                }
+            </nav>
         </div>
-
-        <!-- Acciones (login/registro/logout) -->
-        <div class="nav-actions">
-            <partial name="_LoginPartial" />
-        </div>
-        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-        {
-            <a href="~/Admin/Dashboard" class="btn btn-gradient">Administración</a>
-        }
-        @if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
-        {
-            <a href="~/MyEvents" class="btn btn-gradient">Eventos</a>
-        }
-        </nav>
-    </div>
     </header>
-
 
     <main role="main" class="content page-content">
         @RenderBody()
     </main>
 
-<footer class="footer">
-    <div class="container foot">
-        <!-- Columna 1: Identidad -->
-        <div>
-            <div class="brand" style="display:flex; align-items:center; gap:12px;">
-                <img src="~/img/Inicio/wwwdiapleses.png" 
-                     alt="Logo Diaples.es" 
-                     style="height:48px; width:auto; border-radius:8px;" />
-            </div>
-            <p style="margin-top:12px; color:var(--muted); line-height:1.6;">
-                Asociación Cultural dedicada a la difusión de la mitología aragonesa a través 
-                del fuego, la música y el espectáculo en la calle desde 1992.
-            </p>
+    <footer class="footer">
+        <div class="container foot">
+            <div>
+                <div class="brand" style="display:flex; align-items:center; gap:12px;">
+                    <img src="~/img/Inicio/wwwdiapleses.png"
+                         alt="@Localizer["FooterBrandAltText"]"
+                         style="height:48px; width:auto; border-radius:8px;" />
+                </div>
+                <p style="margin-top:12px; color:var(--muted); line-height:1.6;">
+                    @Localizer["FooterDescription"]
+                </p>
 
-            <p style="margin-top:16px;">
-                📍 Calle Pedro Liñán 8, Zaragoza, Aragón<br />
-                📞 <a href="tel:+34656813706" style="color:var(--txt);">+34 656 813 706</a><br />
-                ✉️ <a href="mailto:diaples@diaples.es" style="color:var(--txt);">diaples@diaples.es</a>
-            </p>
-        </div>
-
-        <!-- Columna 2: Navegación -->
-        <div>
-            <h4>Contenido</h4>
-            <a asp-controller="Home" asp-action="About">Os Diaples</a><br />
-            <a asp-controller="Home" asp-action="Espectaculos">Espectáculos</a><br />
-            <a asp-controller="Home" asp-action="Galeria">Galeria</a><br />
-            <a asp-controller="Home" asp-action="Contact">Contacto</a>
-            
-        <div style="margin-top:18px; display:flex; gap:12px;">
-                <a href="https://es-es.facebook.com/osdiaples/" target="_blank" class="social-icon">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://x.com/diaplesdauerba" target="_blank" class="social-icon">
-                    <i class="fab fa-twitter"></i>
-                </a>
+                <p style="margin-top:16px;">
+                    📍 @Localizer["FooterAddress"]<br />
+                    📞 <a href="tel:+34656813706" style="color:var(--txt);">+34 656 813 706</a><br />
+                    ✉️ <a href="mailto:diaples@diaples.es" style="color:var(--txt);">diaples@diaples.es</a>
+                </p>
             </div>
 
+            <div>
+                <h4>@Localizer["FooterContentHeading"]</h4>
+                <a asp-controller="Home" asp-action="About">@Localizer["NavAbout"]</a><br />
+                <a asp-controller="Home" asp-action="Espectaculos">@Localizer["NavShows"]</a><br />
+                <a asp-controller="Home" asp-action="Galeria">@Localizer["NavGallery"]</a><br />
+                <a asp-controller="Home" asp-action="Contact">@Localizer["NavContact"]</a>
+
+                <div style="margin-top:18px; display:flex; gap:12px;">
+                    <a href="https://es-es.facebook.com/osdiaples/" target="_blank" class="social-icon" aria-label="@Localizer["FacebookLabel"]">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/diaplesdauerba" target="_blank" class="social-icon" aria-label="@Localizer["TwitterLabel"]">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
         </div>
 
-
-
-    </div>
-
-    <div style="margin-top:32px; text-align:center; font-size:0.9rem; color:var(--muted);">
-        © @DateTime.Now.Year · Os Diaples d'a Uerba · Todos los derechos reservados · <a href="https://diaples.es" style="color:var(--brand);">www.diaples.es</a>
-    </div>
-</footer>
-
+        <div style="margin-top:32px; text-align:center; font-size:0.9rem; color:var(--muted);">
+            © @DateTime.Now.Year · @Localizer["SiteName"] · @Localizer["FooterRights"] · <a href="https://diaples.es" style="color:var(--brand);">www.diaples.es</a>
+        </div>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
     @RenderSection("Scripts", required: false)
 
-<script>
-(function () {
-  const SHOW_ONCE_PER_SESSION = true;
-  const INTRO_KEY = "diaplesIntroSeen";
-  const intro = document.getElementById('intro');
-  const enterBtn = document.getElementById('intro-enter');
-  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    <script>
+    (function () {
+      const SHOW_ONCE_PER_SESSION = true;
+      const INTRO_KEY = "diaplesIntroSeen";
+      const intro = document.getElementById('intro');
+      const enterBtn = document.getElementById('intro-enter');
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function closeIntro() {
-    if (!intro) return;
-    intro.classList.add('is-hiding');
-    setTimeout(() => {
-      intro.remove();
-      document.body.classList.remove('is-intro-lock');
-    }, 400);
-    if (SHOW_ONCE_PER_SESSION) sessionStorage.setItem(INTRO_KEY, '1');
-  }
+      function closeIntro() {
+        if (!intro) return;
+        intro.classList.add('is-hiding');
+        setTimeout(() => {
+          intro.remove();
+          document.body.classList.remove('is-intro-lock');
+        }, 400);
+        if (SHOW_ONCE_PER_SESSION) sessionStorage.setItem(INTRO_KEY, '1');
+      }
 
-  if (prefersReduced) {
-    intro?.remove();
-    return;
-  }
+      if (prefersReduced) {
+        intro?.remove();
+        return;
+      }
 
-  if (SHOW_ONCE_PER_SESSION && sessionStorage.getItem(INTRO_KEY) === '1') {
-    intro?.remove();
-    return;
-  }
+      if (SHOW_ONCE_PER_SESSION && sessionStorage.getItem(INTRO_KEY) === '1') {
+        intro?.remove();
+        return;
+      }
 
-  document.body.classList.add('is-intro-lock');
+      document.body.classList.add('is-intro-lock');
 
-  enterBtn?.addEventListener('click', closeIntro);
-  setTimeout(closeIntro, 5000);
-})();
-</script>
-<!-- Botón para volver arriba -->
-<button id="btn-top" title="Volver arriba">
-  ↑
-</button>
+      enterBtn?.addEventListener('click', closeIntro);
+      setTimeout(closeIntro, 5000);
+    })();
+    </script>
+    <button id="btn-top" title="@Localizer["BackToTop"]">
+      ↑
+    </button>
 
-<script>
-  // Mostrar el botón solo cuando se hace scroll
-  const btnTop = document.getElementById("btn-top");
+    <script>
+      const btnTop = document.getElementById("btn-top");
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      btnTop.style.display = "flex";
-    } else {
-      btnTop.style.display = "none";
-    }
-  });
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          btnTop.style.display = "flex";
+        } else {
+          btnTop.style.display = "none";
+        }
+      });
 
-  // Al hacer clic, subir suavemente
-  btnTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-</script>
+      btnTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const introMedia = document.querySelector(".intro__media");
-  if (!introMedia) return;
-  const gifURL = "/img/Inicio/fondoDiaples.gif";
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const introMedia = document.querySelector(".intro__media");
+      if (!introMedia) return;
+      const gifURL = "/img/Inicio/fondoDiaples.gif";
 
-  // Preload del GIF
-  const preload = new Image();
-  preload.src = gifURL;
+      const preload = new Image();
+      preload.src = gifURL;
 
-  preload.onload = () => {
-    // Reemplazar el fondo estático por el GIF una vez cargado
-    introMedia.style.backgroundImage = `url('${gifURL}')`;
+      preload.onload = () => {
+        introMedia.style.backgroundImage = `url('${gifURL}')`;
 
-    // Añadir una ligera transición visual si quieres suavizarlo
-    introMedia.style.transition = "filter 0.3s ease";
-    introMedia.style.filter = "blur(6px) brightness(0.55)";
-  };
-});
-</script>
-
-    
+        introMedia.style.transition = "filter 0.3s ease";
+        introMedia.style.filter = "blur(6px) brightness(0.55)";
+      };
+    });
+    </script>
 </body>
 </html>

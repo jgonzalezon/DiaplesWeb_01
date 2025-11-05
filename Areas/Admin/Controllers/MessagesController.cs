@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using DiaplesWeb.Data;
 using DiaplesWeb.Models;
+using Microsoft.Extensions.Localization;
 
 
 namespace DiaplesWeb.Areas.Admin.Controllers
@@ -11,7 +12,13 @@ namespace DiaplesWeb.Areas.Admin.Controllers
     public class MessagesController : Controller
     {
         private readonly ApplicationDbContext _db;
-        public MessagesController(ApplicationDbContext db) => _db = db;
+        private readonly IStringLocalizer<MessagesController> _localizer;
+
+        public MessagesController(ApplicationDbContext db, IStringLocalizer<MessagesController> localizer)
+        {
+            _db = db;
+            _localizer = localizer;
+        }
 
         public IActionResult Index()
         {
@@ -36,14 +43,14 @@ namespace DiaplesWeb.Areas.Admin.Controllers
             var m = _db.ContactMessages.Find(id);
             if (m == null)
             {
-                TempData["MsgError"] = "El mensaje ya no existe.";
+                TempData["MsgError"] = _localizer["MessageMissing"].Value;
                 return RedirectToAction(nameof(Index));
             }
 
             _db.ContactMessages.Remove(m);
             _db.SaveChanges();
 
-            TempData["MsgOk"] = "Mensaje borrado";
+            TempData["MsgOk"] = _localizer["MessageDeleted"].Value;
             return RedirectToAction(nameof(Index));
         }
     }

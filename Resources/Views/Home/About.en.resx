@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="AboutTitle" xml:space="preserve"><value>Os Diaples d'a Uerba</value></data>
+  <data name="AboutHeroHeading" xml:space="preserve"><value>Who are the Diaples?</value></data>
+  <data name="AboutHeroLead" xml:space="preserve"><value>Os Diaples d'a Uerba are a cultural association from Zaragoza. Our volunteer-based group creates theatrical shows full of music, fire and pyrotechnics, rescuing Aragonese traditions and mythological beings such as diaples, diaplerons, bruxas, bruxos, giants, lacuercos and other creatures.</value></data>
+  <data name="AboutQuote" xml:space="preserve"><value>“We play with evil to do good—and make it more fun.”</value></data>
+  <data name="AboutPhotoHeading" xml:space="preserve"><value>Group photo of Os Diaples d'a Uerba</value></data>
+  <data name="AboutPhotoSubheading" xml:space="preserve"><value>Family portrait after our 2016 performance at the Pilar festivities.</value></data>
+  <data name="AboutPhotoAlt" xml:space="preserve"><value>Group photo of Os Diaples d'a Uerba during the 2016 Pilar festivities</value></data>
+  <data name="AboutPhotoCaption" xml:space="preserve"><value>Os Diaples d'a Uerba · Plaza del Pilar · Pilar Festivities 2016</value></data>
+  <data name="AboutVolunteerParagraph" xml:space="preserve"><value>Our volunteers span all ages; we’re driven by the joy of performing and by working together to bring the group, its shows and performances wherever we are invited. Our goal is to enjoy ourselves and help others enjoy the party.</value></data>
+  <data name="AboutIdentityParagraph" xml:space="preserve"><value>We are Diaples: those who were, those who are and those who will be.</value></data>
+  <data name="AboutWhatAreDiaplesHeading" xml:space="preserve"><value>What are the diaples?</value></data>
+  <data name="AboutWhatAreDiaplesParagraph1" xml:space="preserve"><value>They are mythological figures from Aragonese tradition, especially from the Pyrenees. They represent small restless beings—tiny little devils or goblins—who never stop misbehaving. The diapleron is the elder figure who carries the diaples in a hollow branch (cañoto) and can hand it over to a villager as a personal challenge.</value></data>
+  <data name="AboutWhatAreDiaplesParagraph2" xml:space="preserve"><value>The diaples that live inside the cañoto can be released to complete any tasks they are given. But if left idle, their restlessness may harm the owner of the cañoto and they can be freed to cause all sorts of havoc and mischief.</value></data>
+  <data name="AboutOtherBeingsHeading" xml:space="preserve"><value>Other mythological beings</value></data>
+  <data name="AboutMythDiaplerons" xml:space="preserve"><value>Diaplerons</value></data>
+  <data name="AboutMythDiapleronsDescription" xml:space="preserve"><value>The elder who guides the diaples. They carry the &lt;em&gt;cañoto&lt;/em&gt; where the little devils travel and can entrust it to someone willing to take on the challenge of controlling them.</value></data>
+  <data name="AboutMythBruxas" xml:space="preserve"><value>Bruxas and bruxons</value></data>
+  <data name="AboutMythBruxasDescription" xml:space="preserve"><value>Witches and warlocks of the Pyrenees; herbs, prayers and potions. They lead covens and are said to cast the evil eye, yet they also heal and chase away storms.</value></data>
+  <data name="AboutMythEncantarias" xml:space="preserve"><value>Encantarias</value></data>
+  <data name="AboutMythEncantariasDescription" xml:space="preserve"><value>Enchanted women who appear near springs, rivers or caves—especially on Saint John's Eve—to guard treasures or ask favours in exchange for secrecy.</value></data>
+  <data name="AboutMythFadas" xml:space="preserve"><value>Fadas</value></data>
+  <data name="AboutMythFadasDescription" xml:space="preserve"><value>Aragonese fairies, usually benevolent yet capricious: they help those who respect the forest and their word, and punish those who break promises.</value></data>
+  <data name="AboutMythChigans" xml:space="preserve"><value>Chigans</value></data>
+  <data name="AboutMythChigansDescription" xml:space="preserve"><value>Playful travelling sprites: they move things around, play tricks and vanish without a trace. Sometimes they protect children when treated kindly.</value></data>
+  <data name="AboutMythOmes" xml:space="preserve"><value>Omes Granizos</value></data>
+  <data name="AboutMythOmesDescription" xml:space="preserve"><value>“Hail men”: storm spirits who herd the clouds. Village spells tried to divert them to save the crops.</value></data>
+  <data name="AboutMythLacuerco" xml:space="preserve"><value>Lacuerco</value></data>
+  <data name="AboutMythLacuercoDescription" xml:space="preserve"><value>A hairy serpent that, according to tradition, slipped into cradles to nurse from the mother while soothing the baby with its tail. People sprinkled ash around the crib to detect its trail the next morning.</value></data>
+  <data name="AboutHistoryHeading" xml:space="preserve"><value>History of the group</value></data>
+  <data name="AboutHistoryParagraph1" xml:space="preserve"><value>Diaples d’a Uerba was born in a curious way. It began with the idea of livening up a carnival in Zaragoza, with diaples throwing fireworks along the parade. The following year a group gathered for the San Chuan de Plan carnival to protest the Aragón–Cazaril power line. They adopted the outfit that would later define the group, around 1991.</value></data>
+  <data name="AboutHistoryParagraph2" xml:space="preserve"><value>The troupe belonged to the Ligallo de Fablans de l’Aragonés and saw the Diaples as a way to support the association, becoming the colla Diaples d’a Uerba. Their purpose was to spread Aragonese customs and traditions—language, dances, music, stick dances—defending a culture of fire with a manifesto against injustice: “Cremando inchusticias”.</value></data>
+  <data name="AboutHistoryParagraph3" xml:space="preserve"><value>In early 2003 they separated from the association due to differing opinions and, in March, became the non-profit association Os Diaples d’a Uerba. Independence allowed them to decide freely with every member having a voice. We work as volunteers—with commitment, assembly-based decision-making and a horizontal structure.</value></data>
+  <data name="AboutHistoryParagraph4" xml:space="preserve"><value>We keep the same goals as in the beginning: looking forward, creating new perspectives, studying, researching and helping anyone who asks. We want everyone to enjoy our shows as much as we do. Our ambition is a better world; until it arrives, we create celebrations to make ourselves known and welcome every gesture, even a smile.</value></data>
+  <data name="AboutHistoryParagraph5" xml:space="preserve"><value>The group has changed and evolved over time. Some people leave, others join and new ones take part. We are a living entity that survives and adapts to its surroundings, always ensuring celebration and fun. Diaples: one big family.</value></data>
+  <data name="AboutGroupsHeading" xml:space="preserve"><value>Other groups we've shared fire with</value></data>
+  <data name="AboutGroupsAragon" xml:space="preserve"><value>Within Aragón</value></data>
+  <data name="AboutGroupsAragonItem1" xml:space="preserve"><value>&lt;a href="https://es-es.facebook.com/diaplesmadalena/" rel="nofollow noopener" target="_blank"&gt;Diaples d'a Madalena, Zaragoza&lt;/a&gt;</value></data>
+  <data name="AboutGroupsAragonItem2" xml:space="preserve"><value>&lt;a href="https://es-es.facebook.com/osdiapleronsdolugar/" rel="nofollow noopener" target="_blank"&gt;Os diaplerons d'o lugar, La Hoz de la Vieja&lt;/a&gt;</value></data>
+  <data name="AboutGroupsAragonItem3" xml:space="preserve"><value>&lt;a href="https://www.focyflama.com/" rel="nofollow noopener" target="_blank"&gt;Foc y Flama, La Codoñera&lt;/a&gt;</value></data>
+  <data name="AboutGroupsAragonItem4" xml:space="preserve"><value>Diablets de La Fresneda</value></data>
+  <data name="AboutGroupsAragonItem5" xml:space="preserve"><value>Diablos de La Portellada</value></data>
+  <data name="AboutGroupsAragonItem6" xml:space="preserve"><value>Diables de Val de Robres</value></data>
+  <data name="AboutGroupsBeyond" xml:space="preserve"><value>Other places</value></data>
+  <data name="AboutGroupsBeyondItem1" xml:space="preserve"><value>&lt;a href="https://diablesdelleida.cat/" rel="nofollow noopener" target="_blank"&gt;Diables de Lleida&lt;/a&gt;</value></data>
+  <data name="AboutGroupsBeyondItem2" xml:space="preserve"><value>&lt;a href="https://diablesonyar.org/" rel="nofollow noopener" target="_blank"&gt;Diables de l'Onyar, Girona&lt;/a&gt;</value></data>
+  <data name="AboutGroupsBeyondItem3" xml:space="preserve"><value>&lt;a href="https://www.facebook.com/Grupdefocdenoubarris/" rel="nofollow noopener" target="_blank"&gt;Diables de Nou Barris, Barcelona&lt;/a&gt;</value></data>
+  <data name="AboutGroupsBeyondItem4" xml:space="preserve"><value>&lt;a href="https://www.facebook.com/Fotem-li-FOC-Alcanar-636851706420993/" rel="nofollow noopener" target="_blank"&gt;Dimonis Fotem-li foc, Alcanar&lt;/a&gt;</value></data>
+  <data name="AboutGroupsBeyondItem5" xml:space="preserve"><value>&lt;a href="https://www.facebook.com/Diabmonis-La-Rapita-639231979493761/" rel="nofollow noopener" target="_blank"&gt;Diabmonis de La Ràpita&lt;/a&gt;</value></data>
+  <data name="AboutGroupsBeyondItem6" xml:space="preserve"><value>&lt;a href="https://www.facebook.com/diablesdecastello/" rel="nofollow noopener" target="_blank"&gt;Diables de Castelló&lt;/a&gt;</value></data>
+  <data name="AboutGroupsBeyondItem7" xml:space="preserve"><value>&lt;a href="https://www.facebook.com/dimonisdelaplana.correfocs/" rel="nofollow noopener" target="_blank"&gt;Dimonis de La Plana&lt;/a&gt;</value></data>
+  <data name="AboutGroupsBeyondItem8" xml:space="preserve"><value>&lt;a href="https://www.facebook.com/ElsDimonisDeMorella/" rel="nofollow noopener" target="_blank"&gt;Els Dimonis de Morella&lt;/a&gt;</value></data>
+</root>

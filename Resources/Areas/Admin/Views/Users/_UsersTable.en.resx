@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="UsersTableUser" xml:space="preserve"><value>User</value></data>
+  <data name="UsersTablePhone" xml:space="preserve"><value>Phone</value></data>
+  <data name="UsersTableEmail" xml:space="preserve"><value>Email</value></data>
+  <data name="UsersTableActions" xml:space="preserve"><value>Role / Actions</value></data>
+  <data name="UsersBadgeSelf" xml:space="preserve"><value>You</value></data>
+  <data name="UsersChangeRole" xml:space="preserve"><value>Change role</value></data>
+  <data name="RoleUser" xml:space="preserve"><value>User</value></data>
+  <data name="RoleAdmin" xml:space="preserve"><value>Admin</value></data>
+  <data name="Save" xml:space="preserve"><value>Save</value></data>
+  <data name="Delete" xml:space="preserve"><value>Delete</value></data>
+</root>

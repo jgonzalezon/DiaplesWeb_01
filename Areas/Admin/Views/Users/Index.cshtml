@@ -1,16 +1,37 @@
+@using System.Text.Encodings.Web
+@using System.Text.Json
 @model List<(Microsoft.AspNetCore.Identity.IdentityUser User, System.Collections.Generic.IList<string> Roles)>
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = Localizer["UsersTitle"].Value;
+    var ui = new
+    {
+        PasswordHint = Localizer["UsersPasswordHint"].Value,
+        PasswordWeak = Localizer["UsersPasswordWeak"].Value,
+        PasswordOk = Localizer["UsersPasswordOk"].Value,
+        PasswordGood = Localizer["UsersPasswordGood"].Value,
+        PasswordStrong = Localizer["UsersPasswordStrong"].Value,
+        Processing = Localizer["UsersProcessing"].Value,
+        Created = Localizer["UsersCreated"].Value,
+        RoleChanged = Localizer["UsersRoleChanged"].Value,
+        Deleted = Localizer["UsersDeleted"].Value,
+        GenericSuccess = Localizer["UsersGenericSuccess"].Value,
+        GenericError = Localizer["UsersGenericError"].Value,
+        DeleteConfirm = Localizer["UsersDeleteConfirm"].Value,
+        HttpError = Localizer["UsersHttpError"].Value
+    };
+    var jsonOptions = new JsonSerializerOptions { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+    var uiJson = JsonSerializer.Serialize(ui, jsonOptions);
 }
 <section class="admin-card">
   <div class="section-header">
-    <h2 class="section-title m-0">Usuarios</h2>
-    <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-outline-light btn-sm">Volver</a>
+    <h1 class="section-title m-0">@Localizer["UsersHeading"].Value</h1>
+    <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-outline-light btn-sm">@Localizer["BackToSite"].Value</a>
   </div>
 
   <!-- Sección: Crear usuario -->
   <div class="admin-section">
-    <h5 class="text-muted mb-2">Crear usuario</h5>
+    <h2 class="text-muted mb-2">@Localizer["UsersCreateHeading"].Value</h2>
 
     <form id="createForm"
           method="post"
@@ -18,60 +39,60 @@
           class="form">
       @Html.AntiForgeryToken()
 
-      <div class="form-grid">
-        <div class="form-field">
-          <label for="userName">Usuario</label>
-          <input id="userName" name="userName" placeholder="Usuario" required />
-        </div>
-
-        <div class="form-field">
-          <label for="role">Rol</label>
-          <select id="role" name="role">
-              <option value="User" selected>User</option>
-              <option value="Admin">Admin</option>
-          </select>
-        </div>
-
-        <div class="form-field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="Email" required />
-        </div>
-
-        <div class="form-field">
-          <label for="pwd">Contraseña</label>
-
-          <input name="password" id="pwd" type="password" placeholder="Contraseña" required />
-
-          <div class="mt-2" role="group" aria-label="Acciones contraseña">
-            <button type="button" class="btn btn-primary-like btn-pill-left" id="btnTogglePwd" title="Mostrar/Ocultar">
-              Mostrar/Ocultar
-            </button>
-            <button type="button" class="btn btn-primary-like btn-pill-right" id="btnGenPwd" title="Aleatorio">
-              Aleatorio
-            </button>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="userName">@Localizer["UsersFieldUser"].Value</label>
+            <input id="userName" name="userName" placeholder="@Localizer["UsersFieldUserPlaceholder"].Value" required />
           </div>
 
-          <div class="progress mt-2" style="height:6px;">
-            <div class="progress-bar" id="pwdMeter" role="progressbar" style="width:0%"></div>
+          <div class="form-field">
+            <label for="role">@Localizer["UsersFieldRole"].Value</label>
+            <select id="role" name="role">
+                <option value="User" selected>@Localizer["RoleUser"].Value</option>
+                <option value="Admin">@Localizer["RoleAdmin"].Value</option>
+            </select>
           </div>
-          <div class="form-text" id="pwdHint">Usa letras y números.</div>
-        </div>
+
+          <div class="form-field">
+            <label for="email">@Localizer["UsersFieldEmail"].Value</label>
+            <input id="email" name="email" type="email" placeholder="@Localizer["UsersFieldEmailPlaceholder"].Value" required />
+          </div>
+
+          <div class="form-field">
+            <label for="pwd">@Localizer["UsersFieldPassword"].Value</label>
+
+            <input name="password" id="pwd" type="password" placeholder="@Localizer["UsersFieldPasswordPlaceholder"].Value" required />
+
+            <div class="mt-2" role="group" aria-label="@Localizer["UsersPasswordActions"].Value">
+              <button type="button" class="btn btn-primary-like btn-pill-left" id="btnTogglePwd" title="@Localizer["UsersTogglePassword"].Value">
+                @Localizer["UsersTogglePassword"].Value
+              </button>
+              <button type="button" class="btn btn-primary-like btn-pill-right" id="btnGenPwd" title="@Localizer["UsersGeneratePassword"].Value">
+                @Localizer["UsersGeneratePassword"].Value
+              </button>
+            </div>
+
+            <div class="progress mt-2" style="height:6px;">
+              <div class="progress-bar" id="pwdMeter" role="progressbar" style="width:0%"></div>
+            </div>
+            <div class="form-text" id="pwdHint">@Localizer["UsersPasswordHint"].Value</div>
+          </div>
 
 
-        <div class="form-field form-field--full">
-          <button class="btn btn-primary-like" id="btnCreate">Crear</button>
-        </div>
+          <div class="form-field form-field--full">
+            <button class="btn btn-primary-like" id="btnCreate">@Localizer["Create"].Value</button>
+          </div>
 
-        <div class="form-field form-field--full">
-          <div id="createMsg"></div>
-        </div>
+          <div class="form-field form-field--full">
+            <div id="createMsg"></div>
+          </div>
       </div>
     </form>
   </div>
 
   <!-- Sección: Tabla de usuarios -->
   <div class="admin-section">
-    <h5 class="text-muted mb-2">Listado</h5>
+    <h2 class="text-muted mb-2">@Localizer["UsersListHeading"].Value</h2>
     <div id="usersTable">
       @await Html.PartialAsync("_UsersTable", Model)
     </div>
@@ -79,12 +100,14 @@
 </section>
 
 @section Scripts {
-<script>
-(function () {
-  // ---- Elementos base
-  var usersTable   = document.getElementById('usersTable');
-  var formCreate   = document.getElementById('createForm'); // formulario de "Crear usuario"
-  var msgCreate    = document.getElementById('createMsg');  // contenedor de toasts
+  <script>
+  (function () {
+    const L = @Html.Raw(uiJson);
+
+    // ---- Elementos base
+    var usersTable   = document.getElementById('usersTable');
+    var formCreate   = document.getElementById('createForm'); // formulario de "Crear usuario"
+    var msgCreate    = document.getElementById('createMsg');  // contenedor de toasts
 
   // Controles de password (si existen)
   var btnGenPwd    = document.getElementById('btnGenPwd');
@@ -94,85 +117,92 @@
   var hint         = document.getElementById('pwdHint');
 
   // ---- Utilidades UI
-  function toast(text){
-    if (msgCreate) msgCreate.innerHTML =
-      '<div class="alert alert-success py-2 my-2">' + text + '</div>';
-  }
-  function error(text){
-    if (msgCreate) msgCreate.innerHTML =
-      '<div class="alert alert-danger  py-2 my-2">' + text + '</div>';
-  }
-
-  // postForm: deshabilita SOLO el botón del formulario enviado y muestra mensaje contextual
-  async function postForm(f, opts) {
-    var submitBtn = f.querySelector('button[type="submit"], button:not([type])');
-    var prevText  = submitBtn ? submitBtn.innerText : '';
-    if (submitBtn) { submitBtn.disabled = true; submitBtn.innerText = 'Procesando…'; }
-    if (msgCreate) msgCreate.innerHTML = '';
-
-    try {
-      var resp = await fetch(f.action, {
-        method: 'POST',
-        headers: { 'X-Requested-With': 'XMLHttpRequest' },
-        body: new FormData(f)
-      });
-      if (!resp.ok) throw new Error('Error ' + resp.status);
-
-      var html = await resp.text();
-      usersTable.innerHTML = html;
-
-      // Mensaje de éxito
-      if (opts && opts.successText) {
-        toast(opts.successText);
-      } else if (f === formCreate) {
-        toast('Usuario creado');
-      } else {
-        toast('Operación realizada');
-      }
-
-      // Reset SOLO si era el formulario de creación
-      if (f === formCreate) {
-        formCreate.reset();
-        var roleSelect = document.getElementById('role');
-        if (roleSelect) roleSelect.value = 'User';
-        if (meter) { meter.style.width = '0%'; meter.className = 'progress-bar'; }
-        if (hint)  { hint.innerText = 'Usa letras y números.'; }
-      }
-    } catch (e) {
-      error('No se pudo completar la operación (' + e.message + ')');
-      console.error(e);
-    } finally {
-      if (submitBtn) { submitBtn.disabled = false; submitBtn.innerText = prevText; }
+    function toast(text){
+      if (msgCreate) msgCreate.innerHTML =
+        '<div class="alert alert-success py-2 my-2">' + text + '</div>';
     }
-  }
+    function error(text){
+      if (msgCreate) msgCreate.innerHTML =
+        '<div class="alert alert-danger  py-2 my-2">' + text + '</div>';
+    }
+
+    function format(str, values) {
+      return Object.keys(values).reduce(function (acc, key) {
+        var pattern = new RegExp('\\{' + key + '\\}', 'g');
+        return acc.replace(pattern, values[key]);
+      }, str);
+    }
+
+    // postForm: deshabilita SOLO el botón del formulario enviado y muestra mensaje contextual
+    async function postForm(f, opts) {
+      var submitBtn = f.querySelector('button[type="submit"], button:not([type])');
+      var prevText  = submitBtn ? submitBtn.innerText : '';
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.innerText = L.Processing; }
+      if (msgCreate) msgCreate.innerHTML = '';
+
+      try {
+        var resp = await fetch(f.action, {
+          method: 'POST',
+          headers: { 'X-Requested-With': 'XMLHttpRequest' },
+          body: new FormData(f)
+        });
+        if (!resp.ok) throw new Error(format(L.HttpError, { status: resp.status }));
+
+        var html = await resp.text();
+        usersTable.innerHTML = html;
+
+        // Mensaje de éxito
+        if (opts && opts.successText) {
+          toast(opts.successText);
+        } else if (f === formCreate) {
+          toast(L.Created);
+        } else {
+          toast(L.GenericSuccess);
+        }
+
+        // Reset SOLO si era el formulario de creación
+        if (f === formCreate) {
+          formCreate.reset();
+          var roleSelect = document.getElementById('role');
+          if (roleSelect) roleSelect.value = 'User';
+          if (meter) { meter.style.width = '0%'; meter.className = 'progress-bar'; }
+          if (hint)  { hint.innerText = L.PasswordHint; }
+        }
+      } catch (e) {
+        error(format(L.GenericError, { message: e.message }));
+        console.error(e);
+      } finally {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.innerText = prevText; }
+      }
+    }
 
   // ---- Listeners
 
   // Crear usuario
-  if (formCreate) {
-    formCreate.addEventListener('submit', function (e) {
-      e.preventDefault();
-      postForm(e.target, { successText: 'Usuario creado' });
+    if (formCreate) {
+      formCreate.addEventListener('submit', function (e) {
+        e.preventDefault();
+        postForm(e.target, { successText: L.Created });
+      });
+    }
+
+    // Guardar rol (delegación en tabla)
+    usersTable.addEventListener('submit', function (e) {
+      if (e.target.matches('form.roleForm')) {
+        e.preventDefault();
+        var roleVal = e.target.querySelector('select[name="role"]')?.value || '';
+        postForm(e.target, { successText: format(L.RoleChanged, { role: roleVal }) });
+      }
     });
-  }
 
-  // Guardar rol (delegación en tabla)
-  usersTable.addEventListener('submit', function (e) {
-    if (e.target.matches('form.roleForm')) {
-      e.preventDefault();
-      var roleVal = e.target.querySelector('select[name="role"]')?.value || '';
-      postForm(e.target, { successText: 'Cambiado rol a ' + roleVal });
-    }
-  });
-
-  // Borrar usuario (delegación en tabla)
-  usersTable.addEventListener('submit', function (e) {
-    if (e.target.matches('form.deleteForm')) {
-      e.preventDefault();
-      if (!confirm('¿Borrar usuario?')) return;
-      postForm(e.target, { successText: 'Usuario borrado' });
-    }
-  });
+    // Borrar usuario (delegación en tabla)
+    usersTable.addEventListener('submit', function (e) {
+      if (e.target.matches('form.deleteForm')) {
+        e.preventDefault();
+        if (!confirm(L.DeleteConfirm)) return;
+        postForm(e.target, { successText: L.Deleted });
+      }
+    });
 
   // ---- Password: generar / mostrar-ocultar / medidor
   if (btnGenPwd && pwd) {
@@ -190,13 +220,13 @@
     pwd.addEventListener('input', updateStrength);
   }
 
-  function updateStrength() {
-    if (!pwd || !meter || !hint) return;
-    var s = score(pwd.value);
-    meter.style.width = (s * 25) + '%';
-    meter.className = 'progress-bar ' + (s <= 1 ? 'bg-danger' : (s === 2 ? 'bg-warning' : (s === 3 ? 'bg-info' : 'bg-success')));
-    hint.innerText = (s <= 1 ? 'Contraseña débil' : (s === 2 ? 'Aceptable' : (s === 3 ? 'Buena' : 'Fuerte')));
-  }
+    function updateStrength() {
+      if (!pwd || !meter || !hint) return;
+      var s = score(pwd.value);
+      meter.style.width = (s * 25) + '%';
+      meter.className = 'progress-bar ' + (s <= 1 ? 'bg-danger' : (s === 2 ? 'bg-warning' : (s === 3 ? 'bg-info' : 'bg-success')));
+      hint.innerText = (s <= 1 ? L.PasswordWeak : (s === 2 ? L.PasswordOk : (s === 3 ? L.PasswordGood : L.PasswordStrong)));
+    }
   function score(v) {
     var s = 0;
     if (v.length >= 6) s++;

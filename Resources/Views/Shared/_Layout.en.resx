@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SiteName" xml:space="preserve">
+    <value>Os Diaples d'a Uerba</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Os Diaples d'a Uerba · Fire shows, animation and Aragonese tradition. Meet the diablera tribe and learn how to contact us.</value>
+  </data>
+  <data name="IntroAriaLabel" xml:space="preserve">
+    <value>Diaples introduction</value>
+  </data>
+  <data name="IntroHeading" xml:space="preserve">
+    <value>Os Diaples d'a Uerba</value>
+  </data>
+  <data name="IntroLead" xml:space="preserve">
+    <value>Fire, percussion and Aragonese culture since 1992.</value>
+  </data>
+  <data name="IntroButton" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="BrandAltText" xml:space="preserve">
+    <value>Os Diaples d'a Uerba logo</value>
+  </data>
+  <data name="OpenMenuLabel" xml:space="preserve">
+    <value>Open menu</value>
+  </data>
+  <data name="NavAbout" xml:space="preserve">
+    <value>The Diaples</value>
+  </data>
+  <data name="NavShows" xml:space="preserve">
+    <value>Shows</value>
+  </data>
+  <data name="NavGallery" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
+  <data name="NavContact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="LanguageSelectorLabel" xml:space="preserve">
+    <value>Select language</value>
+  </data>
+  <data name="LanguageSpanish" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
+  <data name="LanguageAragonese" xml:space="preserve">
+    <value>Aragonese</value>
+  </data>
+  <data name="LanguageEnglish" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="AdminLink" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="EventsLink" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="FooterBrandAltText" xml:space="preserve">
+    <value>Diaples.es logo</value>
+  </data>
+  <data name="FooterDescription" xml:space="preserve">
+    <value>Cultural association dedicated to sharing Aragonese mythology through fire, music and street performance since 1992.</value>
+  </data>
+  <data name="FooterAddress" xml:space="preserve">
+    <value>Pedro Liñán Street 8, Zaragoza, Aragón</value>
+  </data>
+  <data name="FooterContentHeading" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="FacebookLabel" xml:space="preserve">
+    <value>Os Diaples on Facebook</value>
+  </data>
+  <data name="TwitterLabel" xml:space="preserve">
+    <value>Os Diaples on X</value>
+  </data>
+  <data name="FooterRights" xml:space="preserve">
+    <value>All rights reserved</value>
+  </data>
+  <data name="BackToTop" xml:space="preserve">
+    <value>Back to top</value>
+  </data>
+</root>

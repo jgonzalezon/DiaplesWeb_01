@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="IndexTitle" xml:space="preserve"><value>Home</value></data>
+  <data name="HeroMainHeading" xml:space="preserve"><value>Os Diaples d'a Uerba</value></data>
+  <data name="HeroLeadText" xml:space="preserve"><value>A troupe of devils, witches and other beasts filling the streets with music, fire and pyrotechnics.</value></data>
+  <data name="HeroLogoAlt" xml:space="preserve"><value>Os Diaples d'a Uerba logo</value></data>
+  <data name="HeroFigureCaption" xml:space="preserve"><value>Sharing Aragonese culture across the peninsula since 1992.</value></data>
+  <data name="HeroDescription" xml:space="preserve"><value>We ignite local festivals with rhythm, sparks and fun, bringing our passion for tradition to every corner.</value></data>
+  <data name="HeroCta" xml:space="preserve"><value>Meet the Diaples</value></data>
+  <data name="SpiritHeading" xml:space="preserve"><value>Our spirit</value></data>
+  <data name="SpiritParagraph1" xml:space="preserve"><value>We are a volunteer cultural association based in Zaragoza with around 30 diverse members. Throughout our history countless collaborators have helped us continue growing and sharing Aragonese culture.</value></data>
+  <data name="SpiritParagraph2" xml:space="preserve"><value>Our street shows combine theatrical staging with low-impact pyrotechnics that deliver striking visuals. Diaples, witches and beasts dance among sparks and colours while live music blends traditional Aragonese rhythms with other influences.</value></data>
+  <data name="SpiritParagraph3" xml:space="preserve"><value>Want to learn more? Visit the “Diaples” section and discover every detail of our story.</value></data>
+  <data name="ShowsHeading" xml:space="preserve"><value>Shows we offer</value></data>
+  <data name="ShowsParagraph" xml:space="preserve"><value>We love to light up celebrations, stirring emotions as we play and dance with fire and powder to live music.</value></data>
+  <data name="ShowsListLarge" xml:space="preserve"><value>Large shows: about one hour of excitement.</value></data>
+  <data name="ShowsListSmall" xml:space="preserve"><value>Small shows: roughly 35 minutes of intensity.</value></data>
+  <data name="ShowsListStreet" xml:space="preserve"><value>Performances in squares or parade-style formats.</value></data>
+  <data name="ShowsListAdapt" xml:space="preserve"><value>Adaptations tailored to the needs of each event.</value></data>
+  <data name="ShowsContactLink" xml:space="preserve"><value>Request more information about our performances.</value></data>
+  <data name="FeaturedHeading" xml:space="preserve"><value>Featured performance</value></data>
+  <data name="FeaturedImageAlt" xml:space="preserve"><value>Os Diaples performing in Zaragoza's Plaza del Pilar in 2016</value></data>
+  <data name="FeaturedCaption" xml:space="preserve"><value>Performance in Zaragoza's Plaza del Pilar during the 2016 festivities.</value></data>
+  <data name="FeaturedDescription" xml:space="preserve"><value>One of our most memorable nights, filling the square with fire, percussion and smiles. Every show is unique, adapted to the space and audience for unforgettable experiences.</value></data>
+  <data name="LocationsHeading" xml:space="preserve"><value>Places we've left our mark</value></data>
+  <data name="LocationsParagraph" xml:space="preserve"><value>We mostly travel throughout Aragón, yet we also bring our fire to other regions of Spain. We've performed at festivals, fairs and local festivities—and the list keeps growing.</value></data>
+  <data name="LocationsFestivals" xml:space="preserve"><value>Music festivals</value></data>
+  <data name="LocationsFestivalsItem1" xml:space="preserve"><value>&lt;a href="http://www.demandafolk.com/" title="Demandafolk Festival website" target="_blank"&gt;Demandafolk&lt;/a&gt;, Tolbaños de Arriba, Burgos.</value></data>
+  <data name="LocationsFestivalsItem2" xml:space="preserve"><value>&lt;a href="https://www.pirineos-sur.es/os-diaples-da-uerba-ofrecieron-una-noche-de-demonios-y-fuego-en-pirineos-sur/" rel="nofollow" title="Performance article" target="_blank"&gt;Pirineos Sur&lt;/a&gt;, Sallent de Gállego, Huesca.</value></data>
+  <data name="LocationsFestivalsItem3" xml:space="preserve"><value>&lt;a href="http://www.festivalcastillodeainsa.com/" rel="nofollow" title="Festival website" target="_blank"&gt;Castillo de Aínsa&lt;/a&gt;, Aínsa, Huesca.</value></data>
+  <data name="LocationsFestivalsItem4" xml:space="preserve"><value>&lt;a href="http://tamborilefestival.blogspot.com/2010/06/os-diaples-da-uerba.html" title="Tamborile street music festival blog" target="_blank"&gt;Tamborile&lt;/a&gt;, Mezquita de Jarque, Teruel.</value></data>
+  <data name="LocationsFestivalsItem5" xml:space="preserve"><value>&lt;a href="https://es.wikipedia.org/wiki/Mariporr%C3%B3n" rel="nofollow" title="Wikipedia entry" target="_blank"&gt;Mariporrón&lt;/a&gt;, Tormantos, La Rioja.</value></data>
+  <data name="LocationsTownFestivals" xml:space="preserve"><value>Town and city festivities</value></data>
+  <data name="LocationsTownItem1" xml:space="preserve"><value>Tardienta.</value></data>
+  <data name="LocationsTownItem2" xml:space="preserve"><value>Sabinánigo.</value></data>
+  <data name="LocationsTownItem3" xml:space="preserve"><value>Tarazona.</value></data>
+  <data name="LocationsTownItem4" xml:space="preserve"><value>Aliaga.</value></data>
+  <data name="LocationsTownItem5" xml:space="preserve"><value>Nuez de Ebro.</value></data>
+  <data name="LocationsTownItem6" xml:space="preserve"><value>Altsasu.</value></data>
+  <data name="LocationsTownItem7" xml:space="preserve"><value>Villanueva de la Vera.</value></data>
+  <data name="LocationsMarkets" xml:space="preserve"><value>Themed fairs and markets</value></data>
+  <data name="LocationsMarketsItem1" xml:space="preserve"><value>Medieval Market of the Three Cultures (Zaragoza).</value></data>
+  <data name="LocationsMarketsItem2" xml:space="preserve"><value>Trasmoz Witchcraft and Magic Fair (Zaragoza).</value></data>
+  <data name="LocationsMarketsItem3" xml:space="preserve"><value>Andalusian Night of the Rose, Baños de la Encina (Jaén).</value></data>
+  <data name="LocationsClosing" xml:space="preserve"><value>Explore our interactive map to discover every place we've performed. If you don't spot your town and we've visited, let us know and we'll add it!</value></data>
+  <data name="LocationsContact" xml:space="preserve"><value>Send us a message</value></data>
+</root>
