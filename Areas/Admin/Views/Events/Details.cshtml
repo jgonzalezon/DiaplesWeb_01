@@ -1,40 +1,41 @@
 @model DiaplesWeb.Models.ViewModels.EventDetailsViewModel
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    ViewData["Title"] = "Detalles evento";
+    var eventTitle = Model?.Event?.Title ?? string.Empty;
+    ViewData["Title"] = string.Format(Localizer["EventsDetailsTitle"].Value, eventTitle);
 }
 
 <section class="event-details">
   <div class="header">
-    <div>
-      <h2>@Model.Event.Title</h2>
-      <div class="meta">
-        <span class="date">@Model.Event.Date.ToString("dd/MM/yyyy HH:mm")</span>
-        @if (!string.IsNullOrWhiteSpace(Model.Event.Location))
-        {
-          <span class="sep">·</span><span class="loc">@Model.Event.Location</span>
-        }
-      </div>
-      @if (!string.IsNullOrWhiteSpace(Model.Event.Description))
-        {
-          <div class="desc card" style="margin-top:1rem;">
-            <h3>Descripción</h3>
-            <p style="white-space:pre-line">@Model.Event.Description</p>
-          </div>
-        }
+      <div>
+        <h1 class="title-xl">@Model.Event.Title</h1>
+        <div class="meta">
+          <span class="date">@Model.Event.Date.ToString("dd/MM/yyyy HH:mm")</span>
+          @if (!string.IsNullOrWhiteSpace(Model.Event.Location))
+          {
+            <span class="sep">·</span><span class="loc">@Model.Event.Location</span>
+          }
+        </div>
+        @if (!string.IsNullOrWhiteSpace(Model.Event.Description))
+          {
+            <div class="desc card" style="margin-top:1rem;">
+              <h2>@Localizer["EventsDescriptionHeading"].Value</h2>
+              <p style="white-space:pre-line">@Model.Event.Description</p>
+            </div>
+          }
 
+      </div>
+      <div class="actions">
+        <a class="btn btn-ghost" asp-action="Index">@Localizer["EventsBack"].Value</a>
+        <a class="btn" asp-action="Create">@Localizer["EventsNewButton"].Value</a>
+          <form asp-action="Delete" method="post" style="display:inline"
+          onsubmit="return confirm('@Localizer["EventsDeleteConfirm"].Value');">
+      @Html.AntiForgeryToken()
+      <input type="hidden" name="id" value="@Model.Event.Id" />
+      <button type="submit" class="btn btn-danger">@Localizer["EventsDelete"].Value</button>
+    </form>
+      </div>
     </div>
-    <div class="actions">
-      <a class="btn btn-ghost" asp-action="Index">Volver</a>
-      <a class="btn" asp-action="Create">+ Nuevo</a>
-        <form asp-action="Delete" method="post" style="display:inline"
-        onsubmit="return confirm('¿Seguro que quieres borrar este evento? Se eliminarán también las asistencias.');">
-    @Html.AntiForgeryToken()
-    <input type="hidden" name="id" value="@Model.Event.Id" />
-    <button type="submit" class="btn btn-danger">Borrar</button>
-  </form>
-    </div>
-  </div>
 
   @if (TempData["ok"] is string ok)
   {
@@ -45,50 +46,50 @@
       <div class="alert-danger">@err</div>
   }
 
-  <div class="card">
-    <h3>Asistencia</h3>
-    @if (Model.Rows == null || !Model.Rows.Any())
-    {
-        <p class="muted">No hay usuarios registrados.</p>
-    }
-    else
-    {
-      <div class="table-wrap">
-        <table class="table table-dark table-hover align-middle">
-          <thead>
-            <tr>
-              <th style="width:25%">Usuario</th>
-              <th style="width:20%">Teléfono</th>
-              <th style="width:25%">Email</th>
-              <th style="width:30%">Asistencia</th>
-              
-            </tr>
-          </thead>
-          <tbody>
-          @foreach (var r in Model.Rows)
-          {
-            <tr>
-              <td>@(r.UserName ?? "—")</td>
-              <td>@(string.IsNullOrWhiteSpace(r.PhoneNumber) ? "—" : r.PhoneNumber)</td>
-              <td>@(string.IsNullOrWhiteSpace(r.Email) ? "—" : r.Email)</td>
-              <td>
-                <form asp-action="UpdateAttendance" method="post" class="row-form">
-                  @Html.AntiForgeryToken()
-                  <input type="hidden" name="id" value="@Model.Event.Id" />
-                  <input type="hidden" name="userId" value="@r.UserId" />
-@{
-    // Valor actual; por si acaso, caemos a "No"
-                        var currentStr = (r?.Status.ToString()) ?? "No"; // "Yes" | "Maybe" | "No"
-                    }
-                    <select name="status" class="input input-sm">
-                    <option value="Yes" selected="@(currentStr == "Yes" ? "selected" : null)">Sí</option>
-                    <option value="Maybe" selected="@(currentStr == "Maybe" ? "selected" : null)">Pendiente</option>
-                    <option value="No" selected="@(currentStr == "No" ? "selected" : null)">No</option>
-                    </select>
-                  <button class="btn btn-sm" type="submit">Guardar</button>
-                </form>
-              </td>
-              <td></td>
+    <div class="card">
+      <h2>@Localizer["AttendanceHeading"].Value</h2>
+      @if (Model.Rows == null || !Model.Rows.Any())
+      {
+          <p class="muted">@Localizer["AttendanceEmpty"].Value</p>
+      }
+      else
+      {
+        <div class="table-wrap">
+          <table class="table table-dark table-hover align-middle">
+            <thead>
+              <tr>
+                <th style="width:25%">@Localizer["AttendanceUser"].Value</th>
+                <th style="width:20%">@Localizer["AttendancePhone"].Value</th>
+                <th style="width:25%">@Localizer["AttendanceEmail"].Value</th>
+                <th style="width:30%">@Localizer["AttendanceStatus"].Value</th>
+
+              </tr>
+            </thead>
+            <tbody>
+            @foreach (var r in Model.Rows)
+            {
+              <tr>
+                <td>@(r.UserName ?? "—")</td>
+                <td>@(string.IsNullOrWhiteSpace(r.PhoneNumber) ? "—" : r.PhoneNumber)</td>
+                <td>@(string.IsNullOrWhiteSpace(r.Email) ? "—" : r.Email)</td>
+                <td>
+                  <form asp-action="UpdateAttendance" method="post" class="row-form">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@Model.Event.Id" />
+                    <input type="hidden" name="userId" value="@r.UserId" />
+  @{
+      // Valor actual; por si acaso, caemos a "No"
+                          var currentStr = (r?.Status.ToString()) ?? "No"; // "Yes" | "Maybe" | "No"
+                      }
+                      <select name="status" class="input input-sm">
+                      <option value="Yes" selected="@(currentStr == "Yes" ? "selected" : null)">@Localizer["AttendanceYes"].Value</option>
+                      <option value="Maybe" selected="@(currentStr == "Maybe" ? "selected" : null)">@Localizer["AttendanceMaybe"].Value</option>
+                      <option value="No" selected="@(currentStr == "No" ? "selected" : null)">@Localizer["AttendanceNo"].Value</option>
+                      </select>
+                    <button class="btn btn-sm" type="submit">@Localizer["AttendanceSave"].Value</button>
+                  </form>
+                </td>
+                <td></td>
             </tr>
           }
           </tbody>

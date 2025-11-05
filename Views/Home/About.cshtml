@@ -1,181 +1,125 @@
 @{
-    ViewData["Title"] = "Os Diaples d'a Uerba";
+    ViewData["Title"] = Localizer["AboutTitle"].Value;
 }
 
 <section class="hero-compact">
     <div class="container">
-        <h1 class="title-xl">¿Quiénes somos los diaples?</h1>
+        <h1 class="title-xl">@Localizer["AboutHeroHeading"].Value</h1>
         <p class="lead">
-            Os Diaples d'a Uerba somos una asociación cultural de Zaragoza. Sobre la base del voluntariado
-            creamos espectáculos teatralizados llenos de música, fuego y pirotecnia, rescatando tradiciones y
-            mitologías aragonesas y personajes como los diaples, diaplerons, bruxas, bruxos, gigantes, lacuercos
-            y otras bichas.
+            @Localizer["AboutHeroLead"].Value
         </p>
-        <blockquote class="highlight">“Jugamos con el mal para hacer un bien que sea más divertido”.</blockquote>
+        <blockquote class="highlight">@Localizer["AboutQuote"].Value</blockquote>
     </div>
 </section>
 
 <section>
     <div class="container">
         <div class="media-grid">
-
             <article class="media-card" style="text-align:center;">
-                <h2 class="section-title">Foto del grupo Os Diaples d'a Uerba de Zaragoza</h2>
-                <p class="section-sub">Foto de familia después del bolo en Pilares 2016.</p>
+                <h2 class="section-title">@Localizer["AboutPhotoHeading"].Value</h2>
+                <p class="section-sub">@Localizer["AboutPhotoSubheading"].Value</p>
 
                 <figure style="margin:16px auto; max-width:800px;">
                     <img src="~/img/OsDiaples/Diables-lonyar_Diaples_pilares2016-5318.jpg"
-                         alt="Foto del grupo Os Diaples d'a Uerba en Pilares 2016"
+                         alt="@Localizer["AboutPhotoAlt"].Value"
                          style="width:100%; height:auto; border-radius:var(--radius); border:1px solid var(--border); object-fit:cover;" />
                     <figcaption style="margin-top:8px; font-size:0.9rem; color:var(--muted);">
-                        Os Diaples d'a Uerba · Plaza del Pilar · Pilares 2016
+                        @Localizer["AboutPhotoCaption"].Value
                     </figcaption>
                 </figure>
             </article>
-
         </div>
 
-        <p>
-            Somos voluntarios de todas las edades; nuestra motivación es pasarlo bien y colaborar para llevar el
-            grupo, sus espectáculos y actuaciones donde se reclame o sea menester. Nos mueve disfrutar y hacer
-            disfrutar amenizando fiestas y celebraciones.
-        </p>
-        <p>
-            Diaples somos; los que fueron, los que son y los que serán.
-        </p>
-    </div>
-</section>
-
-
-<section>
-    <div class="container">
-        <h2 class="section-title">¿Qué son los diaples?</h2>
-        <p>
-            Son figuras mitológicas de la tradición aragonesa, sobre todo de la zona del Pirineo. Representan a
-            pequeños seres, diablillos diminutos o duendecillos, que no paran de injuriar y de hacer cosas sin
-            descanso. El diapleron es la figura mayor, que porta a los diaples en un cañoto y puede entregarlo a
-            algún lugareño para su reto personal.
-        </p>
-        <p>
-            Los diaples que viven dentro del cañoto pueden ser liberados y harán todas las tareas que se les
-            indique. Pero si no reciben encargos, su inquietud puede acabar con el dueño del cañoto, quedando
-            peligrosamente liberados para hacer todo tipo de injurias y travesuras.
-        </p>
-        <h3 class="section-title" style="font-size:1.5rem">Otros seres mitológicos</h3>
-            <ul class="feature-grid myth-grid">
-                <li class="myth-card">
-                    <h4>Diaplerons</h4>
-                    <p>Figura mayor que guía a los diaples. Lleva el <em>cañoto</em> donde viajan los diablillos y puede
-                    entregarlo a alguien para que asuma el reto de gobernarlos.</p>
-                </li>
-
-                <li class="myth-card">
-                    <h4>Bruxas y bruxons</h4>
-                    <p>Brujas y brujos del Pirineo: hierbas, rezos y pócimas. Protagonizan aquelarres y se les atribuye el mal
-                    de ojo, aunque también saben curar males y espantar tormentas.</p>
-                </li>
-
-                <li class="myth-card">
-                    <h4>Encantarias</h4>
-                    <p>Mujeres encantadas que aparecen en fuentes, ríos o cuevas —sobre todo la Noche de San Juan— para
-                    custodiar tesoros o pedir favores a cambio de silencio y discreción.</p>
-                </li>
-
-                <li class="myth-card">
-                    <h4>Fadas</h4>
-                    <p>Hadas aragonesas, normalmente benévolas pero caprichosas: ayudan a quien respeta el monte y la palabra,
-                    castigan a quien rompe promesas.</p>
-                </li>
-
-                <li class="myth-card">
-                    <h4>Chigans</h4>
-                    <p>Duendes burlones y viajeros: cambian cosas de sitio, gastan bromas y desaparecen sin dejar rastro. En
-                    ocasiones protegen a los niños si se les trata con respeto.</p>
-                </li>
-
-                <li class="myth-card">
-                    <h4>Omes Granizos</h4>
-                    <p>“Hombres del granizo”: espíritus de la tormenta que “pastorean” nubes. Los conjuros de los pueblos
-                    trataban de desviarlos para salvar cosechas.</p>
-                </li>
-
-                <li class="myth-card myth-card--wide">
-                    <h4>Lacuerco</h4>
-                    <p>Serpiente peluda que, según la tradición, se colaba en las cunas para mamar de la madre mientras callaba
-                    al bebé con la cola. Para detectarlo se rodeaba la cuna de ceniza y se buscaba su rastro por la mañana.</p>
-                </li>
-            </ul>
-
+        <p>@Localizer["AboutVolunteerParagraph"].Value</p>
+        <p>@Localizer["AboutIdentityParagraph"].Value</p>
     </div>
 </section>
 
 <section>
     <div class="container">
-        <h2 class="section-title">Historia del grupo</h2>
-        <p>
-            Diaples d’a Uerba nace de una forma curiosa. En principio surge la idea de animar un carnaval en
-            Zaragoza, con diaples tirando carruchas a lo largo del desfile. Al año siguiente, un grupo de gente se
-            junta para el carnaval de San Chuan de Plan con un manifiesto en contra de la línea de alta tensión
-            Aragón–Cazaril. Entonces se uniforman dando lugar a la vestimenta que más tarde llevará el grupo,
-            alrededor de 1991.
-        </p>
-        <p>
-            Este grupo, perteneciente al Ligallo de Fablans de l’Aragonés, vio en los Diaples una forma de
-            subvencionar la asociación y se constituyó como colla Diaples d’a Uerba. La finalidad era divulgar
-            costumbres y tradiciones aragonesas —lengua aragonesa, bailes, música, paloteaos— defendiendo una
-            cultura de fuego en un guion de lucha contra las injusticias: “Cremando inchusticias”.
-        </p>
-        <p>
-            A principios de 2003 se desligan de la asociación por diferencias de opiniones y en marzo se
-            constituyen como asociación sin ánimo de lucro Os Diaples d´a Uerba. La independencia permite tomar
-            decisiones sin dar explicaciones, con derecho de opinión para todos sus miembros. Trabajamos bajo el
-            voluntariado, sin obligación, solo compromiso y funcionamiento asambleario y horizontal.
-        </p>
-        <p>
-            Seguimos con los mismos intereses del principio: mirar hacia delante, crear nuevas perspectivas,
-            estudiar, investigar y ayudar a quien pide colaboración. Queremos que todo el mundo disfrute, como
-            nosotros lo hacemos, en nuestros espectáculos. Nuestra ambición es un mundo mejor; mientras llega,
-            creamos fiestas para darnos a conocer y recibimos con agrado todo lo que nos ofrezcan, aunque sea una
-            sonrisa.
-        </p>
-        <p>
-            El grupo ha cambiado y evolucionado con el tiempo. Unas personas se van, otras llegan, nuevas
-            participan. Somos un ente que sobrevive y se adapta a su entorno, siempre asegurando la fiesta y la
-            diversión. Diaples; una gran familia.
-        </p>
+        <h2 class="section-title">@Localizer["AboutWhatAreDiaplesHeading"].Value</h2>
+        <p>@Localizer["AboutWhatAreDiaplesParagraph1"].Value</p>
+        <p>@Localizer["AboutWhatAreDiaplesParagraph2"].Value</p>
+        <h3 class="section-title" style="font-size:1.5rem">@Localizer["AboutOtherBeingsHeading"].Value</h3>
+        <ul class="feature-grid myth-grid">
+            <li class="myth-card">
+                <h4>@Localizer["AboutMythDiaplerons"].Value</h4>
+                <p>@Html.Raw(Localizer["AboutMythDiapleronsDescription"].Value)</p>
+            </li>
+
+            <li class="myth-card">
+                <h4>@Localizer["AboutMythBruxas"].Value</h4>
+                <p>@Localizer["AboutMythBruxasDescription"].Value</p>
+            </li>
+
+            <li class="myth-card">
+                <h4>@Localizer["AboutMythEncantarias"].Value</h4>
+                <p>@Localizer["AboutMythEncantariasDescription"].Value</p>
+            </li>
+
+            <li class="myth-card">
+                <h4>@Localizer["AboutMythFadas"].Value</h4>
+                <p>@Localizer["AboutMythFadasDescription"].Value</p>
+            </li>
+
+            <li class="myth-card">
+                <h4>@Localizer["AboutMythChigans"].Value</h4>
+                <p>@Localizer["AboutMythChigansDescription"].Value</p>
+            </li>
+
+            <li class="myth-card">
+                <h4>@Localizer["AboutMythOmes"].Value</h4>
+                <p>@Localizer["AboutMythOmesDescription"].Value</p>
+            </li>
+
+            <li class="myth-card myth-card--wide">
+                <h4>@Localizer["AboutMythLacuerco"].Value</h4>
+                <p>@Localizer["AboutMythLacuercoDescription"].Value</p>
+            </li>
+        </ul>
     </div>
 </section>
 
 <section>
     <div class="container">
-        <h2 class="section-title">Otros grupos con los que hemos compartido fuego</h2>
-            <div class="groups-grid">
+        <h2 class="section-title">@Localizer["AboutHistoryHeading"].Value</h2>
+        <p>@Localizer["AboutHistoryParagraph1"].Value</p>
+        <p>@Localizer["AboutHistoryParagraph2"].Value</p>
+        <p>@Localizer["AboutHistoryParagraph3"].Value</p>
+        <p>@Localizer["AboutHistoryParagraph4"].Value</p>
+        <p>@Localizer["AboutHistoryParagraph5"].Value</p>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2 class="section-title">@Localizer["AboutGroupsHeading"].Value</h2>
+        <div class="groups-grid">
             <article class="groups-card">
-                <h3>Dentro de Aragón</h3>
+                <h3>@Localizer["AboutGroupsAragon"].Value</h3>
                 <ul class="group-list">
-                <li><a href="https://es-es.facebook.com/diaplesmadalena/" rel="nofollow noopener" target="_blank">Diaples d'a Madalena, de Zaragoza</a></li>
-                <li><a href="https://es-es.facebook.com/osdiapleronsdolugar/" rel="nofollow noopener" target="_blank">Os diaplerons d'o lugar, de La Hoz de la Vieja</a></li>
-                <li><a href="https://www.focyflama.com/" rel="nofollow noopener" target="_blank">Foc y Flama, de La Codoñera</a></li>
-                <li>Diablets de La Fresneda</li>
-                <li>Diablos de La Portellada</li>
-                <li>Diables de Val de Robres</li>
+                    <li>@Html.Raw(Localizer["AboutGroupsAragonItem1"].Value)</li>
+                    <li>@Html.Raw(Localizer["AboutGroupsAragonItem2"].Value)</li>
+                    <li>@Html.Raw(Localizer["AboutGroupsAragonItem3"].Value)</li>
+                    <li>@Localizer["AboutGroupsAragonItem4"].Value</li>
+                    <li>@Localizer["AboutGroupsAragonItem5"].Value</li>
+                    <li>@Localizer["AboutGroupsAragonItem6"].Value</li>
                 </ul>
             </article>
 
             <article class="groups-card">
-                <h3>Otros lugares</h3>
+                <h3>@Localizer["AboutGroupsBeyond"].Value</h3>
                 <ul class="group-list">
-                <li><a href="https://diablesdelleida.cat/" rel="nofollow noopener" target="_blank">Diables de Lleida</a></li>
-                <li><a href="https://diablesonyar.org/" rel="nofollow noopener" target="_blank">Diables de l'Onyar, Girona</a></li>
-                <li><a href="https://www.facebook.com/Grupdefocdenoubarris/" rel="nofollow noopener" target="_blank">Diables de Nou Barris, Barcelona</a></li>
-                <li><a href="https://www.facebook.com/Fotem-li-FOC-Alcanar-636851706420993/" rel="nofollow noopener" target="_blank">Dimonis Fotem-li foc, Alcanar</a></li>
-                <li><a href="https://www.facebook.com/Diabmonis-La-Rapita-639231979493761/" rel="nofollow noopener" target="_blank">Diabmonis de La Ràpita</a></li>
-                <li><a href="https://www.facebook.com/diablesdecastello/" rel="nofollow noopener" target="_blank">Diables de Castelló</a></li>
-                <li><a href="https://www.facebook.com/dimonisdelaplana.correfocs/" rel="nofollow noopener" target="_blank">Dimonis de La Plana</a></li>
-                <li><a href="https://www.facebook.com/ElsDimonisDeMorella/" rel="nofollow noopener" target="_blank">Els Dimonis de Morella</a></li>
+                    <li>@Html.Raw(Localizer["AboutGroupsBeyondItem1"].Value)</li>
+                    <li>@Html.Raw(Localizer["AboutGroupsBeyondItem2"].Value)</li>
+                    <li>@Html.Raw(Localizer["AboutGroupsBeyondItem3"].Value)</li>
+                    <li>@Html.Raw(Localizer["AboutGroupsBeyondItem4"].Value)</li>
+                    <li>@Html.Raw(Localizer["AboutGroupsBeyondItem5"].Value)</li>
+                    <li>@Html.Raw(Localizer["AboutGroupsBeyondItem6"].Value)</li>
+                    <li>@Html.Raw(Localizer["AboutGroupsBeyondItem7"].Value)</li>
+                    <li>@Html.Raw(Localizer["AboutGroupsBeyondItem8"].Value)</li>
                 </ul>
             </article>
-            </div>
-
+        </div>
     </div>
 </section>

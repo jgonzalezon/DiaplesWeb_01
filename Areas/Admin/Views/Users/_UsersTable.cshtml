@@ -5,16 +5,16 @@
     var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 }
 
-<table class="table table-dark table-hover align-middle">
-<thead>
-  <tr>
-    <th style="width:20%">Usuario</th>
-    <th style="width:15%">Teléfono</th>
-    <th style="width:20%">Email</th>
-    <th class="th-actions">Rol / Acciones</th>
-  </tr>
-</thead>
-<tbody>
+  <table class="table table-dark table-hover align-middle">
+  <thead>
+    <tr>
+      <th style="width:20%">@Localizer["UsersTableUser"].Value</th>
+      <th style="width:15%">@Localizer["UsersTablePhone"].Value</th>
+      <th style="width:20%">@Localizer["UsersTableEmail"].Value</th>
+      <th class="th-actions">@Localizer["UsersTableActions"].Value</th>
+    </tr>
+  </thead>
+  <tbody>
 @foreach (var item in Model)
 {
     var user  = item.User;
@@ -24,14 +24,14 @@
 <tr>
   <td>
     @user.UserName
-    @if (isSelf) { <span class="badge text-bg-secondary ms-2">Tú</span> }
-  </td>
-  <td>@(user.PhoneNumber ?? "—")</td>
-  <td>@user.Email</td>
+      @if (isSelf) { <span class="badge text-bg-secondary ms-2">@Localizer["UsersBadgeSelf"].Value</span> }
+    </td>
+    <td>@(user.PhoneNumber ?? "—")</td>
+    <td>@user.Email</td>
 
-  <td class="td-actions">
-    <div class="user-actions">
-      <!-- Cambiar rol -->
+    <td class="td-actions">
+      <div class="user-actions">
+        <!-- Cambiar rol -->
       <form method="post"
             asp-area="Admin"
             asp-controller="Users"
@@ -39,30 +39,30 @@
             class="form roleForm">
         @Html.AntiForgeryToken()
         <input type="hidden" name="id" value="@user.Id" />
-        <select name="role" aria-label="Cambiar rol" @(isSelf ? "disabled" : null)>
-          <option value="User"  selected="@(currentRole == "User")">User</option>
-          <option value="Admin" selected="@(currentRole == "Admin")">Admin</option>
-        </select>
-        <button type="submit" class="btn btn-sm btn-primary-like" @(isSelf ? "disabled" : null)>
-          Guardar
-        </button>
-      </form>
+          <select name="role" aria-label="@Localizer["UsersChangeRole"].Value" @(isSelf ? "disabled" : null)>
+            <option value="User"  selected="@(currentRole == "User")">@Localizer["RoleUser"].Value</option>
+            <option value="Admin" selected="@(currentRole == "Admin")">@Localizer["RoleAdmin"].Value</option>
+          </select>
+          <button type="submit" class="btn btn-sm btn-primary-like" @(isSelf ? "disabled" : null)>
+            @Localizer["Save"].Value
+          </button>
+        </form>
 
-      <!-- Borrar -->
-      <form method="post"
+        <!-- Borrar -->
+        <form method="post"
             asp-area="Admin"
             asp-controller="Users"
             asp-action="Delete"
             class="deleteForm">
         @Html.AntiForgeryToken()
         <input type="hidden" name="id" value="@user.Id" />
-        <button type="submit" class="btn btn-sm btn-danger" @(isSelf ? "disabled" : null)>
-          Borrar
-        </button>
-      </form>
-    </div>
-  </td>
-</tr>
+          <button type="submit" class="btn btn-sm btn-danger" @(isSelf ? "disabled" : null)>
+            @Localizer["Delete"].Value
+          </button>
+        </form>
+      </div>
+    </td>
+  </tr>
 }
 </tbody>
 </table>

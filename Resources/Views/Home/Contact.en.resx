@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ContactTitle" xml:space="preserve"><value>Contact</value></data>
+  <data name="ContactHeading" xml:space="preserve"><value>Contact</value></data>
+  <data name="ContactSubheading" xml:space="preserve"><value>Write to us for bookings, questions or to join the diablera tribe.</value></data>
+  <data name="ContactCardTitle" xml:space="preserve"><value>Cultural Association&lt;br /&gt;Os Diaples d'a Uerba</value></data>
+  <data name="ContactCardAddress" xml:space="preserve"><value>Pedro Liñán Street 8&lt;br /&gt;Zaragoza, Aragón</value></data>
+  <data name="ContactPhoneLabel" xml:space="preserve"><value>Phone:</value></data>
+  <data name="ContactEmailLabel" xml:space="preserve"><value>Email:</value></data>
+  <data name="ContactWebLabel" xml:space="preserve"><value>Website:</value></data>
+  <data name="ContactHint" xml:space="preserve"><value>You can also find us at our rehearsals on Thursday evenings.</value></data>
+  <data name="ContactNamePlaceholder" xml:space="preserve"><value>Full name</value></data>
+  <data name="ContactEmailPlaceholder" xml:space="preserve"><value>name@email.com</value></data>
+  <data name="ContactPhonePlaceholder" xml:space="preserve"><value>Phone (optional)</value></data>
+  <data name="ContactMessagePlaceholder" xml:space="preserve"><value>Tell us how we can help</value></data>
+  <data name="ContactSubmit" xml:space="preserve"><value>Send message</value></data>
+  <data name="ContactFootnote" xml:space="preserve"><value>Share media, performance proposals or simply say hello. We love fire and good company!</value></data>
+</root>

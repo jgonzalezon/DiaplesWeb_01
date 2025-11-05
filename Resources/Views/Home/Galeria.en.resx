@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="GalleryTitle" xml:space="preserve"><value>Os Diaples gallery</value></data>
+  <data name="GalleryHeroHeading" xml:space="preserve"><value>Videos and photos of our performances</value></data>
+  <data name="GalleryHeroLead" xml:space="preserve"><value>We run a YouTube channel and collect both our own recordings and those you share with us. Here you’ll find audiovisual memories of our shows along with links to the photo galleries of the photographers we trust.</value></data>
+  <data name="GalleryVideosHeading" xml:space="preserve"><value>Performance videos</value></data>
+  <data name="GalleryVideosIntro" xml:space="preserve"><value>Visit our YouTube channel to explore recordings of our performances, clips we produce and the ones you send us.</value></data>
+  <data name="GalleryYouTubeLink" xml:space="preserve"><value>YouTube video channel</value></data>
+  <data name="GalleryFeaturedVideoIntro" xml:space="preserve"><value>Enjoy this particularly beautiful video created by Elena Cid “Disentropic”.</value></data>
+  <data name="GalleryVimeoTitle" xml:space="preserve"><value>Vimeo player</value></data>
+  <data name="GalleryVimeoHeading" xml:space="preserve"><value>Os Diaples (The Devils) by Disentropic - Night &amp; Fire</value></data>
+  <data name="GalleryVimeoDescription" xml:space="preserve"><value>A film by Elena Cid “Disentropic” that captures the nocturnal magic of our fire and movement.</value></data>
+  <data name="GalleryFestivalParagraph" xml:space="preserve"><value>We also remember the “Pa Cutio Punchacuto” Festival held in 2015 as a tribute to Carlos Casamián, filled with emotion and camaraderie.</value></data>
+  <data name="GalleryYouTubeEmbedTitle" xml:space="preserve"><value>YouTube video player</value></data>
+  <data name="GalleryPhotosHeading" xml:space="preserve"><value>Photography and photographers</value></data>
+  <data name="GalleryPhotosIntro" xml:space="preserve"><value>Our photo archive is extensive, though it isn’t always easy to capture the fast-paced movement, changing lights and contrasts of fire and pyrotechnics.</value></data>
+  <data name="GalleryPhotoAlt1" xml:space="preserve"><value>Photo 1 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt2" xml:space="preserve"><value>Photo 2 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt3" xml:space="preserve"><value>Photo 3 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt4" xml:space="preserve"><value>Photo 4 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt5" xml:space="preserve"><value>Photo 5 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt6" xml:space="preserve"><value>Photo 6 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt7" xml:space="preserve"><value>Photo 7 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt8" xml:space="preserve"><value>Photo 8 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt9" xml:space="preserve"><value>Photo 9 - Os Diaples</value></data>
+  <data name="GalleryPhotographersIntro" xml:space="preserve"><value>Friends and photographers follow us and regularly capture high-quality images. Visit their galleries to discover all their work:</value></data>
+  <data name="GalleryPhotographer1" xml:space="preserve"><value>Julio Marín Álvarez</value></data>
+  <data name="GalleryPhotographer1Description" xml:space="preserve"><value>Explore his galleries at &lt;a href="http://www.juliomarin.magix.net" target="_blank" rel="noopener"&gt;www.juliomarin.magix.net&lt;/a&gt;.</value></data>
+  <data name="GalleryPhotographer2" xml:space="preserve"><value>Francho-foto</value></data>
+  <data name="GalleryPhotographer2Description" xml:space="preserve"><value>Visit his blog at &lt;a href="http://franchofoto.blogspot.com" target="_blank" rel="noopener"&gt;franchofoto.blogspot.com&lt;/a&gt;.</value></data>
+  <data name="GalleryCredits" xml:space="preserve"><value>The photographs used in this website’s design are the work of both professionals—we thank them for their eye and talent.</value></data>
+</root>

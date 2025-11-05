@@ -412,6 +412,11 @@ C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.pdb
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.genruntimeconfig.cache
 C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\ref\DiaplesWeb.dll
+C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
+C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\bin\Debug\net9.0\MailKit.dll
+C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\bin\Debug\net9.0\MimeKit.dll
+C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\qk2go5lc20-xzn560utsu.gz
+C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-nw1b64mel8.gz
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\appsettings.json
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\DiaplesWeb.staticwebassets.runtime.json
@@ -421,7 +426,11 @@ C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\DiaplesWeb.deps.j
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\DiaplesWeb.runtimeconfig.json
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\DiaplesWeb.dll
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\DiaplesWeb.pdb
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\en\DiaplesWeb.resources.dll
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\es\DiaplesWeb.resources.dll
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\Humanizer.dll
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\MailKit.dll
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -474,6 +483,7 @@ C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\Microsoft.VisualS
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\MimeKit.dll
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\Mono.TextTemplating.dll
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\Newtonsoft.Json.dll
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\NuGet.Common.dll
@@ -675,6 +685,76 @@ C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\runtimes\win-arm6
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\bin\Debug\net9.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.csproj.AssemblyReference.cache
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Controllers.EventsController.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Controllers.MessagesController.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Controllers.UsersController.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Dashboard.Index.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Events.Create.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Events.Details.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Events.Index.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Messages.Details.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Messages.Index.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.shared._AdminLayout.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Users.Index.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Users._UsersTable.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Identity.Pages.Account.Login.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Controllers.HomeController.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Models.ContactViewModel.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.About.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.Contact.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.Espectaculos.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.Galeria.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.Index.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.Privacy.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Shared._Layout.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Shared._LoginPartial.an-ES.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Controllers.EventsController.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Controllers.EventsController.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Controllers.MessagesController.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Controllers.MessagesController.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Controllers.UsersController.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Controllers.UsersController.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Dashboard.Index.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Dashboard.Index.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Events.Create.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Events.Create.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Events.Details.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Events.Details.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Events.Index.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Events.Index.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Messages.Details.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Messages.Details.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Messages.Index.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Messages.Index.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.shared._AdminLayout.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.shared._AdminLayout.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Users.Index.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Users.Index.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Users._UsersTable.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Admin.Views.Users._UsersTable.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Identity.Pages.Account.Login.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Areas.Identity.Pages.Account.Login.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Controllers.HomeController.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Controllers.HomeController.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Models.ContactViewModel.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Models.ContactViewModel.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.About.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.About.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.Contact.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.Contact.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.Espectaculos.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.Espectaculos.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.Galeria.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.Galeria.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.Index.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.Index.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.Privacy.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Home.Privacy.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Shared._Layout.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Shared._Layout.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Shared._LoginPartial.en.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.Resources.Views.Shared._LoginPartial.es.resources
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.csproj.GenerateResource.cache
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.AssemblyInfoInputs.cache
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.AssemblyInfo.cs
@@ -684,6 +764,10 @@ C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.MvcApp
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.RazorAssemblyInfo.cache
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.RazorAssemblyInfo.cs
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.sourcelink.json
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\en\DiaplesWeb.resources.cs
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\en\DiaplesWeb.resources.dll
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\es\DiaplesWeb.resources.cs
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\es\DiaplesWeb.resources.dll
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\scopedcss\bundle\DiaplesWeb.styles.css
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\scopedcss\projectbundle\DiaplesWeb.bundle.scp.css
@@ -749,8 +833,8 @@ C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\a3ygkw
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\nezrqnk58p-muycvpuwrr.gz
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\v0zgfp0y55-87fc7y1x7t.gz
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
-C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\qk2go5lc20-gc4za6dy2w.gz
-C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-qvd433a5cf.gz
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\qk2go5lc20-xzn560utsu.gz
+C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-nw1b64mel8.gz
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\gsc57r7cij-wicygw73mt.gz
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\js993n93b3-xtxxf3hu2r.gz
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\compressed\85dany85an-t1cqhe9u97.gz
@@ -829,8 +913,3 @@ C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\refint\DiaplesWeb
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.pdb
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\DiaplesWeb.genruntimeconfig.cache
 C:\Users\jgonz\Documents\GitHub\DiaplesWeb_01\obj\Debug\net9.0\ref\DiaplesWeb.dll
-C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
-C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\bin\Debug\net9.0\MailKit.dll
-C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\bin\Debug\net9.0\MimeKit.dll
-C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\qk2go5lc20-xzn560utsu.gz
-C:\Users\Oceano\Desktop\Curso NET\Práctica día 1\DiaplesWeb_01\obj\Debug\net9.0\compressed\0mho36ldvk-nw1b64mel8.gz

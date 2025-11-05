@@ -1,7 +1,7 @@
 @model DiaplesWeb.Models.ViewModels.PagedEventsViewModel
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    ViewData["Title"] = "Eventos";
+    ViewData["Title"] = Localizer["EventsTitle"].Value;
 }
 
 <section class="admin-events">
@@ -9,13 +9,13 @@
     <!-- Columna izquierda: Lista -->
     <aside class="panel-left">
       <div class="panel-header">
-        <h2 class="title">Eventos</h2>
-        <a class="btn btn-primary" asp-action="Create">+ Nuevo</a>
+        <h2 class="title">@Localizer["EventsListHeading"].Value</h2>
+        <a class="btn btn-primary" asp-action="Create">@Localizer["EventsNewButton"].Value</a>
       </div>
 
       @if (Model == null || !Model.Events.Any())
       {
-          <p class="muted">No hay eventos todavía.</p>
+          <p class="muted">@Localizer["EventsEmpty"].Value</p>
       }
       else
       {
@@ -38,27 +38,27 @@
                   </div>
                 </div>
                 <div class="event-actions">
-                  <a class="btn btn-sm" asp-action="Details" asp-route-id="@e.Id">Detalles</a>
+                  <a class="btn btn-sm" asp-action="Details" asp-route-id="@e.Id">@Localizer["EventsDetails"].Value</a>
                 </div>
               </li>
           }
         </ul>
 @if (Model.TotalPages > 1)
 {
-  <nav class="pager" aria-label="Paginación">
+  <nav class="pager" aria-label="@Localizer["PagerAriaLabel"].Value">
     <div class="pager-row">
 
       <!-- Primera -->
       <a class="@($"pager-btn {(Model.Page == 1 ? "is-disabled" : "")}")"
          asp-action="Index"
          asp-route-page="1"
-         title="Primera página">««</a>
+         title="@Localizer["PagerFirst"].Value">««</a>
 
       <!-- Anterior -->
       <a class="@($"pager-btn {(Model.Page == 1 ? "is-disabled" : "")}")"
          asp-action="Index"
          asp-route-page="@(Model.Page - 1)"
-         title="Anterior">«</a>
+         title="@Localizer["PagerPrevious"].Value">«</a>
 
       @{
           int startPage = Math.Max(1, Model.Page - 2);
@@ -67,7 +67,7 @@
 
       @if (startPage > 1)
       {
-        <span class="pager-ellipsis">...</span>
+        <span class="pager-ellipsis">…</span>
       }
 
       <!-- Números con coma -->
@@ -79,27 +79,27 @@
              asp-route-page="@i">@i</a>
           @if (i < endPage)
           {
-              <span class="pager-comma">,</span>
+              <span class="pager-comma">@Localizer["PagerSeparator"].Value</span>
           }
         </span>
       }
 
       @if (endPage < Model.TotalPages)
       {
-        <span class="pager-ellipsis">...</span>
+        <span class="pager-ellipsis">…</span>
       }
 
       <!-- Siguiente -->
       <a class="@($"pager-btn {(Model.Page >= Model.TotalPages ? "is-disabled" : "")}")"
          asp-action="Index"
          asp-route-page="@(Model.Page + 1)"
-         title="Siguiente">»</a>
+         title="@Localizer["PagerNext"].Value">»</a>
 
       <!-- Última -->
       <a class="@($"pager-btn {(Model.Page >= Model.TotalPages ? "is-disabled" : "")}")"
          asp-action="Index"
          asp-route-page="@Model.TotalPages"
-         title="Última página">»»</a>
+         title="@Localizer["PagerLast"].Value">»»</a>
 
     </div>
   </nav>
@@ -113,7 +113,7 @@
 
     <!-- Columna derecha: Calendario -->
     <section class="panel-right">
-      <h2 class="title">Calendario</h2>
+      <h2 class="title">@Localizer["EventsCalendarHeading"].Value</h2>
       <div id="calendar"></div>
     </section>
   </div>

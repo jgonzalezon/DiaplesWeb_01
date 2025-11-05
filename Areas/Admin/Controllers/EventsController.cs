@@ -6,7 +6,7 @@ using DiaplesWeb.Data;
 using DiaplesWeb.Models;
 using DiaplesWeb.Models.ViewModels;
 using DiaplesWeb.Services.Contracts;   // 👈 usa los servicios
-using System.Globalization;
+using Microsoft.Extensions.Localization;
 
 namespace DiaplesWeb.Areas.Admin.Controllers
 {
@@ -17,15 +17,18 @@ namespace DiaplesWeb.Areas.Admin.Controllers
         private readonly ApplicationDbContext _db;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IEventQueryService _events;   // 👈 consultas de eventos (paginado, calendario)
+        private readonly IStringLocalizer<EventsController> _localizer;
 
         public EventsController(
             ApplicationDbContext db,
             UserManager<IdentityUser> userManager,
-            IEventQueryService events)
+            IEventQueryService events,
+            IStringLocalizer<EventsController> localizer)
         {
             _db = db;
             _userManager = userManager;
             _events = events;
+            _localizer = localizer;
         }
 
         // ====== LISTA + PAGINACIÓN (4 por página) ======
@@ -98,7 +101,7 @@ namespace DiaplesWeb.Areas.Admin.Controllers
             await _db.Attendances.AddRangeAsync(rows);
             await _db.SaveChangesAsync();
 
-            TempData["ok"] = "Evento creado.";
+            TempData["ok"] = _localizer["EventsCreated"].Value;
             return RedirectToAction(nameof(Create));
         }
 
@@ -161,7 +164,7 @@ namespace DiaplesWeb.Areas.Admin.Controllers
             }
 
             await _db.SaveChangesAsync();
-            TempData["ok"] = "Asistencia actualizada.";
+            TempData["ok"] = _localizer["AttendanceUpdated"].Value;
             return RedirectToAction(nameof(Details), new { id });
         }
 
@@ -172,7 +175,7 @@ namespace DiaplesWeb.Areas.Admin.Controllers
             var ev = await _db.Events.FindAsync(id);
             if (ev == null)
             {
-                TempData["MsgError"] = "El evento no existe o ya fue borrado.";
+                TempData["MsgError"] = _localizer["EventMissing"].Value;
                 return RedirectToAction(nameof(Index));
             }
 
@@ -188,11 +191,11 @@ namespace DiaplesWeb.Areas.Admin.Controllers
             try
             {
                 await _db.SaveChangesAsync();
-                TempData["ok"] = "Evento borrado correctamente.";
+                TempData["ok"] = _localizer["EventDeleted"].Value;
             }
             catch (DbUpdateException)
             {
-                TempData["MsgError"] = "No se pudo borrar el evento. Revisa dependencias.";
+                TempData["MsgError"] = _localizer["EventDeleteError"].Value;
                 return RedirectToAction(nameof(Details), new { id });
             }
 
