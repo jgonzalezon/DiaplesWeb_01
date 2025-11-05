@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="GalleryTitle" xml:space="preserve"><value>Galería d'Os Diaples</value></data>
+  <data name="GalleryHeroHeading" xml:space="preserve"><value>Videos y fotos d'as nuestras actuzions</value></data>
+  <data name="GalleryHeroLead" xml:space="preserve"><value>Tenemos un canal de YouTube y recollimos gravazions propias y as que nos ninviais. Aquí trobarás bels recuerdos audiovisuals d'as nuestras actuzions, amás d'enllaz ta as galerías fotograficas d'os nuestros foteros de confianza.</value></data>
+  <data name="GalleryVideosHeading" xml:space="preserve"><value>Videos d'actuzions</value></data>
+  <data name="GalleryVideosIntro" xml:space="preserve"><value>Tenemos un canal de YouTube an reunimos videos d'actuzions, gravazions propias y totas as que compartís con nusatros.</value></data>
+  <data name="GalleryYouTubeLink" xml:space="preserve"><value>Canal de videos en YouTube</value></data>
+  <data name="GalleryFeaturedVideoIntro" xml:space="preserve"><value>Agora puedes disfritar d'un video bien guapo que fez Elena Cid «Disentropic».</value></data>
+  <data name="GalleryVimeoTitle" xml:space="preserve"><value>Reproductor de Vimeo</value></data>
+  <data name="GalleryVimeoHeading" xml:space="preserve"><value>Os Diaples (The Devils) by Disentropic - Night &amp; Fire</value></data>
+  <data name="GalleryVimeoDescription" xml:space="preserve"><value>Un video creyau por Elena Cid «Disentropic» que capta a máchia nocturna d'o fueg y o movimiento d'a colla.</value></data>
+  <data name="GalleryFestivalParagraph" xml:space="preserve"><value>Tamién recurdamos o festival «Pa Cutio Punchacuto» celebrau en 2015 en omenache a Carlos Casamián, con imachens plenas d'emoción y fraternidat.</value></data>
+  <data name="GalleryYouTubeEmbedTitle" xml:space="preserve"><value>Reproductor de video de YouTube</value></data>
+  <data name="GalleryPhotosHeading" xml:space="preserve"><value>Fotografías y foteros</value></data>
+  <data name="GalleryPhotosIntro" xml:space="preserve"><value>Contamos con un grand archivo fotografic, encara que no siempre ye sencillo captar o trepidant movimiento, os cambios de luz y os contrasts que chenera o fueg y a pirotecnia.</value></data>
+  <data name="GalleryPhotoAlt1" xml:space="preserve"><value>Foto 1 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt2" xml:space="preserve"><value>Foto 2 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt3" xml:space="preserve"><value>Foto 3 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt4" xml:space="preserve"><value>Foto 4 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt5" xml:space="preserve"><value>Foto 5 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt6" xml:space="preserve"><value>Foto 6 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt7" xml:space="preserve"><value>Foto 7 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt8" xml:space="preserve"><value>Foto 8 - Os Diaples</value></data>
+  <data name="GalleryPhotoAlt9" xml:space="preserve"><value>Foto 9 - Os Diaples</value></data>
+  <data name="GalleryPhotographersIntro" xml:space="preserve"><value>Tenemos amizatz y foteros que nos siguen y acuden de cutio ta retratar-nos con gran calidat. Visita as suyas galerías ta descubrir tot o suyo treballo:</value></data>
+  <data name="GalleryPhotographer1" xml:space="preserve"><value>Julio Marín Álvarez</value></data>
+  <data name="GalleryPhotographer1Description" xml:space="preserve"><value>Descubre as suyas galerías en &lt;a href="http://www.juliomarin.magix.net" target="_blank" rel="noopener"&gt;www.juliomarin.magix.net&lt;/a&gt;.</value></data>
+  <data name="GalleryPhotographer2" xml:space="preserve"><value>Francho-foto</value></data>
+  <data name="GalleryPhotographer2Description" xml:space="preserve"><value>Visita o suyo blog en &lt;a href="http://franchofoto.blogspot.com" target="_blank" rel="noopener"&gt;franchofoto.blogspot.com&lt;/a&gt;.</value></data>
+  <data name="GalleryCredits" xml:space="preserve"><value>As fotografías emplegaus en o diseño d'ista web son obra d'ixos dos profesionales, a os que agradeixemos a suya mirada y talento.</value></data>
+</root>

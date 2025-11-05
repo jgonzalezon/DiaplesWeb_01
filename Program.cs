@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
@@ -71,9 +72,33 @@ builder.Services.AddScoped<IEventQueryService, EfEventQueryService>();
 builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
-    var supportedCultures = LocalizationSettings.SupportedCultures
-        .Select(culture => new CultureInfo(culture.Name))
-        .ToList();
+    var supportedCultures = new List<CultureInfo>();
+    var cultureNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+    foreach (var culture in LocalizationSettings.SupportedCultures)
+    {
+        var clone = CultureInfo.GetCultureInfo(culture.Name);
+        if (cultureNames.Add(clone.Name))
+        {
+            supportedCultures.Add(clone);
+        }
+    }
+
+    foreach (var alias in LocalizationSettings.CultureAliases.Keys)
+    {
+        try
+        {
+            var aliasCulture = CultureInfo.GetCultureInfo(alias);
+            if (cultureNames.Add(aliasCulture.Name))
+            {
+                supportedCultures.Add(aliasCulture);
+            }
+        }
+        catch (CultureNotFoundException)
+        {
+            // Ignored: alias culture not available on this platform
+        }
+    }
 
     var supportedUiCultures = supportedCultures
         .Select(culture => (CultureInfo)culture.Clone())
