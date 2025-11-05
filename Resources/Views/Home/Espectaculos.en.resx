@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ShowsPageTitle" xml:space="preserve"><value>Shows</value></data>
+  <data name="ShowsHeroHeading" xml:space="preserve"><value>Shows we perform</value></data>
+  <data name="ShowsHeroLead" xml:space="preserve"><value>We stage dances of witches, devils and other beasts with live music, fire and pyrotechnics. We offer different formats and storylines to adapt to every celebration.</value></data>
+  <data name="ShowsIntro" xml:space="preserve"><value>We can classify our shows by type or duration, and we also work with several scripts and stories that we tailor to the needs of each event.</value></data>
+  <data name="ShowsCascadeAlt" xml:space="preserve"><value>Fire cascade in Tardienta (2015)</value></data>
+  <data name="ShowsCascadeCaption" xml:space="preserve"><value>Tardienta’s fire cascade, 2015.</value></data>
+  <data name="ShowsLargeTitle" xml:space="preserve"><value>Large shows</value></data>
+  <data name="ShowsLargeSubtitle" xml:space="preserve"><value>About an hour of fun</value></data>
+  <data name="ShowsLargeDescription" xml:space="preserve"><value>Ideal to energise big venues and close the night with live music, fire and pyrotechnics. At least 20 of us—musicians, fire handlers and crew—take part in performances lasting over 45 minutes.</value></data>
+  <data name="ShowsSmallTitle" xml:space="preserve"><value>Small shows</value></data>
+  <data name="ShowsSmallSubtitle" xml:space="preserve"><value>Half an hour in length</value></data>
+  <data name="ShowsSmallDescription" xml:space="preserve"><value>Designed for intimate celebrations or modest budgets. Around 15 Diaples—performers, musicians and assistants—keep the group's full energy going for roughly 35 minutes.</value></data>
+  <data name="ShowsTrasmozAlt" xml:space="preserve"><value>Crowded square in Trasmoz (Witches Fair, 2014)</value></data>
+  <data name="ShowsTrasmozCaption" xml:space="preserve"><value>Trasmoz Witches Fair, a packed square, 2014.</value></data>
+  <data name="ShowsAdaptHeading" xml:space="preserve"><value>Custom adaptations</value></data>
+  <data name="ShowsAdaptDescription" xml:space="preserve"><value>Contact us with the needs of your event. Together we'll adapt our resources and scripts to achieve an unforgettable and safe experience for everyone.</value></data>
+  <data name="ShowsMarketAlt" xml:space="preserve"><value>Performance at Zaragoza's Medieval Market, Plaza San Bruno</value></data>
+  <data name="ShowsMarketCaption" xml:space="preserve"><value>Zaragoza Medieval Market, Plaza San Bruno.</value></data>
+</root>
