@@ -1,4 +1,4 @@
-@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Identity
 @using System.Globalization
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
@@ -70,9 +70,9 @@
                         @Html.AntiForgeryToken()
                         <input type="hidden" name="returnUrl" value="@returnUrl" />
                         <select id="culture-select" name="culture" onchange="this.form.submit()" aria-label="@Localizer["LanguageSelectorLabel"].Value">
-                            <option value="es" @(currentCulture.TwoLetterISOLanguageName == "es" ? "selected" : string.Empty)>@Localizer["LanguageSpanish"].Value</option>
-                            <option value="an-ES" @(currentCulture.TwoLetterISOLanguageName == "an" ? "selected" : string.Empty)>@Localizer["LanguageAragonese"].Value</option>
-                            <option value="en" @(currentCulture.TwoLetterISOLanguageName == "en" ? "selected" : string.Empty)>@Localizer["LanguageEnglish"].Value</option>
+                            <option value="es" selected="@(currentCulture.TwoLetterISOLanguageName == "es")">@Localizer["LanguageSpanish"].Value</option>
+                            <option value="an-ES" selected="@(currentCulture.TwoLetterISOLanguageName == "an-ES")">@Localizer["LanguageAragonese"].Value</option>
+                            <option value="en" selected="@(currentCulture.TwoLetterISOLanguageName == "en")">@Localizer["LanguageEnglish"].Value</option>
                         </select>
                     </form>
                     <partial name="_LoginPartial" />
