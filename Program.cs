@@ -10,12 +10,12 @@ using System;
 using System.IO;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
-using System.Collections.Generic;
 using DiaplesWeb.Data;
 using DiaplesWeb.Services.Contracts;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using DiaplesWeb.Services.Email;
 using Microsoft.Extensions.Options;
+using DiaplesWeb.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -68,19 +68,23 @@ builder.Services
 builder.Services.AddScoped<IAttendanceService, EfAttendanceService>();
 builder.Services.AddScoped<IEventQueryService, EfEventQueryService>();
 builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();
-var supportedCultures = new[]
-{
-    new CultureInfo("es"),
-    new CultureInfo("en"),
-    new CultureInfo("an-ES")
-};
-
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
-    options.DefaultRequestCulture = new RequestCulture("es");
+    var supportedCultures = LocalizationSettings.SupportedCultures
+        .Select(culture => new CultureInfo(culture.Name))
+        .ToList();
+
+    var supportedUiCultures = supportedCultures
+        .Select(culture => (CultureInfo)culture.Clone())
+        .ToList();
+
+    options.SetDefaultCulture(LocalizationSettings.DefaultCulture);
     options.SupportedCultures = supportedCultures;
-    options.SupportedUICultures = supportedCultures;
-    options.RequestCultureProviders = new List<IRequestCultureProvider>
+    options.SupportedUICultures = supportedUiCultures;
+    options.FallBackToParentCultures = true;
+    options.FallBackToParentUICultures = true;
+    options.ApplyCurrentCultureToResponseHeaders = true;
+    options.RequestCultureProviders = new IRequestCultureProvider[]
     {
         new QueryStringRequestCultureProvider(),
         new CookieRequestCultureProvider(),

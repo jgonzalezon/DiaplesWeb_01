@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
+using DiaplesWeb.Localization;
 
 namespace DiaplesWeb.Controllers
 {
@@ -18,12 +18,32 @@ namespace DiaplesWeb.Controllers
         {
             var options = localizationOptions.Value;
 
-            _supportedCultureNames = options.SupportedUICultures?
-                .Select(culture => culture.Name)
-                .ToHashSet(StringComparer.OrdinalIgnoreCase)
-                ?? new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            _supportedCultureNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-            _defaultCulture = options.DefaultRequestCulture?.UICulture ?? CultureInfo.GetCultureInfo("es");
+            if (options.SupportedCultures is { Count: > 0 })
+            {
+                foreach (var culture in options.SupportedCultures)
+                {
+                    _supportedCultureNames.Add(LocalizationSettings.NormalizeCultureName(culture.Name));
+                }
+            }
+
+            if (options.SupportedUICultures is { Count: > 0 })
+            {
+                foreach (var culture in options.SupportedUICultures)
+                {
+                    _supportedCultureNames.Add(LocalizationSettings.NormalizeCultureName(culture.Name));
+                }
+            }
+
+            foreach (var alias in LocalizationSettings.CultureAliases)
+            {
+                _supportedCultureNames.Add(alias.Key);
+                _supportedCultureNames.Add(alias.Value);
+            }
+
+            _defaultCulture = options.DefaultRequestCulture?.UICulture
+                ?? CultureInfo.GetCultureInfo(LocalizationSettings.DefaultCulture);
 
             _supportedCultureNames.Add(_defaultCulture.Name);
         }
@@ -52,17 +72,25 @@ namespace DiaplesWeb.Controllers
 
         private CultureInfo ResolveCultureInfo(string? culture)
         {
+            var normalizedRequest = LocalizationSettings.NormalizeCultureName(culture);
+
             CultureInfo candidateCulture;
 
             try
             {
-                candidateCulture = string.IsNullOrWhiteSpace(culture)
+                candidateCulture = string.IsNullOrWhiteSpace(normalizedRequest)
                     ? _defaultCulture
-                    : new CultureInfo(culture);
+                    : new CultureInfo(normalizedRequest);
             }
             catch (CultureNotFoundException)
             {
                 candidateCulture = _defaultCulture;
+            }
+
+            var normalizedCandidate = LocalizationSettings.NormalizeCultureName(candidateCulture.Name);
+            if (!string.Equals(normalizedCandidate, candidateCulture.Name, StringComparison.OrdinalIgnoreCase))
+            {
+                candidateCulture = new CultureInfo(normalizedCandidate);
             }
 
             if (_supportedCultureNames.Contains(candidateCulture.Name))
@@ -71,11 +99,13 @@ namespace DiaplesWeb.Controllers
             }
 
             var parentCulture = candidateCulture.Parent;
-            if (parentCulture != null
-                && parentCulture != CultureInfo.InvariantCulture
-                && _supportedCultureNames.Contains(parentCulture.Name))
+            if (parentCulture != null && parentCulture != CultureInfo.InvariantCulture)
             {
-                return parentCulture;
+                var normalizedParent = LocalizationSettings.NormalizeCultureName(parentCulture.Name);
+                if (_supportedCultureNames.Contains(normalizedParent))
+                {
+                    return new CultureInfo(normalizedParent);
+                }
             }
 
             return _defaultCulture;
