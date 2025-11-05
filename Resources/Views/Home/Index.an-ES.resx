@@ -4,48 +4,48 @@
   <resheader name="version"><value>2.0</value></resheader>
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-  <data name="IndexTitle" xml:space="preserve"><value>Inicio</value></data>
+  <data name="IndexTitle" xml:space="preserve"><value>Encieto</value></data>
   <data name="HeroMainHeading" xml:space="preserve"><value>Os Diaples d'a Uerba</value></data>
-  <data name="HeroLeadText" xml:space="preserve"><value>Grupo de diablos, brujas y otras bestias que llenan las calles con música, fuego y pirotecnia.</value></data>
-  <data name="HeroLogoAlt" xml:space="preserve"><value>Logotipo de Os Diaples d'a Uerba</value></data>
-  <data name="HeroFigureCaption" xml:space="preserve"><value>Desde 1992 promoviendo la cultura aragonesa por toda la geografía peninsular.</value></data>
-  <data name="HeroDescription" xml:space="preserve"><value>Animamos las fiestas populares con ritmos, chispas y diversión, llevando nuestra pasión por las tradiciones a cada rincón.</value></data>
-  <data name="HeroCta" xml:space="preserve"><value>Conoce a los Diaples</value></data>
-  <data name="SpiritHeading" xml:space="preserve"><value>Nuestro espíritu</value></data>
-  <data name="SpiritParagraph1" xml:space="preserve"><value>Somos una asociación cultural voluntaria con sede en Zaragoza y formada por un grupo variado de unas 30 personas. A lo largo de nuestra historia hemos contado con innumerables colaboraciones que nos han permitido seguir creciendo y compartiendo la cultura aragonesa.</value></data>
-  <data name="SpiritParagraph2" xml:space="preserve"><value>Nuestros espectáculos de calle combinan teatralidad y artificios pirotécnicos de baja intensidad pero gran impacto visual. Diaples, brujas y bestias danzan entre chispas y colores mientras la música en directo marca ritmos tradicionales aragoneses y fusiones con otras culturas.</value></data>
-  <data name="SpiritParagraph3" xml:space="preserve"><value>¿Quieres saber más? Visita la sección de «Diaples» y descubre cada detalle de nuestra trayectoria.</value></data>
-  <data name="ShowsHeading" xml:space="preserve"><value>Espectáculos que ofrecemos</value></data>
-  <data name="ShowsParagraph" xml:space="preserve"><value>Nos encanta avivar las fiestas provocando emociones distintas, jugando y danzando con el fuego y la pólvora al ritmo de la música en directo.</value></data>
-  <data name="ShowsListLarge" xml:space="preserve"><value>Espectáculos grandes: alrededor de una hora de diversión.</value></data>
-  <data name="ShowsListSmall" xml:space="preserve"><value>Espectáculos pequeños: unos 35 minutos de intensidad.</value></data>
-  <data name="ShowsListStreet" xml:space="preserve"><value>Actuaciones en plaza o en formato pasacalles.</value></data>
-  <data name="ShowsListAdapt" xml:space="preserve"><value>Adaptaciones según las necesidades del evento.</value></data>
-  <data name="ShowsContactLink" xml:space="preserve"><value>Solicita más información sobre nuestras actuaciones.</value></data>
-  <data name="FeaturedHeading" xml:space="preserve"><value>Actuación destacada</value></data>
-  <data name="FeaturedImageAlt" xml:space="preserve"><value>Actuación de los Diaples en la Plaza del Pilar de Zaragoza en 2016</value></data>
-  <data name="FeaturedCaption" xml:space="preserve"><value>Actuación en la Plaza del Pilar de Zaragoza durante las fiestas de 2016.</value></data>
-  <data name="FeaturedDescription" xml:space="preserve"><value>Una de las noches más memorables en las que llenamos la plaza de fuego, percusión y sonrisas. Cada representación es única y la adaptamos al espacio y al público para lograr experiencias inolvidables.</value></data>
-  <data name="LocationsHeading" xml:space="preserve"><value>Lugares donde hemos dejado huella</value></data>
-  <data name="LocationsParagraph" xml:space="preserve"><value>Nos movemos principalmente por Aragón, pero también llevamos nuestro fuego a otros rincones del Estado. Hemos participado en festivales, ferias y fiestas populares, y seguimos sumando destinos.</value></data>
-  <data name="LocationsFestivals" xml:space="preserve"><value>Festivales de música</value></data>
-  <data name="LocationsFestivalsItem1" xml:space="preserve"><value>&lt;a href="http://www.demandafolk.com/" title="Sitio Web del Festival Demandafolk" target="_blank"&gt;Demandafolk&lt;/a&gt;, Tolbaños de arriba, Burgos.</value></data>
-  <data name="LocationsFestivalsItem2" xml:space="preserve"><value>&lt;a href="https://www.pirineos-sur.es/os-diaples-da-uerba-ofrecieron-una-noche-de-demonios-y-fuego-en-pirineos-sur/" rel="nofollow" title="Artículo de la actuación." target="_blank"&gt;Pirineos Sur&lt;/a&gt;, Sallent de Gállego, Huesca.</value></data>
-  <data name="LocationsFestivalsItem3" xml:space="preserve"><value>&lt;a href="http://www.festivalcastillodeainsa.com/" rel="nofollow" title="Web del festival." target="_blank"&gt;Castillo de Ainsa&lt;/a&gt;, Ainsa, Huesca.</value></data>
-  <data name="LocationsFestivalsItem4" xml:space="preserve"><value>&lt;a href="http://tamborilefestival.blogspot.com/2010/06/os-diaples-da-uerba.html" title="Blog del Festival de música de calle" target="_blank"&gt;Tamborile&lt;/a&gt;, Mezquita de Jarque, Teruel.</value></data>
-  <data name="LocationsFestivalsItem5" xml:space="preserve"><value>&lt;a href="https://es.wikipedia.org/wiki/Mariporr%C3%B3n" rel="nofollow" title="Wikipedía del extinto festival" target="_blank"&gt;Mariporrón&lt;/a&gt;, Tormantos, La Rioja.</value></data>
-  <data name="LocationsTownFestivals" xml:space="preserve"><value>Fiestas de pueblos y ciudades</value></data>
+  <data name="HeroLeadText" xml:space="preserve"><value>Colla de diaples, bruxas y atras feras que plenan as carreras con mosica, fueg y pirotecnia.</value></data>
+  <data name="HeroLogoAlt" xml:space="preserve"><value>Logotipo d'Os Diaples d'a Uerba</value></data>
+  <data name="HeroFigureCaption" xml:space="preserve"><value>Dende 1992 promovendo a cultura aragonesa por toda la chen d'a península.</value></data>
+  <data name="HeroDescription" xml:space="preserve"><value>Animamos as fiestas populars con ritmos, chisclas y goyo, levando a nuestra pasión por as tradizions ta cada recantón.</value></data>
+  <data name="HeroCta" xml:space="preserve"><value>Conoixe a os Diaples</value></data>
+  <data name="SpiritHeading" xml:space="preserve"><value>O nuestro esperito</value></data>
+  <data name="SpiritParagraph1" xml:space="preserve"><value>Somos una asoziazión cultural voluntaria con siede en Zaragoza y formada por una colla variada d'unas trenta personas. A o largo d'a nuestra istoria hemos teniu innumerables colaborazions que nos han permitiu continar creixendo y compartindo a cultura aragonesa.</value></data>
+  <data name="SpiritParagraph2" xml:space="preserve"><value>Os nuestros espectaclos de carrera combinan teatralidat y artificios pirotecnicos de baixa intensidat pero gran impacto visual. Diaples, bruxas y feras danzan entre chisclas y colors mentre la mosica en vivo marca ritmos tradicionals aragoneses y fusions con atras culturas.</value></data>
+  <data name="SpiritParagraph3" xml:space="preserve"><value>¿Quiers saber mas? Visita la seuzión «Diaples» y descobre cada detalle d'a nuestra trayeutoria.</value></data>
+  <data name="ShowsHeading" xml:space="preserve"><value>Espectaclos que oferimos</value></data>
+  <data name="ShowsParagraph" xml:space="preserve"><value>Nos encanta enceder as fiestas provocando sensazions distintas, chugando y dansando con o fueg y a pólbora a ritmo de mosica en directo.</value></data>
+  <data name="ShowsListLarge" xml:space="preserve"><value>Espectaclos grans: arredol d'una ora de goyo.</value></data>
+  <data name="ShowsListSmall" xml:space="preserve"><value>Espectaclos chicotz: uns trenta y cinco minutos d'intensidat.</value></data>
+  <data name="ShowsListStreet" xml:space="preserve"><value>Actuzions en plaza u en formato pasacarreras.</value></data>
+  <data name="ShowsListAdapt" xml:space="preserve"><value>Adautazions seguntes as necesidades d'o evento.</value></data>
+  <data name="ShowsContactLink" xml:space="preserve"><value>Pide mas información sobre as nuestras actuzions.</value></data>
+  <data name="FeaturedHeading" xml:space="preserve"><value>Actuzión destacada</value></data>
+  <data name="FeaturedImageAlt" xml:space="preserve"><value>Actuzión d'Os Diaples en a Plaza d'o Pilar de Zaragoza en 2016</value></data>
+  <data name="FeaturedCaption" xml:space="preserve"><value>Actuzión en a Plaza d'o Pilar de Zaragoza en plenas fiestas de 2016.</value></data>
+  <data name="FeaturedDescription" xml:space="preserve"><value>Una d'as nueitz mas memorables en as que plenemos a plaza de fueg, percusión y risas. Cada representación ye unica y l'adaptamos a l'espazio y a o publico ta lograr experenzias inolvidables.</value></data>
+  <data name="LocationsHeading" xml:space="preserve"><value>Luengars an deixemos uella</value></data>
+  <data name="LocationsParagraph" xml:space="preserve"><value>Nos movemos prencipalment por Aragón, pero tamién portamos o nuestro fueg ta atros recors d'o Estado. Hebemos participau en festivals, ferias y fiestas populars, y sigamos sumando destinos.</value></data>
+  <data name="LocationsFestivals" xml:space="preserve"><value>Festivals de mosica</value></data>
+  <data name="LocationsFestivalsItem1" xml:space="preserve"><value>&lt;a href="http://www.demandafolk.com/" title="Pachina web d'o festival Demandafolk" target="_blank"&gt;Demandafolk&lt;/a&gt;, Tolbaños d'Arriba, Burgos.</value></data>
+  <data name="LocationsFestivalsItem2" xml:space="preserve"><value>&lt;a href="https://www.pirineos-sur.es/os-diaples-da-uerba-ofrecieron-una-noche-de-demonios-y-fuego-en-pirineos-sur/" rel="nofollow" title="Artículo de l'actuzión" target="_blank"&gt;Pirineos Sur&lt;/a&gt;, Sallent de Galligo, Uesca.</value></data>
+  <data name="LocationsFestivalsItem3" xml:space="preserve"><value>&lt;a href="http://www.festivalcastillodeainsa.com/" rel="nofollow" title="Web d'o festival" target="_blank"&gt;Castillo d'Aínsa&lt;/a&gt;, Aínsa, Uesca.</value></data>
+  <data name="LocationsFestivalsItem4" xml:space="preserve"><value>&lt;a href="http://tamborilefestival.blogspot.com/2010/06/os-diaples-da-uerba.html" title="Blog d'o festival de mosica de carrera" target="_blank"&gt;Tamborile&lt;/a&gt;, Mezquita de Charque, Teruel.</value></data>
+  <data name="LocationsFestivalsItem5" xml:space="preserve"><value>&lt;a href="https://es.wikipedia.org/wiki/Mariporr%C3%B3n" rel="nofollow" title="Wikipedía d'o extinto festival" target="_blank"&gt;Mariporrón&lt;/a&gt;, Tormantos, La Riocha.</value></data>
+  <data name="LocationsTownFestivals" xml:space="preserve"><value>Fiestas de llocs y ciudatz</value></data>
   <data name="LocationsTownItem1" xml:space="preserve"><value>Tardienta.</value></data>
-  <data name="LocationsTownItem2" xml:space="preserve"><value>Sabinánigo.</value></data>
+  <data name="LocationsTownItem2" xml:space="preserve"><value>Sabinyánigo.</value></data>
   <data name="LocationsTownItem3" xml:space="preserve"><value>Tarazona.</value></data>
   <data name="LocationsTownItem4" xml:space="preserve"><value>Aliaga.</value></data>
-  <data name="LocationsTownItem5" xml:space="preserve"><value>Nuez de Ebro.</value></data>
+  <data name="LocationsTownItem5" xml:space="preserve"><value>Nos d'Ebro.</value></data>
   <data name="LocationsTownItem6" xml:space="preserve"><value>Altsasu.</value></data>
-  <data name="LocationsTownItem7" xml:space="preserve"><value>Villanueva de la Vera.</value></data>
-  <data name="LocationsMarkets" xml:space="preserve"><value>Ferias y mercados temáticos</value></data>
-  <data name="LocationsMarketsItem1" xml:space="preserve"><value>Mercado Medieval de las Tres Culturas (Zaragoza).</value></data>
-  <data name="LocationsMarketsItem2" xml:space="preserve"><value>Feria de brujería y magia de Trasmoz (Zaragoza).</value></data>
-  <data name="LocationsMarketsItem3" xml:space="preserve"><value>Noche Andalusí de la Rosa, Baños de la Encina (Jaén).</value></data>
-  <data name="LocationsClosing" xml:space="preserve"><value>Consulta nuestro mapa interactivo para descubrir todas las localizaciones donde hemos actuado. Si no encuentras tu localidad y hemos pasado por allí, ¡avísanos y lo añadiremos!</value></data>
-  <data name="LocationsContact" xml:space="preserve"><value>Envíanos un mensaje</value></data>
+  <data name="LocationsTownItem7" xml:space="preserve"><value>Vilanueva de la Vera.</value></data>
+  <data name="LocationsMarkets" xml:space="preserve"><value>Ferias y mercados tematicos</value></data>
+  <data name="LocationsMarketsItem1" xml:space="preserve"><value>Mercau Medieval d'as Tres Culturas (Zaragoza).</value></data>
+  <data name="LocationsMarketsItem2" xml:space="preserve"><value>Feria de bruxería y máchica de Trasmoz (Zaragoza).</value></data>
+  <data name="LocationsMarketsItem3" xml:space="preserve"><value>Nueit Andalusí d'a Rosa, Baños de la Encina (Jaén).</value></data>
+  <data name="LocationsClosing" xml:space="preserve"><value>Consulta o nuestro mapa interactivo ta descubrir totz os luengars an hemos actuau. Si no trobas a tuya localidat y hemos pasau por allí, avísanos y l'anyadiremos!</value></data>
+  <data name="LocationsContact" xml:space="preserve"><value>Ninvia-nos un mensache</value></data>
 </root>

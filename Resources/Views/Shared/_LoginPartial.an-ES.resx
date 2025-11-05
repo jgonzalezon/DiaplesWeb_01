@@ -16,12 +16,12 @@
     <value>Cuenta</value>
   </data>
   <data name="Logout" xml:space="preserve">
-    <value>Salir</value>
+    <value>Zarrar sesión</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Entrar</value>
+    <value>Entrar-ie</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>Registro</value>
+    <value>Rechistrar-se</value>
   </data>
 </root>

@@ -4,9 +4,9 @@
   <resheader name="version"><value>2.0</value></resheader>
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-  <data name="UsersCreateRequired" xml:space="preserve"><value>Todos los campos son obligatorios.</value></data>
-  <data name="UsersDeleteSelf" xml:space="preserve"><value>No puedes borrar tu propio usuario mientras estás activo.</value></data>
-  <data name="UsersUpdateSelf" xml:space="preserve"><value>No puedes modificar tu propio rol mientras estás activo.</value></data>
-  <data name="UsersInvalidData" xml:space="preserve"><value>Datos inválidos.</value></data>
-  <data name="UsersNotFound" xml:space="preserve"><value>Usuario no encontrado.</value></data>
+  <data name="UsersCreateRequired" xml:space="preserve"><value>Tos os campos son obligatorios.</value></data>
+  <data name="UsersDeleteSelf" xml:space="preserve"><value>No puedes borrar o tuyo propio usuario mientres yes activo.</value></data>
+  <data name="UsersUpdateSelf" xml:space="preserve"><value>No puedes cambiar o tuyo propio rol mientres yes activo.</value></data>
+  <data name="UsersInvalidData" xml:space="preserve"><value>Datos no balius.</value></data>
+  <data name="UsersNotFound" xml:space="preserve"><value>No s'ha trobau o usuario.</value></data>
 </root>

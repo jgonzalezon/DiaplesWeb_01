@@ -4,10 +4,10 @@
   <resheader name="version"><value>2.0</value></resheader>
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-  <data name="MessageDetailsTitle" xml:space="preserve"><value>Mensaje de {0}</value></data>
-  <data name="MessagePhone" xml:space="preserve"><value>Teléfono:</value></data>
-  <data name="MessageDate" xml:space="preserve"><value>Fecha:</value></data>
-  <data name="BackToList" xml:space="preserve"><value>Volver</value></data>
-  <data name="MessageDeleteConfirm" xml:space="preserve"><value>¿Seguro que deseas borrar este mensaje?</value></data>
+  <data name="MessageDetailsTitle" xml:space="preserve"><value>Mensache de {0}</value></data>
+  <data name="MessagePhone" xml:space="preserve"><value>Telefono:</value></data>
+  <data name="MessageDate" xml:space="preserve"><value>Calendata:</value></data>
+  <data name="BackToList" xml:space="preserve"><value>Tornar</value></data>
+  <data name="MessageDeleteConfirm" xml:space="preserve"><value>Seguro que quiers borrar iste mensache?</value></data>
   <data name="Delete" xml:space="preserve"><value>Borrar</value></data>
 </root>

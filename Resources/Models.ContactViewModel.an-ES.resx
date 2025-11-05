@@ -4,11 +4,11 @@
   <resheader name="version"><value>2.0</value></resheader>
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-  <data name="Indícanos tu nombre" xml:space="preserve"><value>Indícanos tu nombre</value></data>
+  <data name="Indícanos tu nombre" xml:space="preserve"><value>Indica-nos o tuyo nombre</value></data>
   <data name="Nombre" xml:space="preserve"><value>Nombre</value></data>
-  <data name="Necesitamos un email de contacto" xml:space="preserve"><value>Necesitamos un email de contacto</value></data>
-  <data name="Email" xml:space="preserve"><value>Email</value></data>
-  <data name="Teléfono" xml:space="preserve"><value>Teléfono</value></data>
-  <data name="Cuéntanos en qué podemos ayudarte" xml:space="preserve"><value>Cuéntanos en qué podemos ayudarte</value></data>
-  <data name="Mensaje" xml:space="preserve"><value>Mensaje</value></data>
+  <data name="Necesitamos un email de contacto" xml:space="preserve"><value>Mesteremos un correu de contacto</value></data>
+  <data name="Email" xml:space="preserve"><value>Correo</value></data>
+  <data name="Teléfono" xml:space="preserve"><value>Telefono</value></data>
+  <data name="Cuéntanos en qué podemos ayudarte" xml:space="preserve"><value>Cuenta-nos en qué podemos aduyar-te</value></data>
+  <data name="Mensaje" xml:space="preserve"><value>Mensache</value></data>
 </root>

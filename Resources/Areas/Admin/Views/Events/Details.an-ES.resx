@@ -5,19 +5,19 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="EventsDetailsTitle" xml:space="preserve"><value>Detalles de {0}</value></data>
-  <data name="EventsDescriptionHeading" xml:space="preserve"><value>Descripción</value></data>
-  <data name="EventsBack" xml:space="preserve"><value>Volver</value></data>
+  <data name="EventsDescriptionHeading" xml:space="preserve"><value>Descripzión</value></data>
+  <data name="EventsBack" xml:space="preserve"><value>Tornar</value></data>
   <data name="EventsNewButton" xml:space="preserve"><value>+ Nuevo</value></data>
-  <data name="EventsDeleteConfirm" xml:space="preserve"><value>¿Seguro que quieres borrar este evento? Se eliminarán también las asistencias.</value></data>
+  <data name="EventsDeleteConfirm" xml:space="preserve"><value>Seguro que quiers borrar iste evento? Tamién s'eliminarán as asistenzias.</value></data>
   <data name="EventsDelete" xml:space="preserve"><value>Borrar</value></data>
-  <data name="AttendanceHeading" xml:space="preserve"><value>Asistencia</value></data>
-  <data name="AttendanceEmpty" xml:space="preserve"><value>No hay usuarios registrados.</value></data>
+  <data name="AttendanceHeading" xml:space="preserve"><value>Asistenzia</value></data>
+  <data name="AttendanceEmpty" xml:space="preserve"><value>No bi ha usuarios rechistraus.</value></data>
   <data name="AttendanceUser" xml:space="preserve"><value>Usuario</value></data>
-  <data name="AttendancePhone" xml:space="preserve"><value>Teléfono</value></data>
-  <data name="AttendanceEmail" xml:space="preserve"><value>Email</value></data>
-  <data name="AttendanceStatus" xml:space="preserve"><value>Asistencia</value></data>
+  <data name="AttendancePhone" xml:space="preserve"><value>Telefono</value></data>
+  <data name="AttendanceEmail" xml:space="preserve"><value>Correo</value></data>
+  <data name="AttendanceStatus" xml:space="preserve"><value>Asistenzia</value></data>
   <data name="AttendanceYes" xml:space="preserve"><value>Sí</value></data>
-  <data name="AttendanceMaybe" xml:space="preserve"><value>Pendiente</value></data>
+  <data name="AttendanceMaybe" xml:space="preserve"><value>Pendient</value></data>
   <data name="AttendanceNo" xml:space="preserve"><value>No</value></data>
-  <data name="AttendanceSave" xml:space="preserve"><value>Guardar</value></data>
+  <data name="AttendanceSave" xml:space="preserve"><value>Alzar</value></data>
 </root>

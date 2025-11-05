@@ -6,17 +6,17 @@
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="ContactTitle" xml:space="preserve"><value>Contacto</value></data>
   <data name="ContactHeading" xml:space="preserve"><value>Contacto</value></data>
-  <data name="ContactSubheading" xml:space="preserve"><value>Escríbenos para contrataciones, dudas o para unirte a la tribu diablera.</value></data>
-  <data name="ContactCardTitle" xml:space="preserve"><value>Asociación Cultural&lt;br /&gt;Os Diaples d'a Uerba</value></data>
-  <data name="ContactCardAddress" xml:space="preserve"><value>Calle Pedro Liñán 8&lt;br /&gt;Zaragoza, Aragón</value></data>
-  <data name="ContactPhoneLabel" xml:space="preserve"><value>Teléfono:</value></data>
+  <data name="ContactSubheading" xml:space="preserve"><value>Escribi-nos ta contratacións, dudas u ta unir-te a la tribu diablera.</value></data>
+  <data name="ContactCardTitle" xml:space="preserve"><value>Asoziazión Cultural&lt;br /&gt;Os Diaples d'a Uerba</value></data>
+  <data name="ContactCardAddress" xml:space="preserve"><value>Carretera Pedro Liñán 8&lt;br /&gt;Zaragoza, Aragón</value></data>
+  <data name="ContactPhoneLabel" xml:space="preserve"><value>Telefono:</value></data>
   <data name="ContactEmailLabel" xml:space="preserve"><value>Correo:</value></data>
   <data name="ContactWebLabel" xml:space="preserve"><value>Web:</value></data>
-  <data name="ContactHint" xml:space="preserve"><value>También puedes encontrarnos en nuestros ensayos los jueves al anochecer.</value></data>
-  <data name="ContactNamePlaceholder" xml:space="preserve"><value>Nombre y apellidos</value></data>
+  <data name="ContactHint" xml:space="preserve"><value>Tamién nos puedes trobar en os nuestros ensayos os chueves a o atardecer.</value></data>
+  <data name="ContactNamePlaceholder" xml:space="preserve"><value>Nombre y apellius</value></data>
   <data name="ContactEmailPlaceholder" xml:space="preserve"><value>nombre@correo.com</value></data>
-  <data name="ContactPhonePlaceholder" xml:space="preserve"><value>Teléfono (opcional)</value></data>
-  <data name="ContactMessagePlaceholder" xml:space="preserve"><value>Cuéntanos en qué podemos ayudarte</value></data>
-  <data name="ContactSubmit" xml:space="preserve"><value>Enviar mensaje</value></data>
-  <data name="ContactFootnote" xml:space="preserve"><value>Comparte material gráfico, propuestas de actuaciones o simplemente salúdanos. ¡Nos encanta el fuego y la buena compañía!</value></data>
+  <data name="ContactPhonePlaceholder" xml:space="preserve"><value>Telefono (opzional)</value></data>
+  <data name="ContactMessagePlaceholder" xml:space="preserve"><value>Cuenta-nos en qué podemos aduyar-te</value></data>
+  <data name="ContactSubmit" xml:space="preserve"><value>Ninviar mensache</value></data>
+  <data name="ContactFootnote" xml:space="preserve"><value>Comparte material grafico, propuestas d'actuzions u simplemente saluda-nos. Nos encanta o fueg y a buena compaña!</value></data>
 </root>

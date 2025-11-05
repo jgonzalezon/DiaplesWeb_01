@@ -4,10 +4,10 @@
   <resheader name="version"><value>2.0</value></resheader>
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-  <data name="EventsCreateTitle" xml:space="preserve"><value>Crear evento</value></data>
-  <data name="EventsCreateHeading" xml:space="preserve"><value>Crear evento</value></data>
-  <data name="EventsDateLabel" xml:space="preserve"><value>Fecha y hora</value></data>
-  <data name="EventsDescriptionLabel" xml:space="preserve"><value>Descripción</value></data>
-  <data name="EventsDescriptionPlaceholder" xml:space="preserve"><value>Describe brevemente el evento…</value></data>
-  <data name="EventsSave" xml:space="preserve"><value>Guardar</value></data>
+  <data name="EventsCreateTitle" xml:space="preserve"><value>Creyar evento</value></data>
+  <data name="EventsCreateHeading" xml:space="preserve"><value>Creyar evento</value></data>
+  <data name="EventsDateLabel" xml:space="preserve"><value>Calendata y hora</value></data>
+  <data name="EventsDescriptionLabel" xml:space="preserve"><value>Descripzión</value></data>
+  <data name="EventsDescriptionPlaceholder" xml:space="preserve"><value>Describe breument o evento…</value></data>
+  <data name="EventsSave" xml:space="preserve"><value>Alzar</value></data>
 </root>

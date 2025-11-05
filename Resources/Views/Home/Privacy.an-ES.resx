@@ -4,7 +4,7 @@
   <resheader name="version"><value>2.0</value></resheader>
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-  <data name="PrivacyTitle" xml:space="preserve"><value>Política de privacidad</value></data>
-  <data name="PrivacyHeading" xml:space="preserve"><value>Política de privacidad</value></data>
-  <data name="PrivacyIntro" xml:space="preserve"><value>En esta sección podrás detallar la política de privacidad del sitio web.</value></data>
+  <data name="PrivacyTitle" xml:space="preserve"><value>Politica de privacidat</value></data>
+  <data name="PrivacyHeading" xml:space="preserve"><value>Politica de privacidat</value></data>
+  <data name="PrivacyIntro" xml:space="preserve"><value>En ista seuzión podrás detallar a politica de privacidat d'o puesto web.</value></data>
 </root>
