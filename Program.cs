@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using System.Linq;
@@ -139,11 +140,12 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var db = services.GetRequiredService<ApplicationDbContext>();
+    DatabaseFacade database = db.Database;
 
     // Solo migra si hay pendientes
-    var pending = await db.Database.GetPendingMigrationsAsync();
+    var pending = await database.GetPendingMigrationsAsync();
     if (pending.Any())
-        await db.Database.MigrateAsync();
+        await database.MigrateAsync();
 
     app.Logger.LogInformation("SQLite DB path in use: {DbPath}", dbPath);
 
