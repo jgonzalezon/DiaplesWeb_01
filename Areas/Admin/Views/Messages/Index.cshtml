@@ -1,8 +1,9 @@
 @model IEnumerable<DiaplesWeb.Models.ContactMessage>
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = Localizer["MessagesTitle"].Value;
 }
-<h2>Mensajes</h2>
+<h1 class="title-xl">@Localizer["MessagesHeading"].Value</h1>
 
 @if (TempData["MsgOk"] is string ok && !string.IsNullOrWhiteSpace(ok))
 {
@@ -13,18 +14,25 @@
     <div class="alert alert-danger my-2">@err</div>
 }
 
-<ul style="list-style:none;padding:0;margin:0">
-@foreach (var m in Model)
+@if (Model == null || !Model.Any())
 {
-  <li style="padding:12px;border-bottom:1px solid var(--border)">
-    <a asp-area="Admin" asp-controller="Messages" asp-action="Details" asp-route-id="@m.Id"
-       style="display:block;text-decoration:none">
-      <strong>@m.Name</strong> &lt;@m.Email&gt;
-      <div style="color:var(--muted);font-size:.95rem">@m.CreatedAt.ToString("yyyy-MM-dd HH:mm")</div>
-      <div style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--txt)">
-        @m.Message
-      </div>
-    </a>
-  </li>
+    <p class="muted">@Localizer["MessagesEmpty"].Value</p>
 }
-</ul>
+else
+{
+    <ul style="list-style:none;padding:0;margin:0">
+    @foreach (var m in Model)
+    {
+      <li style="padding:12px;border-bottom:1px solid var(--border)">
+        <a asp-area="Admin" asp-controller="Messages" asp-action="Details" asp-route-id="@m.Id"
+           style="display:block;text-decoration:none">
+          <strong>@m.Name</strong> &lt;@m.Email&gt;
+          <div style="color:var(--muted);font-size:.95rem">@m.CreatedAt.ToString("yyyy-MM-dd HH:mm")</div>
+          <div style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--txt)">
+            @m.Message
+          </div>
+        </a>
+      </li>
+    }
+    </ul>
+}

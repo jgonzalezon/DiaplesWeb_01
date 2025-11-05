@@ -8,6 +8,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using System.IO;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
+using System.Collections.Generic;
 using DiaplesWeb.Data;
 using DiaplesWeb.Services.Contracts;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -37,8 +40,12 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 builder.Services.AddControllers();
-builder.Services.AddControllersWithViews();
+builder.Services
+    .AddControllersWithViews()
+    .AddViewLocalization()
+    .AddDataAnnotationsLocalization();
 builder.Services.AddRazorPages();
 
 // BD (SQLite) con ruta absoluta al app.db en la raíz del proyecto
@@ -79,6 +86,29 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+var supportedCultures = new[]
+{
+    new CultureInfo("es"),
+    new CultureInfo("en"),
+    new CultureInfo("an-ES")
+};
+
+var requestLocalizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture("es"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures
+};
+
+requestLocalizationOptions.RequestCultureProviders = new List<IRequestCultureProvider>
+{
+    new QueryStringRequestCultureProvider(),
+    new CookieRequestCultureProvider(),
+    new AcceptLanguageHeaderRequestCultureProvider()
+};
+
+app.UseRequestLocalization(requestLocalizationOptions);
 
 app.UseRouting();
 

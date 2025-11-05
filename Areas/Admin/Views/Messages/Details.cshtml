@@ -1,24 +1,26 @@
 @model DiaplesWeb.Models.ContactMessage
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var sender = Model?.Name ?? string.Empty;
+    ViewData["Title"] = string.Format(Localizer["MessageDetailsTitle"].Value, sender);
 }
 
-<h2>@Model.Name <small style="color:var(--muted)">&lt;@Model.Email&gt;</small></h2>
-<p><strong>Teléfono:</strong> @Model.Phone</p>
-<p><strong>Fecha:</strong> @Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")</p>
+<h1 class="title-xl">@Model.Name <small style="color:var(--muted)">&lt;@Model.Email&gt;</small></h1>
+<p><strong>@Localizer["MessagePhone"].Value</strong> @Model.Phone</p>
+<p><strong>@Localizer["MessageDate"].Value</strong> @Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")</p>
 <article style="white-space:pre-wrap;margin-top:12px">@Model.Message</article>
 
 <div class="actions-row">
   <!-- Izquierda -->
   <a asp-area="Admin" asp-controller="Messages" asp-action="Index"
-     class="btn btn-outline-light btn-action btn-volver">Volver</a>
+     class="btn btn-outline-light btn-action btn-volver">@Localizer["BackToList"].Value</a>
 
   <!-- Derecha -->
   <form asp-area="Admin" asp-controller="Messages" asp-action="Delete"
-        method="post" onsubmit="return confirm('¿Seguro que deseas borrar este mensaje?')">
+        method="post" onsubmit="return confirm('@Localizer["MessageDeleteConfirm"].Value')">
     @Html.AntiForgeryToken()
     <input type="hidden" name="id" value="@Model.Id" />
-    <button type="submit" class="btn btn-danger btn-action">Borrar</button>
+    <button type="submit" class="btn btn-danger btn-action">@Localizer["Delete"].Value</button>
   </form>
 </div>
 

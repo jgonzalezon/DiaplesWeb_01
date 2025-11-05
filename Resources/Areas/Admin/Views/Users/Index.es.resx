@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="UsersTitle" xml:space="preserve"><value>Usuarios</value></data>
+  <data name="UsersHeading" xml:space="preserve"><value>Gestión de usuarios</value></data>
+  <data name="BackToSite" xml:space="preserve"><value>Volver al sitio</value></data>
+  <data name="UsersCreateHeading" xml:space="preserve"><value>Crear usuario</value></data>
+  <data name="UsersFieldUser" xml:space="preserve"><value>Usuario</value></data>
+  <data name="UsersFieldUserPlaceholder" xml:space="preserve"><value>Nombre de usuario</value></data>
+  <data name="UsersFieldRole" xml:space="preserve"><value>Rol</value></data>
+  <data name="UsersFieldEmail" xml:space="preserve"><value>Email</value></data>
+  <data name="UsersFieldEmailPlaceholder" xml:space="preserve"><value>correo@ejemplo.com</value></data>
+  <data name="UsersFieldPassword" xml:space="preserve"><value>Contraseña</value></data>
+  <data name="UsersFieldPasswordPlaceholder" xml:space="preserve"><value>Contraseña</value></data>
+  <data name="UsersPasswordActions" xml:space="preserve"><value>Acciones de contraseña</value></data>
+  <data name="UsersTogglePassword" xml:space="preserve"><value>Mostrar/Ocultar</value></data>
+  <data name="UsersGeneratePassword" xml:space="preserve"><value>Aleatorio</value></data>
+  <data name="UsersPasswordHint" xml:space="preserve"><value>Usa letras y números.</value></data>
+  <data name="Create" xml:space="preserve"><value>Crear</value></data>
+  <data name="UsersListHeading" xml:space="preserve"><value>Listado</value></data>
+  <data name="UsersPasswordWeak" xml:space="preserve"><value>Contraseña débil</value></data>
+  <data name="UsersPasswordOk" xml:space="preserve"><value>Aceptable</value></data>
+  <data name="UsersPasswordGood" xml:space="preserve"><value>Buena</value></data>
+  <data name="UsersPasswordStrong" xml:space="preserve"><value>Fuerte</value></data>
+  <data name="UsersProcessing" xml:space="preserve"><value>Procesando…</value></data>
+  <data name="UsersCreated" xml:space="preserve"><value>Usuario creado</value></data>
+  <data name="UsersRoleChanged" xml:space="preserve"><value>Rol cambiado a {role}</value></data>
+  <data name="UsersDeleted" xml:space="preserve"><value>Usuario borrado</value></data>
+  <data name="UsersGenericSuccess" xml:space="preserve"><value>Operación realizada</value></data>
+  <data name="UsersGenericError" xml:space="preserve"><value>No se pudo completar la operación ({message})</value></data>
+  <data name="UsersDeleteConfirm" xml:space="preserve"><value>¿Borrar usuario?</value></data>
+  <data name="UsersHttpError" xml:space="preserve"><value>Error {status}</value></data>
+</root>

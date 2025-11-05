@@ -2,16 +2,19 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using DiaplesWeb.Models;
 using DiaplesWeb.Data;
+using Microsoft.Extensions.Localization;
 
 namespace DiaplesWeb.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _db;
+        private readonly IStringLocalizer<HomeController> _localizer;
 
-        public HomeController(ApplicationDbContext db)
+        public HomeController(ApplicationDbContext db, IStringLocalizer<HomeController> localizer)
         {
             _db = db;
+            _localizer = localizer;
         }
 
         public IActionResult Index() => View();
@@ -46,7 +49,7 @@ namespace DiaplesWeb.Controllers
             _db.ContactMessages.Add(entity);
             _db.SaveChanges();
 
-            TempData["ContactOk"] = "¡Gracias por escribirnos! Te responderemos muy pronto.";
+            TempData["ContactOk"] = _localizer["ContactSuccess"].Value;
             return RedirectToAction(nameof(Contact));
         }
     }

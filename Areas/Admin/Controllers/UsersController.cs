@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 
 namespace DiaplesWeb.Areas.Admin.Controllers
@@ -11,8 +12,14 @@ namespace DiaplesWeb.Areas.Admin.Controllers
     {
         private readonly UserManager<IdentityUser> _um;
         private readonly RoleManager<IdentityRole> _rm;
-        public UsersController(UserManager<IdentityUser> um, RoleManager<IdentityRole> rm)
-        { _um = um; _rm = rm; }
+        private readonly IStringLocalizer<UsersController> _localizer;
+
+        public UsersController(UserManager<IdentityUser> um, RoleManager<IdentityRole> rm, IStringLocalizer<UsersController> localizer)
+        {
+            _um = um;
+            _rm = rm;
+            _localizer = localizer;
+        }
 
         public async Task<IActionResult> Index()
             => PartialOrView(await BuildModel());
@@ -25,7 +32,7 @@ namespace DiaplesWeb.Areas.Admin.Controllers
                 string.IsNullOrWhiteSpace(email) ||
                 string.IsNullOrWhiteSpace(password))
             {
-                ModelState.AddModelError("", "Todos los campos son obligatorios.");
+                ModelState.AddModelError("", _localizer["UsersCreateRequired"].Value);
                 Response.Headers["X-Partial-Error"] = "1";
                 return PartialOrView(await BuildModel());
             }
@@ -56,7 +63,7 @@ namespace DiaplesWeb.Areas.Admin.Controllers
             var currentUserId = _um.GetUserId(User);
             if (id == currentUserId)
             {
-                ModelState.AddModelError("", "No puedes borrar tu propio usuario mientras estás activo.");
+                ModelState.AddModelError("", _localizer["UsersDeleteSelf"].Value);
                 Response.Headers["X-Partial-Error"] = "1";
                 return PartialOrView(await BuildModel());
             }
@@ -83,14 +90,14 @@ namespace DiaplesWeb.Areas.Admin.Controllers
             var currentUserId = _um.GetUserId(User);
             if (id == currentUserId)
             {
-                ModelState.AddModelError("", "No puedes modificar tu propio rol mientras estás activo.");
+                ModelState.AddModelError("", _localizer["UsersUpdateSelf"].Value);
                 Response.Headers["X-Partial-Error"] = "1";
                 return PartialOrView(await BuildModel());
             }
 
             if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(role))
             {
-                ModelState.AddModelError("", "Datos inválidos.");
+                ModelState.AddModelError("", _localizer["UsersInvalidData"].Value);
                 Response.Headers["X-Partial-Error"] = "1";
                 return PartialOrView(await BuildModel());
             }
@@ -98,7 +105,7 @@ namespace DiaplesWeb.Areas.Admin.Controllers
             var user = await _um.FindByIdAsync(id);
             if (user == null)
             {
-                ModelState.AddModelError("", "Usuario no encontrado.");
+                ModelState.AddModelError("", _localizer["UsersNotFound"].Value);
                 Response.Headers["X-Partial-Error"] = "1";
                 return PartialOrView(await BuildModel());
             }
