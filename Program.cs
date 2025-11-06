@@ -2,19 +2,22 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
 using System.IO;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
-using System.Collections.Generic;
 using DiaplesWeb.Data;
 using DiaplesWeb.Services.Contracts;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using DiaplesWeb.Services.Email;
+using Microsoft.Extensions.Options;
+using DiaplesWeb.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -67,7 +70,53 @@ builder.Services
 builder.Services.AddScoped<IAttendanceService, EfAttendanceService>();
 builder.Services.AddScoped<IEventQueryService, EfEventQueryService>();
 builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    var supportedCultures = new List<CultureInfo>();
+    var cultureNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
+    foreach (var culture in LocalizationSettings.SupportedCultures)
+    {
+        var clone = CultureInfo.GetCultureInfo(culture.Name);
+        if (cultureNames.Add(clone.Name))
+        {
+            supportedCultures.Add(clone);
+        }
+    }
+
+    foreach (var alias in LocalizationSettings.CultureAliases.Keys)
+    {
+        try
+        {
+            var aliasCulture = CultureInfo.GetCultureInfo(alias);
+            if (cultureNames.Add(aliasCulture.Name))
+            {
+                supportedCultures.Add(aliasCulture);
+            }
+        }
+        catch (CultureNotFoundException)
+        {
+            // Ignored: alias culture not available on this platform
+        }
+    }
+
+    var supportedUiCultures = supportedCultures
+        .Select(culture => (CultureInfo)culture.Clone())
+        .ToList();
+
+    options.SetDefaultCulture(LocalizationSettings.DefaultCulture);
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedUiCultures;
+    options.FallBackToParentCultures = true;
+    options.FallBackToParentUICultures = true;
+    options.ApplyCurrentCultureToResponseHeaders = true;
+    options.RequestCultureProviders = new IRequestCultureProvider[]
+    {
+        new QueryStringRequestCultureProvider(),
+        new CookieRequestCultureProvider(),
+        new AcceptLanguageHeaderRequestCultureProvider()
+    };
+});
 
 var app = builder.Build();
 
@@ -87,26 +136,9 @@ else
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-var supportedCultures = new[]
-{
-    new CultureInfo("es"),
-    new CultureInfo("en"),
-    new CultureInfo("an-ES")
-};
-
-var requestLocalizationOptions = new RequestLocalizationOptions
-{
-    DefaultRequestCulture = new RequestCulture("es"),
-    SupportedCultures = supportedCultures,
-    SupportedUICultures = supportedCultures
-};
-
-requestLocalizationOptions.RequestCultureProviders = new List<IRequestCultureProvider>
-{
-    new QueryStringRequestCultureProvider(),
-    new CookieRequestCultureProvider(),
-    new AcceptLanguageHeaderRequestCultureProvider()
-};
+var requestLocalizationOptions = app.Services
+    .GetRequiredService<IOptions<RequestLocalizationOptions>>()
+    .Value;
 
 app.UseRequestLocalization(requestLocalizationOptions);
 
@@ -133,11 +165,12 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var db = services.GetRequiredService<ApplicationDbContext>();
+    DatabaseFacade database = db.Database;
 
     // Solo migra si hay pendientes
-    var pending = await db.Database.GetPendingMigrationsAsync();
+    var pending = await database.GetPendingMigrationsAsync();
     if (pending.Any())
-        await db.Database.MigrateAsync();
+        await database.MigrateAsync();
 
     app.Logger.LogInformation("SQLite DB path in use: {DbPath}", dbPath);
 

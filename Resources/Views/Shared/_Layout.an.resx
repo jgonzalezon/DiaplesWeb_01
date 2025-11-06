@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SiteName" xml:space="preserve">
+    <value>Os Diaples d'a Uerba</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Os Diaples d'a Uerba · Espectaclos de fueg, animación y tradición aragonesa. Conoixe a la tribu diablera y cómo contactar con nusatros.</value>
+  </data>
+  <data name="IntroAriaLabel" xml:space="preserve">
+    <value>Introduzión d'os Diaples</value>
+  </data>
+  <data name="IntroHeading" xml:space="preserve">
+    <value>Os Diaples d'a Uerba</value>
+  </data>
+  <data name="IntroLead" xml:space="preserve">
+    <value>Fueg, percusión y cultura aragonesa dende 1992.</value>
+  </data>
+  <data name="IntroButton" xml:space="preserve">
+    <value>Entrar-ie</value>
+  </data>
+  <data name="BrandAltText" xml:space="preserve">
+    <value>Logo d'Os Diaples d'a Uerba</value>
+  </data>
+  <data name="OpenMenuLabel" xml:space="preserve">
+    <value>Ubrir o menú</value>
+  </data>
+  <data name="NavAbout" xml:space="preserve">
+    <value>Os Diaples</value>
+  </data>
+  <data name="NavShows" xml:space="preserve">
+    <value>Espectaclos</value>
+  </data>
+  <data name="NavGallery" xml:space="preserve">
+    <value>Galería</value>
+  </data>
+  <data name="NavContact" xml:space="preserve">
+    <value>Contacto</value>
+  </data>
+  <data name="LanguageSelectorLabel" xml:space="preserve">
+    <value>Trigar idioma</value>
+  </data>
+  <data name="LanguageSpanish" xml:space="preserve">
+    <value>Castellán</value>
+  </data>
+  <data name="LanguageAragonese" xml:space="preserve">
+    <value>Aragonés</value>
+  </data>
+  <data name="LanguageEnglish" xml:space="preserve">
+    <value>Inglés</value>
+  </data>
+  <data name="AdminLink" xml:space="preserve">
+    <value>Alministración</value>
+  </data>
+  <data name="EventsLink" xml:space="preserve">
+    <value>Eventos</value>
+  </data>
+  <data name="FooterBrandAltText" xml:space="preserve">
+    <value>Logo de Diaples.es</value>
+  </data>
+  <data name="FooterDescription" xml:space="preserve">
+    <value>Asociación cultural dedicada a espardir a mitolochía aragonesa a traviés d'o fueg, a mosica y l'espectaclo de carrera dende 1992.</value>
+  </data>
+  <data name="FooterAddress" xml:space="preserve">
+    <value>Carretera Pedro Liñán 8, Zaragoza, Aragón</value>
+  </data>
+  <data name="FooterContentHeading" xml:space="preserve">
+    <value>Conteniu</value>
+  </data>
+  <data name="FacebookLabel" xml:space="preserve">
+    <value>Facebook d'Os Diaples</value>
+  </data>
+  <data name="TwitterLabel" xml:space="preserve">
+    <value>Perfil en X d'Os Diaples</value>
+  </data>
+  <data name="FooterRights" xml:space="preserve">
+    <value>Toz os dreitos rechistraus</value>
+  </data>
+  <data name="BackToTop" xml:space="preserve">
+    <value>Tornar enta alto</value>
+  </data>
+</root>
