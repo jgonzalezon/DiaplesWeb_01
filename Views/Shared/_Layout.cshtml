@@ -1,20 +1,32 @@
-﻿<!DOCTYPE html>
-<html lang="es">
+@using System.Globalization
 @using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocalizationOptions
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+@{
+    var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
+    var requestCulture = requestCultureFeature?.RequestCulture ?? new RequestCulture("es-ES");
+    var supportedCultures = LocalizationOptions.Value.SupportedUICultures ?? Array.Empty<CultureInfo>();
+    var currentCulture = CultureInfo.CurrentUICulture;
+    var returnUrl = Context.Request.Path + Context.Request.QueryString;
+}
+<!DOCTYPE html>
+<html lang="@currentCulture.Name">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Os Diaples d'a Uerba</title>
+    <title>@ViewData["Title"] - @Localizer["SiteTitleSuffix"]</title>
 
-    <meta name="description" content="Os Diaples d'a Uerba · Espectáculos de fuego, animación y tradición aragonesa. Conoce a la tribu diablera y cómo contactar con nosotros.">
+    <meta name="description" content="@Localizer["MetaDescription"]">
     <link rel="icon" type="image/ico" href="~/favicon.ico" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     @RenderSection("Styles", required: false)
 
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    
+
 </head>
 
 
@@ -25,14 +37,14 @@
     <div id="site-bg" class="site-bg" aria-hidden="true"></div>
 
     <!-- Overlay de introducción (solo 1ª vez por sesión) -->
-    <div id="intro" class="intro" role="dialog" aria-label="Introducción Diaples" aria-modal="true">
+    <div id="intro" class="intro" role="dialog" aria-label="@Localizer["IntroDialogLabel"]" aria-modal="true">
       <div class="intro__scrim"></div>
       <div class="intro__media" aria-hidden="true"></div>
 
       <div class="intro__content">
-        <h1>Os Diaples d'a Uerba</h1>
-        <p class="lead">Fuego, percusión y cultura aragonesa desde 1992.</p>
-        <button id="intro-enter" class="btn">Entrar</button>
+        <h1>@Localizer["IntroTitle"]</h1>
+        <p class="lead">@Localizer["IntroLead"]</p>
+        <button id="intro-enter" class="btn">@Localizer["IntroEnter"]</button>
       </div>
     </div>
 
@@ -46,17 +58,17 @@
 
         <!-- Toggle móvil -->
         <input id="nav-toggle" type="checkbox" class="nav-toggle" />
-        <label for="nav-toggle" class="hamburger" aria-label="Abrir menú">
+        <label for="nav-toggle" class="hamburger" aria-label="@Localizer["HamburgerLabel"]">
         <span></span><span></span><span></span>
         </label>
 
         <!-- Menú -->
         <nav class="nav-menu">
         <div class="nav-links">
-            <a asp-controller="Home" asp-action="About">Os Diaples</a>
-            <a asp-controller="Home" asp-action="Espectaculos">Espectáculos</a>
-            <a asp-controller="Home" asp-action="Galeria">Galeria</a>
-            <a asp-controller="Home" asp-action="Contact">Contacto</a>
+            <a asp-controller="Home" asp-action="About">@Localizer["MenuAbout"]</a>
+            <a asp-controller="Home" asp-action="Espectaculos">@Localizer["MenuShows"]</a>
+            <a asp-controller="Home" asp-action="Galeria">@Localizer["MenuGallery"]</a>
+            <a asp-controller="Home" asp-action="Contact">@Localizer["MenuContact"]</a>
         </div>
 
         <!-- Acciones (login/registro/logout) -->
@@ -65,12 +77,26 @@
         </div>
         @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
         {
-            <a href="~/Admin/Dashboard" class="btn btn-gradient">Administración</a>
+            <a href="~/Admin/Dashboard" class="btn btn-gradient">@Localizer["AdminButton"]</a>
         }
         @if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
         {
-            <a href="~/MyEvents" class="btn btn-gradient">Eventos</a>
+            <a href="~/MyEvents" class="btn btn-gradient">@Localizer["EventsButton"]</a>
         }
+        <div class="nav-language">
+            <form asp-controller="Language" asp-action="SetLanguage" method="post" class="language-form" aria-label="@Localizer["LanguageSelectorAria"]">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="returnUrl" value="@returnUrl" />
+                <label class="sr-only" for="culture-selector">@Localizer["LanguageSelectorLabel"]</label>
+                <select id="culture-selector" name="culture" onchange="this.form.submit()" class="language-select" aria-label="@Localizer["LanguageSelectorAria"]">
+                    @foreach (var culture in supportedCultures)
+                    {
+                        var isSelected = string.Equals(culture.Name, requestCulture.UICulture.Name, System.StringComparison.OrdinalIgnoreCase);
+                        <option value="@culture.Name" @(isSelected ? "selected" : string.Empty)>@Localizer[$"LanguageOption_{culture.Name}"]</option>
+                    }
+                </select>
+            </form>
+        </div>
         </nav>
     </div>
     </header>
@@ -85,30 +111,27 @@
         <!-- Columna 1: Identidad -->
         <div>
             <div class="brand" style="display:flex; align-items:center; gap:12px;">
-                <img src="~/img/Inicio/wwwdiapleses.png" 
-                     alt="Logo Diaples.es" 
+                <img src="~/img/Inicio/wwwdiapleses.png"
+                     alt="Logo Diaples.es"
                      style="height:48px; width:auto; border-radius:8px;" />
             </div>
             <p style="margin-top:12px; color:var(--muted); line-height:1.6;">
-                Asociación Cultural dedicada a la difusión de la mitología aragonesa a través 
-                del fuego, la música y el espectáculo en la calle desde 1992.
+                @Localizer["FooterAbout"]
             </p>
 
             <p style="margin-top:16px;">
-                📍 Calle Pedro Liñán 8, Zaragoza, Aragón<br />
-                📞 <a href="tel:+34656813706" style="color:var(--txt);">+34 656 813 706</a><br />
-                ✉️ <a href="mailto:diaples@diaples.es" style="color:var(--txt);">diaples@diaples.es</a>
+                @Html.Raw(Localizer["FooterContact"])
             </p>
         </div>
 
         <!-- Columna 2: Navegación -->
         <div>
-            <h4>Contenido</h4>
-            <a asp-controller="Home" asp-action="About">Os Diaples</a><br />
-            <a asp-controller="Home" asp-action="Espectaculos">Espectáculos</a><br />
-            <a asp-controller="Home" asp-action="Galeria">Galeria</a><br />
-            <a asp-controller="Home" asp-action="Contact">Contacto</a>
-            
+            <h4>@Localizer["FooterHeadingContent"]</h4>
+            <a asp-controller="Home" asp-action="About">@Localizer["MenuAbout"]</a><br />
+            <a asp-controller="Home" asp-action="Espectaculos">@Localizer["MenuShows"]</a><br />
+            <a asp-controller="Home" asp-action="Galeria">@Localizer["MenuGallery"]</a><br />
+            <a asp-controller="Home" asp-action="Contact">@Localizer["MenuContact"]</a>
+
         <div style="margin-top:18px; display:flex; gap:12px;">
                 <a href="https://es-es.facebook.com/osdiaples/" target="_blank" class="social-icon">
                     <i class="fab fa-facebook-f"></i>
@@ -125,7 +148,7 @@
     </div>
 
     <div style="margin-top:32px; text-align:center; font-size:0.9rem; color:var(--muted);">
-        © @DateTime.Now.Year · Os Diaples d'a Uerba · Todos los derechos reservados · <a href="https://diaples.es" style="color:var(--brand);">www.diaples.es</a>
+        @Localizer["FooterRights", DateTime.Now.Year]
     </div>
 </footer>
 
@@ -168,7 +191,7 @@
 })();
 </script>
 <!-- Botón para volver arriba -->
-<button id="btn-top" title="Volver arriba">
+<button id="btn-top" title="@Localizer["BackToTop"]">
   ↑
 </button>
 
@@ -211,6 +234,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-    
+
 </body>
 </html>

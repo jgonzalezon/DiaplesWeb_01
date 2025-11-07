@@ -1,7 +1,7 @@
 @model DiaplesWeb.Models.ViewModels.PagedEventsViewModel
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    ViewData["Title"] = "Eventos";
+    ViewData["Title"] = Localizer["PageTitle"];
 }
 
 <section class="admin-events">
@@ -9,13 +9,13 @@
     <!-- Columna izquierda: Lista -->
     <aside class="panel-left">
       <div class="panel-header">
-        <h2 class="title">Eventos</h2>
-        <a class="btn btn-primary" asp-action="Create">+ Nuevo</a>
+        <h2 class="title">@Localizer["Heading"]</h2>
+        <a class="btn btn-primary" asp-action="Create">@Localizer["NewEventButton"]</a>
       </div>
 
       @if (Model == null || !Model.Events.Any())
       {
-          <p class="muted">No hay eventos todavía.</p>
+          <p class="muted">@Localizer["EmptyState"]</p>
       }
       else
       {
@@ -38,27 +38,27 @@
                   </div>
                 </div>
                 <div class="event-actions">
-                  <a class="btn btn-sm" asp-action="Details" asp-route-id="@e.Id">Detalles</a>
+                  <a class="btn btn-sm" asp-action="Details" asp-route-id="@e.Id">@Localizer["DetailsButton"]</a>
                 </div>
               </li>
           }
         </ul>
 @if (Model.TotalPages > 1)
 {
-  <nav class="pager" aria-label="Paginación">
+  <nav class="pager" aria-label="@Localizer["PagerAriaLabel"]">
     <div class="pager-row">
 
       <!-- Primera -->
       <a class="@($"pager-btn {(Model.Page == 1 ? "is-disabled" : "")}")"
          asp-action="Index"
          asp-route-page="1"
-         title="Primera página">««</a>
+         title="@Localizer["PagerFirstTitle"]">««</a>
 
       <!-- Anterior -->
       <a class="@($"pager-btn {(Model.Page == 1 ? "is-disabled" : "")}")"
          asp-action="Index"
          asp-route-page="@(Model.Page - 1)"
-         title="Anterior">«</a>
+         title="@Localizer["PagerPreviousTitle"]">«</a>
 
       @{
           int startPage = Math.Max(1, Model.Page - 2);
@@ -93,13 +93,13 @@
       <a class="@($"pager-btn {(Model.Page >= Model.TotalPages ? "is-disabled" : "")}")"
          asp-action="Index"
          asp-route-page="@(Model.Page + 1)"
-         title="Siguiente">»</a>
+         title="@Localizer["PagerNextTitle"]">»</a>
 
       <!-- Última -->
       <a class="@($"pager-btn {(Model.Page >= Model.TotalPages ? "is-disabled" : "")}")"
          asp-action="Index"
          asp-route-page="@Model.TotalPages"
-         title="Última página">»»</a>
+         title="@Localizer["PagerLastTitle"]">»»</a>
 
     </div>
   </nav>
@@ -113,7 +113,7 @@
 
     <!-- Columna derecha: Calendario -->
     <section class="panel-right">
-      <h2 class="title">Calendario</h2>
+      <h2 class="title">@Localizer["CalendarTitle"]</h2>
       <div id="calendar"></div>
     </section>
   </div>

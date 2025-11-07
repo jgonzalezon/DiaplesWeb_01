@@ -1,7 +1,7 @@
 @model DiaplesWeb.Models.ViewModels.EventDetailsViewModel
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    ViewData["Title"] = "Detalles evento";
+    ViewData["Title"] = Localizer["PageTitle"];
 }
 
 <section class="event-details">
@@ -18,20 +18,20 @@
       @if (!string.IsNullOrWhiteSpace(Model.Event.Description))
         {
           <div class="desc card" style="margin-top:1rem;">
-            <h3>Descripción</h3>
+            <h3>@Localizer["DescriptionHeading"]</h3>
             <p style="white-space:pre-line">@Model.Event.Description</p>
           </div>
         }
 
     </div>
     <div class="actions">
-      <a class="btn btn-ghost" asp-action="Index">Volver</a>
-      <a class="btn" asp-action="Create">+ Nuevo</a>
+      <a class="btn btn-ghost" asp-action="Index">@Localizer["BackButton"]</a>
+      <a class="btn" asp-action="Create">@Localizer["NewEventButton"]</a>
         <form asp-action="Delete" method="post" style="display:inline"
-        onsubmit="return confirm('¿Seguro que quieres borrar este evento? Se eliminarán también las asistencias.');">
+        onsubmit="return confirm('@Localizer["DeleteConfirm"]');">
     @Html.AntiForgeryToken()
     <input type="hidden" name="id" value="@Model.Event.Id" />
-    <button type="submit" class="btn btn-danger">Borrar</button>
+    <button type="submit" class="btn btn-danger">@Localizer["DeleteButton"]</button>
   </form>
     </div>
   </div>
@@ -46,10 +46,10 @@
   }
 
   <div class="card">
-    <h3>Asistencia</h3>
+    <h3>@Localizer["AttendanceHeading"]</h3>
     @if (Model.Rows == null || !Model.Rows.Any())
     {
-        <p class="muted">No hay usuarios registrados.</p>
+        <p class="muted">@Localizer["AttendanceEmpty"]</p>
     }
     else
     {
@@ -57,11 +57,11 @@
         <table class="table table-dark table-hover align-middle">
           <thead>
             <tr>
-              <th style="width:25%">Usuario</th>
-              <th style="width:20%">Teléfono</th>
-              <th style="width:25%">Email</th>
-              <th style="width:30%">Asistencia</th>
-              
+              <th style="width:25%">@Localizer["ColumnUser"]</th>
+              <th style="width:20%">@Localizer["ColumnPhone"]</th>
+              <th style="width:25%">@Localizer["ColumnEmail"]</th>
+              <th style="width:30%">@Localizer["ColumnAttendance"]</th>
+
             </tr>
           </thead>
           <tbody>
@@ -81,11 +81,11 @@
                         var currentStr = (r?.Status.ToString()) ?? "No"; // "Yes" | "Maybe" | "No"
                     }
                     <select name="status" class="input input-sm">
-                    <option value="Yes" selected="@(currentStr == "Yes" ? "selected" : null)">Sí</option>
-                    <option value="Maybe" selected="@(currentStr == "Maybe" ? "selected" : null)">Pendiente</option>
-                    <option value="No" selected="@(currentStr == "No" ? "selected" : null)">No</option>
+                    <option value="Yes" selected="@(currentStr == "Yes" ? "selected" : null)">@Localizer["AttendanceYes"]</option>
+                    <option value="Maybe" selected="@(currentStr == "Maybe" ? "selected" : null)">@Localizer["AttendanceMaybe"]</option>
+                    <option value="No" selected="@(currentStr == "No" ? "selected" : null)">@Localizer["AttendanceNo"]</option>
                     </select>
-                  <button class="btn btn-sm" type="submit">Guardar</button>
+                  <button class="btn btn-sm" type="submit">@Localizer["SaveButton"]</button>
                 </form>
               </td>
               <td></td>
