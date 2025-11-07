@@ -1,16 +1,42 @@
+@using System.Collections.Generic
+@using System.Text.Json
 @model List<(Microsoft.AspNetCore.Identity.IdentityUser User, System.Collections.Generic.IList<string> Roles)>
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = Localizer["PageTitle"];
+    var textsJson = JsonSerializer.Serialize(new
+    {
+        processing = Localizer["Processing"].Value,
+        userCreated = Localizer["UserCreated"].Value,
+        operationDone = Localizer["OperationCompleted"].Value,
+        roleChanged = Localizer["RoleChangedTemplate"].Value,
+        userDeleted = Localizer["UserDeleted"].Value,
+        confirmDeleteUser = Localizer["ConfirmDeleteUser"].Value,
+        operationFailed = Localizer["OperationFailedTemplate"].Value,
+        passwordHintDefault = Localizer["PasswordHint"].Value,
+        passwordStrength = new
+        {
+            weak = Localizer["PasswordStrengthWeak"].Value,
+            fair = Localizer["PasswordStrengthFair"].Value,
+            good = Localizer["PasswordStrengthGood"].Value,
+            strong = Localizer["PasswordStrengthStrong"].Value
+        }
+    });
+    var roleLabelsJson = JsonSerializer.Serialize(new Dictionary<string, string>
+    {
+        ["User"] = Localizer["RoleOptionUser"].Value,
+        ["Admin"] = Localizer["RoleOptionAdmin"].Value
+    });
 }
 <section class="admin-card">
   <div class="section-header">
-    <h2 class="section-title m-0">Usuarios</h2>
-    <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-outline-light btn-sm">Volver</a>
+    <h2 class="section-title m-0">@Localizer["Heading"]</h2>
+    <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-outline-light btn-sm">@Localizer["BackButton"]</a>
   </div>
 
   <!-- Sección: Crear usuario -->
   <div class="admin-section">
-    <h5 class="text-muted mb-2">Crear usuario</h5>
+    <h5 class="text-muted mb-2">@Localizer["CreateUserHeading"]</h5>
 
     <form id="createForm"
           method="post"
@@ -20,46 +46,46 @@
 
       <div class="form-grid">
         <div class="form-field">
-          <label for="userName">Usuario</label>
-          <input id="userName" name="userName" placeholder="Usuario" required />
+          <label for="userName">@Localizer["UserLabel"]</label>
+          <input id="userName" name="userName" placeholder="@Localizer["UserPlaceholder"]" required />
         </div>
 
         <div class="form-field">
-          <label for="role">Rol</label>
+          <label for="role">@Localizer["RoleLabel"]</label>
           <select id="role" name="role">
-              <option value="User" selected>User</option>
-              <option value="Admin">Admin</option>
+              <option value="User" selected>@Localizer["RoleOptionUser"]</option>
+              <option value="Admin">@Localizer["RoleOptionAdmin"]</option>
           </select>
         </div>
 
         <div class="form-field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="Email" required />
+          <label for="email">@Localizer["EmailLabel"]</label>
+          <input id="email" name="email" type="email" placeholder="@Localizer["EmailPlaceholder"]" required />
         </div>
 
         <div class="form-field">
-          <label for="pwd">Contraseña</label>
+          <label for="pwd">@Localizer["PasswordLabel"]</label>
 
-          <input name="password" id="pwd" type="password" placeholder="Contraseña" required />
+          <input name="password" id="pwd" type="password" placeholder="@Localizer["PasswordPlaceholder"]" required />
 
-          <div class="mt-2" role="group" aria-label="Acciones contraseña">
-            <button type="button" class="btn btn-primary-like btn-pill-left" id="btnTogglePwd" title="Mostrar/Ocultar">
-              Mostrar/Ocultar
+          <div class="mt-2" role="group" aria-label="@Localizer["PasswordActionsAria"]">
+            <button type="button" class="btn btn-primary-like btn-pill-left" id="btnTogglePwd" title="@Localizer["TogglePasswordTitle"]">
+              @Localizer["TogglePasswordButton"]
             </button>
-            <button type="button" class="btn btn-primary-like btn-pill-right" id="btnGenPwd" title="Aleatorio">
-              Aleatorio
+            <button type="button" class="btn btn-primary-like btn-pill-right" id="btnGenPwd" title="@Localizer["GeneratePasswordTitle"]">
+              @Localizer["GeneratePasswordButton"]
             </button>
           </div>
 
           <div class="progress mt-2" style="height:6px;">
             <div class="progress-bar" id="pwdMeter" role="progressbar" style="width:0%"></div>
           </div>
-          <div class="form-text" id="pwdHint">Usa letras y números.</div>
+          <div class="form-text" id="pwdHint">@Localizer["PasswordHint"]</div>
         </div>
 
 
         <div class="form-field form-field--full">
-          <button class="btn btn-primary-like" id="btnCreate">Crear</button>
+          <button class="btn btn-primary-like" id="btnCreate">@Localizer["CreateButton"]</button>
         </div>
 
         <div class="form-field form-field--full">
@@ -71,7 +97,7 @@
 
   <!-- Sección: Tabla de usuarios -->
   <div class="admin-section">
-    <h5 class="text-muted mb-2">Listado</h5>
+    <h5 class="text-muted mb-2">@Localizer["ListHeading"]</h5>
     <div id="usersTable">
       @await Html.PartialAsync("_UsersTable", Model)
     </div>
@@ -83,8 +109,11 @@
 (function () {
   // ---- Elementos base
   var usersTable   = document.getElementById('usersTable');
-  var formCreate   = document.getElementById('createForm'); // formulario de "Crear usuario"
-  var msgCreate    = document.getElementById('createMsg');  // contenedor de toasts
+  var formCreate   = document.getElementById('createForm');
+  var msgCreate    = document.getElementById('createMsg');
+
+  const texts = @Html.Raw(textsJson);
+  const roleLabels = @Html.Raw(roleLabelsJson);
 
   // Controles de password (si existen)
   var btnGenPwd    = document.getElementById('btnGenPwd');
@@ -107,7 +136,7 @@
   async function postForm(f, opts) {
     var submitBtn = f.querySelector('button[type="submit"], button:not([type])');
     var prevText  = submitBtn ? submitBtn.innerText : '';
-    if (submitBtn) { submitBtn.disabled = true; submitBtn.innerText = 'Procesando…'; }
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.innerText = texts.processing; }
     if (msgCreate) msgCreate.innerHTML = '';
 
     try {
@@ -121,14 +150,15 @@
       var html = await resp.text();
       usersTable.innerHTML = html;
 
-      // Mensaje de éxito
+      var successMessage = '';
       if (opts && opts.successText) {
-        toast(opts.successText);
+        successMessage = (typeof opts.successText === 'function') ? opts.successText() : opts.successText;
       } else if (f === formCreate) {
-        toast('Usuario creado');
+        successMessage = texts.userCreated;
       } else {
-        toast('Operación realizada');
+        successMessage = texts.operationDone;
       }
+      toast(successMessage);
 
       // Reset SOLO si era el formulario de creación
       if (f === formCreate) {
@@ -136,10 +166,10 @@
         var roleSelect = document.getElementById('role');
         if (roleSelect) roleSelect.value = 'User';
         if (meter) { meter.style.width = '0%'; meter.className = 'progress-bar'; }
-        if (hint)  { hint.innerText = 'Usa letras y números.'; }
+        if (hint)  { hint.innerText = texts.passwordHintDefault; }
       }
     } catch (e) {
-      error('No se pudo completar la operación (' + e.message + ')');
+      error(texts.operationFailed.replace('{error}', e.message));
       console.error(e);
     } finally {
       if (submitBtn) { submitBtn.disabled = false; submitBtn.innerText = prevText; }
@@ -152,27 +182,29 @@
   if (formCreate) {
     formCreate.addEventListener('submit', function (e) {
       e.preventDefault();
-      postForm(e.target, { successText: 'Usuario creado' });
+      postForm(e.target, { successText: texts.userCreated });
     });
   }
 
   // Guardar rol (delegación en tabla)
-  usersTable.addEventListener('submit', function (e) {
-    if (e.target.matches('form.roleForm')) {
-      e.preventDefault();
-      var roleVal = e.target.querySelector('select[name="role"]')?.value || '';
-      postForm(e.target, { successText: 'Cambiado rol a ' + roleVal });
-    }
-  });
+  if (usersTable) {
+    usersTable.addEventListener('submit', function (e) {
+      if (e.target.matches('form.roleForm')) {
+        e.preventDefault();
+        var roleVal = e.target.querySelector('select[name="role"]')?.value || '';
+        var roleLabel = roleLabels[roleVal] || roleVal;
+        postForm(e.target, { successText: texts.roleChanged.replace('{role}', roleLabel) });
+      }
+    });
 
-  // Borrar usuario (delegación en tabla)
-  usersTable.addEventListener('submit', function (e) {
-    if (e.target.matches('form.deleteForm')) {
-      e.preventDefault();
-      if (!confirm('¿Borrar usuario?')) return;
-      postForm(e.target, { successText: 'Usuario borrado' });
-    }
-  });
+    usersTable.addEventListener('submit', function (e) {
+      if (e.target.matches('form.deleteForm')) {
+        e.preventDefault();
+        if (!confirm(texts.confirmDeleteUser)) return;
+        postForm(e.target, { successText: texts.userDeleted });
+      }
+    });
+  }
 
   // ---- Password: generar / mostrar-ocultar / medidor
   if (btnGenPwd && pwd) {
@@ -195,7 +227,7 @@
     var s = score(pwd.value);
     meter.style.width = (s * 25) + '%';
     meter.className = 'progress-bar ' + (s <= 1 ? 'bg-danger' : (s === 2 ? 'bg-warning' : (s === 3 ? 'bg-info' : 'bg-success')));
-    hint.innerText = (s <= 1 ? 'Contraseña débil' : (s === 2 ? 'Aceptable' : (s === 3 ? 'Buena' : 'Fuerte')));
+    hint.innerText = (s <= 1 ? texts.passwordStrength.weak : (s === 2 ? texts.passwordStrength.fair : (s === 3 ? texts.passwordStrength.good : texts.passwordStrength.strong)));
   }
   function score(v) {
     var s = 0;

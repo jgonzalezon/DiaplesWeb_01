@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SiteTitleSuffix" xml:space="preserve">
+    <value>Os Diaples d'a Uerba</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Os Diaples d'a Uerba · Espectáculos de fuego, animación y tradición aragonesa. Conoce a la tribu diablera y cómo contactar con nosotros.</value>
+  </data>
+  <data name="IntroDialogLabel" xml:space="preserve">
+    <value>Introducción Diaples</value>
+  </data>
+  <data name="IntroTitle" xml:space="preserve">
+    <value>Os Diaples d'a Uerba</value>
+  </data>
+  <data name="IntroLead" xml:space="preserve">
+    <value>Fuego, percusión y cultura aragonesa desde 1992.</value>
+  </data>
+  <data name="IntroEnter" xml:space="preserve">
+    <value>Entrar</value>
+  </data>
+  <data name="HamburgerLabel" xml:space="preserve">
+    <value>Abrir menú</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>Os Diaples</value>
+  </data>
+  <data name="MenuShows" xml:space="preserve">
+    <value>Espectáculos</value>
+  </data>
+  <data name="MenuGallery" xml:space="preserve">
+    <value>Galería</value>
+  </data>
+  <data name="MenuContact" xml:space="preserve">
+    <value>Contacto</value>
+  </data>
+  <data name="AdminButton" xml:space="preserve">
+    <value>Administración</value>
+  </data>
+  <data name="EventsButton" xml:space="preserve">
+    <value>Eventos</value>
+  </data>
+  <data name="LanguageSelectorAria" xml:space="preserve">
+    <value>Selector de idioma</value>
+  </data>
+  <data name="LanguageSelectorLabel" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="LanguageOption_es-ES" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="LanguageOption_en-US" xml:space="preserve">
+    <value>Inglés</value>
+  </data>
+  <data name="LanguageOption_an-ES" xml:space="preserve">
+    <value>Aragonés</value>
+  </data>
+  <data name="FooterAbout" xml:space="preserve">
+    <value>Asociación Cultural dedicada a la difusión de la mitología aragonesa a través del fuego, la música y el espectáculo en la calle desde 1992.</value>
+  </data>
+  <data name="FooterContact" xml:space="preserve">
+    <value>📍 Calle Pedro Liñán 8, Zaragoza, Aragón&lt;br /&gt;📞 &lt;a href="tel:+34656813706" style="color:var(--txt);"&gt;+34 656 813 706&lt;/a&gt;&lt;br /&gt;✉️ &lt;a href="mailto:diaples@diaples.es" style="color:var(--txt);"&gt;diaples@diaples.es&lt;/a&gt;</value>
+  </data>
+  <data name="FooterHeadingContent" xml:space="preserve">
+    <value>Contenido</value>
+  </data>
+  <data name="FooterRights" xml:space="preserve">
+    <value>© {0} · Os Diaples d'a Uerba · Todos los derechos reservados · &lt;a href="https://diaples.es" style="color:var(--brand);"&gt;www.diaples.es&lt;/a&gt;</value>
+  </data>
+  <data name="BackToTop" xml:space="preserve">
+    <value>Volver arriba</value>
+  </data>
+</root>

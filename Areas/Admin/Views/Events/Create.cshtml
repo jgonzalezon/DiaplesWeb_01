@@ -1,10 +1,10 @@
 @model DiaplesWeb.Models.EventItem
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    ViewData["Title"] = "Crear evento";
+    ViewData["Title"] = Localizer["PageTitle"];
 }
 
-<h2>Crear evento</h2>
+<h2>@Localizer["Heading"]</h2>
 
 @if (TempData["ok"] is string ok)
 {
@@ -19,7 +19,7 @@
   </div>
 
   <div class="mb-3">
-    <label>Fecha y hora</label>
+    <label>@Localizer["DateTimeLabel"]</label>
     <input asp-for="Date" type="datetime-local" class="input"
            value="@Model.Date.ToString("yyyy-MM-ddTHH:mm")" />
     <span asp-validation-for="Date" class="val-msg"></span>
@@ -33,13 +33,13 @@
 
   <!-- 👇 NUEVO CAMPO: Descripción -->
   <div class="mb-3">
-    <label asp-for="Description">Descripción</label>
+    <label asp-for="Description">@Localizer["DescriptionLabel"]</label>
     <textarea asp-for="Description" class="input textarea-desc" rows="5" maxlength="1000"
-              placeholder="Describe brevemente el evento..."></textarea>
+              placeholder="@Localizer["DescriptionPlaceholder"]"></textarea>
     <span asp-validation-for="Description" class="val-msg"></span>
   </div>
 
-  <button class="btn">Guardar</button>
+  <button class="btn">@Localizer["SaveButton"]</button>
 </form>
 
 @section Scripts {

@@ -1,23 +1,24 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+@inject IViewLocalizer Localizer
 
 @if (SignInManager.IsSignedIn(User))
 {
     <div class="nav-actions">
         <a class="nav-link text-light fw-semibold"
-        asp-area="Identity" asp-page="/Account/Manage/Index" title="Cuenta">
+        asp-area="Identity" asp-page="/Account/Manage/Index" title="@Localizer["AccountLinkTitle"]">
             @User.Identity?.Name
         </a>
         <form class="logout-form" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" method="post">
-            <button type="submit" class="btn btn--outline">Salir</button>
+            <button type="submit" class="btn btn--outline">@Localizer["LogoutButton"]</button>
         </form>
     </div>
 }
 else
 {
     <div class="nav-actions">
-        <a class="btn btn--outline" asp-area="Identity" asp-page="/Account/Login" aria-label="Entrar">Entrar</a>
-        <a class="btn" asp-area="Identity" asp-page="/Account/Register" aria-label="Registro">Registro</a>
+        <a class="btn btn--outline" asp-area="Identity" asp-page="/Account/Login" aria-label="@Localizer["LoginAriaLabel"]">@Localizer["LoginButton"]</a>
+        <a class="btn" asp-area="Identity" asp-page="/Account/Register" aria-label="@Localizer["RegisterAriaLabel"]">@Localizer["RegisterButton"]</a>
     </div>
 }

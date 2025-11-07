@@ -8,10 +8,10 @@
 <table class="table table-dark table-hover align-middle">
 <thead>
   <tr>
-    <th style="width:20%">Usuario</th>
-    <th style="width:15%">Teléfono</th>
-    <th style="width:20%">Email</th>
-    <th class="th-actions">Rol / Acciones</th>
+    <th style="width:20%">@Localizer["ColumnUser"]</th>
+    <th style="width:15%">@Localizer["ColumnPhone"]</th>
+    <th style="width:20%">@Localizer["ColumnEmail"]</th>
+    <th class="th-actions">@Localizer["ColumnRoleActions"]</th>
   </tr>
 </thead>
 <tbody>
@@ -24,7 +24,7 @@
 <tr>
   <td>
     @user.UserName
-    @if (isSelf) { <span class="badge text-bg-secondary ms-2">Tú</span> }
+    @if (isSelf) { <span class="badge text-bg-secondary ms-2">@Localizer["BadgeSelf"]</span> }
   </td>
   <td>@(user.PhoneNumber ?? "—")</td>
   <td>@user.Email</td>
@@ -39,12 +39,12 @@
             class="form roleForm">
         @Html.AntiForgeryToken()
         <input type="hidden" name="id" value="@user.Id" />
-        <select name="role" aria-label="Cambiar rol" @(isSelf ? "disabled" : null)>
-          <option value="User"  selected="@(currentRole == "User")">User</option>
-          <option value="Admin" selected="@(currentRole == "Admin")">Admin</option>
+        <select name="role" aria-label="@Localizer["ChangeRoleAria"]" @(isSelf ? "disabled" : null)>
+          <option value="User"  selected="@(currentRole == "User")">@Localizer["RoleOptionUser"]</option>
+          <option value="Admin" selected="@(currentRole == "Admin")">@Localizer["RoleOptionAdmin"]</option>
         </select>
         <button type="submit" class="btn btn-sm btn-primary-like" @(isSelf ? "disabled" : null)>
-          Guardar
+          @Localizer["SaveButton"]
         </button>
       </form>
 
@@ -57,7 +57,7 @@
         @Html.AntiForgeryToken()
         <input type="hidden" name="id" value="@user.Id" />
         <button type="submit" class="btn btn-sm btn-danger" @(isSelf ? "disabled" : null)>
-          Borrar
+          @Localizer["DeleteButton"]
         </button>
       </form>
     </div>

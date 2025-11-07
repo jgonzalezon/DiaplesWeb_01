@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="Heading" xml:space="preserve">
+    <value>Gestión de usuarios</value>
+  </data>
+  <data name="BackButton" xml:space="preserve">
+    <value>Volver</value>
+  </data>
+  <data name="CreateUserHeading" xml:space="preserve">
+    <value>Crear usuario</value>
+  </data>
+  <data name="UserLabel" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="UserPlaceholder" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="RoleLabel" xml:space="preserve">
+    <value>Rol</value>
+  </data>
+  <data name="RoleOptionUser" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="RoleOptionAdmin" xml:space="preserve">
+    <value>Administrador</value>
+  </data>
+  <data name="EmailLabel" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailPlaceholder" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="PasswordPlaceholder" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="PasswordActionsAria" xml:space="preserve">
+    <value>Acciones de contraseña</value>
+  </data>
+  <data name="TogglePasswordTitle" xml:space="preserve">
+    <value>Mostrar u ocultar contraseña</value>
+  </data>
+  <data name="TogglePasswordButton" xml:space="preserve">
+    <value>Mostrar/Ocultar</value>
+  </data>
+  <data name="GeneratePasswordTitle" xml:space="preserve">
+    <value>Generar contraseña aleatoria</value>
+  </data>
+  <data name="GeneratePasswordButton" xml:space="preserve">
+    <value>Aleatorio</value>
+  </data>
+  <data name="PasswordHint" xml:space="preserve">
+    <value>Usa letras y números.</value>
+  </data>
+  <data name="CreateButton" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="ListHeading" xml:space="preserve">
+    <value>Listado</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>Procesando…</value>
+  </data>
+  <data name="UserCreated" xml:space="preserve">
+    <value>Usuario creado</value>
+  </data>
+  <data name="OperationCompleted" xml:space="preserve">
+    <value>Operación realizada</value>
+  </data>
+  <data name="RoleChangedTemplate" xml:space="preserve">
+    <value>Rol cambiado a {role}</value>
+  </data>
+  <data name="UserDeleted" xml:space="preserve">
+    <value>Usuario borrado</value>
+  </data>
+  <data name="ConfirmDeleteUser" xml:space="preserve">
+    <value>¿Borrar usuario?</value>
+  </data>
+  <data name="OperationFailedTemplate" xml:space="preserve">
+    <value>No se pudo completar la operación ({error})</value>
+  </data>
+  <data name="PasswordStrengthWeak" xml:space="preserve">
+    <value>Contraseña débil</value>
+  </data>
+  <data name="PasswordStrengthFair" xml:space="preserve">
+    <value>Aceptable</value>
+  </data>
+  <data name="PasswordStrengthGood" xml:space="preserve">
+    <value>Buena</value>
+  </data>
+  <data name="PasswordStrengthStrong" xml:space="preserve">
+    <value>Fuerte</value>
+  </data>
+</root>

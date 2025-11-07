@@ -1,68 +1,94 @@
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@inject IOptions<RequestLocalizationOptions> LocalizationOptions
+@{
+    var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
+    var requestCulture = requestCultureFeature?.RequestCulture ?? new RequestCulture("es-ES");
+    var supportedCultures = LocalizationOptions.Value.SupportedUICultures ?? Array.Empty<CultureInfo>();
+    var currentCulture = CultureInfo.CurrentUICulture;
+    var returnUrl = Context.Request.Path + Context.Request.QueryString;
+    var pageTitle = ViewData["Title"]?.ToString() ?? Localizer["DefaultPageTitle"];
+}
 <!DOCTYPE html>
-<html>
+<html lang="@currentCulture.Name">
 <head>
-  <meta charset="utf-8" />
-  <title>Administración</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="~/css/site.css" />
-  <style>
-    .admin-wrap{display:grid;grid-template-columns:200px 1.35fr;gap:24px;min-height:80vh}
-    .admin-aside{background:var(--bg-2);border-radius:var(--radius);padding:16px}
-    .admin-aside a{display:block;padding:.7rem 1rem;border-radius:10px;margin-bottom:6px;text-decoration:none}
-    .admin-aside a:hover{background:var(--bg-3)}
-    .admin-main{background:var(--bg-2);border-radius:var(--radius);padding:20px}
-  </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@pageTitle - @Localizer["SiteTitleSuffix"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        .admin-wrap { display: grid; grid-template-columns: 240px 1fr; gap: 24px; min-height: 80vh; }
+        .admin-aside { background: var(--bg-2); border-radius: var(--radius); padding: 20px; }
+        .admin-aside h3 { margin: 0 0 16px 0; font-size: 1.1rem; }
+        .admin-aside a { display: block; padding: .65rem 1rem; border-radius: 10px; margin-bottom: 6px; text-decoration: none; color: inherit; }
+        .admin-aside a:hover, .admin-aside a:focus { background: var(--bg-3); }
+        .admin-main { background: var(--bg-2); border-radius: var(--radius); padding: 24px; }
+        @media (max-width: 992px) {
+            .admin-wrap { grid-template-columns: 1fr; }
+            .admin-aside { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+            .admin-aside a { margin: 0; }
+        }
+    </style>
 </head>
+<body>
 <header class="nav">
-  <div class="container nav-wrap">
-    <a class="brand" asp-area="" asp-controller="Home" asp-action="Index"
-       style="display:flex; align-items:center; gap:1px;">
-      <img src="~/img/Inicio/logo_horizontal-diaples.gif"
-           alt="Logo Os Diaples d'a Uerba"
-           style="height:50px; width:auto; border-radius:8px;" />
-    </a>
+    <div class="container nav-wrap">
+        <a class="brand" asp-area="" asp-controller="Home" asp-action="Index" style="display:flex; align-items:center; gap:1px;">
+            <img src="~/img/Inicio/logo_horizontal-diaples.gif"
+                 alt="@Localizer["BrandAlt"]"
+                 style="height:50px; width:auto; border-radius:8px;" />
+        </a>
 
-    <!-- Toggle móvil -->
-    <input id="nav-toggle" type="checkbox" class="nav-toggle" />
-    <label for="nav-toggle" class="hamburger" aria-label="Abrir menú">
-      <span></span><span></span><span></span>
-    </label>
+        <input id="nav-toggle" type="checkbox" class="nav-toggle" />
+        <label for="nav-toggle" class="hamburger" aria-label="@Localizer["HamburgerLabel"]">
+            <span></span><span></span><span></span>
+        </label>
 
-    <!-- Menú -->
-    <nav class="nav-menu">
-      <div class="nav-links">
-        <a asp-area="" asp-controller="Home" asp-action="About">Os Diaples</a>
-        <a asp-area="" asp-controller="Home" asp-action="Espectaculos">Espectáculos</a>
-        <a asp-area="" asp-controller="Home" asp-action="Galeria">Galería</a>
-        <a asp-area="" asp-controller="Home" asp-action="Contact">Contacto</a>
-      </div>
-
-      <!-- Acciones (login/registro/logout) -->
-      <div class="nav-actions">
-        <partial name="_LoginPartial" />
-      </div>
-    </nav>
-  </div>
+        <nav class="nav-menu">
+            <div class="nav-links">
+                <a asp-area="" asp-controller="Home" asp-action="About">@Localizer["MenuAbout"]</a>
+                <a asp-area="" asp-controller="Home" asp-action="Espectaculos">@Localizer["MenuShows"]</a>
+                <a asp-area="" asp-controller="Home" asp-action="Galeria">@Localizer["MenuGallery"]</a>
+                <a asp-area="" asp-controller="Home" asp-action="Contact">@Localizer["MenuContact"]</a>
+            </div>
+            <div class="nav-actions">
+                <partial name="_LoginPartial" />
+            </div>
+            <div class="nav-language">
+                <form asp-controller="Language" asp-action="SetLanguage" method="post" class="language-form" aria-label="@Localizer["LanguageSelectorAria"]">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="returnUrl" value="@returnUrl" />
+                    <label class="sr-only" for="culture-selector">@Localizer["LanguageSelectorLabel"]</label>
+                    <select id="culture-selector"
+                            name="culture"
+                            onchange="this.form.submit()"
+                            class="language-select"
+                            aria-label="@Localizer["LanguageSelectorAria"]">
+                        @foreach (var culture in supportedCultures)
+                        {
+                            var isSelected = string.Equals(culture.Name, requestCulture.UICulture.Name, StringComparison.OrdinalIgnoreCase);
+                            <option value="@culture.Name" @(isSelected ? "selected" : string.Empty)>@Localizer[$"LanguageOption_{culture.Name}"]</option>
+                        }
+                    </select>
+                </form>
+            </div>
+        </nav>
+    </div>
 </header>
 
+<main class="container admin-wrap">
+    <aside class="admin-aside" aria-label="@Localizer["SidebarAriaLabel"]">
+        <h3>@Localizer["SidebarTitle"]</h3>
+        <a href="~/Admin/Users">@Localizer["SidebarUsers"]</a>
+        <a href="~/Admin/Messages">@Localizer["SidebarMessages"]</a>
+        <a href="~/Admin/Events/Index">@Localizer["SidebarEvents"]</a>
+    </aside>
+    <section class="admin-main">
+        @RenderBody()
+    </section>
+</main>
 
-<body>
-<div class="container admin-wrap">
-  <aside class="admin-aside">
-    <h3 style="margin-bottom:10px">Panel</h3>
-<aside class="admin-aside">
-  <h3>Panel</h3>
-        <a href="~/Admin/Users">Usuarios</a>
-        <a href="~/Admin/Messages">Mensajes</a>
-        <a href="~/Admin/Events/Index">Eventos</a>
-</aside>
-
-  </aside>
-  <main class="admin-main">
-    @RenderBody()
-  </main>
-</div>
 @RenderSection("Scripts", required: false)
 </body>
 </html>

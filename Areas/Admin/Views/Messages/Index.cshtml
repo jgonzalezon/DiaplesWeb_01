@@ -1,8 +1,9 @@
 @model IEnumerable<DiaplesWeb.Models.ContactMessage>
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = Localizer["PageTitle"];
 }
-<h2>Mensajes</h2>
+<h2>@Localizer["Heading"]</h2>
 
 @if (TempData["MsgOk"] is string ok && !string.IsNullOrWhiteSpace(ok))
 {

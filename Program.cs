@@ -8,10 +8,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using System.IO;
+using System.Collections.Generic;
 using DiaplesWeb.Data;
 using DiaplesWeb.Services.Contracts;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using DiaplesWeb.Services.Email;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Options;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,9 +41,15 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
 builder.Services.AddControllers();
-builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
+    .AddDataAnnotationsLocalization();
+builder.Services.AddRazorPages()
+    .AddViewLocalization()
+    .AddDataAnnotationsLocalization();
 
 // BD (SQLite) con ruta absoluta al app.db en la raíz del proyecto
 var dbPath = Path.Combine(builder.Environment.ContentRootPath, "app.db");
@@ -61,6 +71,26 @@ builder.Services.AddScoped<IAttendanceService, EfAttendanceService>();
 builder.Services.AddScoped<IEventQueryService, EfEventQueryService>();
 builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();
 
+var supportedCultures = new[]
+{
+    new CultureInfo("es-ES"),
+    new CultureInfo("en-US"),
+    new CultureInfo("an-ES")
+};
+
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    options.DefaultRequestCulture = new RequestCulture("es-ES");
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedCultures;
+
+    options.RequestCultureProviders = new List<IRequestCultureProvider>
+    {
+        new CookieRequestCultureProvider(),
+        new AcceptLanguageHeaderRequestCultureProvider()
+    };
+});
+
 
 var app = builder.Build();
 
@@ -79,6 +109,9 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+var localizationOptions = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
+app.UseRequestLocalization(localizationOptions);
 
 app.UseRouting();
 
