@@ -110,10 +110,21 @@
     if (submitBtn) { submitBtn.disabled = true; submitBtn.innerText = 'Procesando…'; }
     if (msgCreate) msgCreate.innerHTML = '';
 
+    // Recuperamos el token anti-CSRF (igual que hacen los formularios de Identity)
+    var tokenField = f.querySelector('input[name="__RequestVerificationToken"]');
+    var token = tokenField ? tokenField.value : '';
+
     try {
       var resp = await fetch(f.action, {
         method: 'POST',
-        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+        // En AJAX hay que enviar siempre las cookies + el token anti-forgery, si no
+        // el backend responde 401/405. En los formularios de Identity se envía
+        // automáticamente porque se hace POST tradicional.
+        credentials: 'include',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'RequestVerificationToken': token
+        },
         body: new FormData(f)
       });
       if (!resp.ok) throw new Error('Error ' + resp.status);
